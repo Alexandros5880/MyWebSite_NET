@@ -1,0 +1,93 @@
+﻿
+@section styles {
+    <style>
+        body {
+            min-width: 539px;
+        }
+        img.header-image {
+            border-radius: 50%;
+            margin-top: 23%;
+            height: 77%;
+        }
+        .title-text {
+            margin-top: 23%;
+            font-size: 100px;
+        }
+
+        @@media only screen and (max-width: 1207px)
+        {
+            .title-div {
+                padding-left: 3%;
+                text-align:center;
+            }
+            .img-div {
+                text-align: center;
+            }
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+}
+
+
+
+<div class="row main">
+
+    <div class="col-lg-6 img-div">
+        <img class="header-image" alt="Alexandros Platanios Image" src="~/img/me/me.jpg" />
+    </div>
+
+    <div class="col-lg-6 title-div">
+        <h2 class="title-text margin-left-25"><span class="title-text-span">Hello</span></h2>
+        <h5 class="margin-left-25">A bot about me</h5>
+        <p class="margin-left-25">
+            I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.
+        </p>
+        <div class="margin-left-25">
+            <a class="link" href="/Home/Index" target="_top">
+                <svg height="150" width="150">
+                    <g>
+                        <circle cx="79" cy="79" r="70" fill="#FFBD00" stroke="black" stroke-width="1" />
+                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Resume</text>
+                    </g>
+                </svg>
+            </a>
+            <a class="link" href="/Home/Index/Home/Portofolio" target="_top">
+                <svg height="150" width="150">
+                    <g>
+                        <circle cx="79" cy="79" r="70" fill="#FF4700" stroke="black" stroke-width="1" />
+                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Portofolio</text>
+                    </g>
+                </svg>
+            </a>
+            <a class="link" href="/Home/Index/Home/Contact" target="_top">
+                <svg height="150" width="150">
+                    <g>
+                        <circle cx="79" cy="79" r="70" fill="#62CFDB" stroke="black" stroke-width="1" />
+                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Contact</text>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $(".link").hover(function () {
+                console.log("Hover");
+            });
+
+        });
+    </script>
+
+}
