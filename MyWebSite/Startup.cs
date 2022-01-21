@@ -54,10 +54,10 @@ namespace MyWebSite
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
@@ -66,8 +66,11 @@ namespace MyWebSite
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

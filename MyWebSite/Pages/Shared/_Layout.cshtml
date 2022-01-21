@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="~/img/title.ico">
     <title>Alexandros Platanios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -29,8 +30,7 @@
             }
         }
 
-        @@media only screen and (max-width: 991px)
-        {
+        @@media only screen and (max-width: 991px) {
             .main {
                 margin-bottom: 43%;
             }
@@ -42,12 +42,14 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+            <!--  navbar-light bg-white border-bottom box-shadow mb-3 -->
             <div class="container">
 
                 <div>
                     <svg height="50" width="50">
-                        <circle cx="25" cy="22" r="15" fill="#A9ABAC" />
+                        @*<circle cx="25" cy="22" r="15" fill="#A9ABAC" />*@
+                        <polygon points="25 0, 50 50, 0 50" fill="#A9ABAC" stroke="black" stroke-width="1" />
                     </svg>
                     <a class="navbar-brand" asp-area="" asp-action="Index"><b>Alexandros Platanios</b></a>
                     <br />
@@ -63,7 +65,7 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-action="Index">Resume</a>
+                                <a class="nav-link text-dark" asp-area="" asp-action="Resume">Resume</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-action="Portofolio">Portofolio</a>
