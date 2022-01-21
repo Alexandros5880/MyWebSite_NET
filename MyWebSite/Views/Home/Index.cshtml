@@ -14,6 +14,10 @@
             font-size: 100px;
         }
 
+        .my-links {
+            padding-top: 5%;
+        }
+
         @@media only screen and (max-width: 1207px)
         {
             .title-div {
@@ -23,10 +27,14 @@
             .img-div {
                 text-align: center;
             }
+            .my-links {
+                padding-top: 11%;
+            }
         }
         a:hover {
             text-decoration: none;
         }
+
     </style>
 }
 
@@ -34,38 +42,47 @@
 
 <div class="row main">
 
-    <div class="col-lg-6 img-div">
+    <div class="col-xl-6 img-div">
         <img class="header-image" alt="Alexandros Platanios Image" src="~/img/me/me.jpg" />
     </div>
 
-    <div class="col-lg-6 title-div">
+    <div class="col-xl-6 title-div">
         <h2 class="title-text margin-left-25"><span class="title-text-span">Hello</span></h2>
         <h5 class="margin-left-25">A bot about me</h5>
         <p class="margin-left-25">
             I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.
         </p>
-        <div class="margin-left-25">
+        <div class="margin-left-25 my-links">
             <a class="link" href="/Home/Index" target="_top">
                 <svg height="150" width="150">
-                    <g>
-                        <circle cx="79" cy="79" r="70" fill="#FFBD00" stroke="black" stroke-width="1" />
-                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Resume</text>
+                    <g transform="rotate(180)" style="transform-origin: center;">
+                        <polygon points="75 0, 150 150, 0 150" fill="#2072D5" stroke="black" stroke-width="1" />
+                        @*<circle cx="79" cy="79" r="70" fill="#FFBD00" stroke="black" stroke-width="1" />*@
+                        <g transform="rotate(180)" style="transform-origin: center;">
+                            <text font-size="1.3em" font-weight="bold" x="50%" y="31%" style="text-anchor: middle">Resume</text>
+                        </g>
                     </g>
                 </svg>
             </a>
             <a class="link" href="/Home/Index/Home/Portofolio" target="_top">
                 <svg height="150" width="150">
                     <g>
-                        <circle cx="79" cy="79" r="70" fill="#FF4700" stroke="black" stroke-width="1" />
-                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Portofolio</text>
+                        <polygon points="75 0, 150 150, 0 150" fill="#A9ABAC" stroke="black" stroke-width="1"/>
+                        @*<circle cx="79" cy="79" r="70" fill="#FF4700" stroke="black" stroke-width="1" />*@
+                        <g>
+                            <text font-size="1.3em" font-weight="bold" x="50%" y="79%" style="text-anchor: middle">Portofolio</text>
+                        </g>
                     </g>
                 </svg>
             </a>
             <a class="link" href="/Home/Index/Home/Contact" target="_top">
                 <svg height="150" width="150">
-                    <g>
-                        <circle cx="79" cy="79" r="70" fill="#62CFDB" stroke="black" stroke-width="1" />
-                        <text font-size="1.3em" font-weight="bold" x="53%" y="55%" style="text-anchor: middle">Contact</text>
+                    <g transform="rotate(180)" style="transform-origin: center;">
+                        <polygon points="75 0, 150 150, 0 150" fill="#2072D5" stroke="black" stroke-width="1" />
+                        @*<circle cx="79" cy="79" r="70" fill="#62CFDB" stroke="black" stroke-width="1" />*@
+                        <g transform="rotate(180)" style="transform-origin: center;">
+                            <text font-size="1.3em" font-weight="bold" x="50%" y="31%" style="text-anchor: middle">Contact</text>
+                        </g>
                     </g>
                 </svg>
             </a>
@@ -84,7 +101,13 @@
         $(document).ready(function () {
 
             $(".link").hover(function () {
-                console.log("Hover");
+                var polygon = $(this).children().children().children();
+                var text = polygon.children();
+                polygon.attr("fill-opacity", "0.4");
+            }, function () {
+                var polygon = $(this).children().children().children();
+                var text = polygon.children();
+                polygon.attr("fill-opacity", "1");
             });
 
         });

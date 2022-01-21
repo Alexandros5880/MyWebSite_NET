@@ -1,21 +1,53 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyWebSite</title>
+    <title>Alexandros Platanios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     @RenderSection("styles", required: false)
+
+    <style>
+        .main {
+            padding-bottom: 3%;
+        }
+
+        .nav-item:hover {
+            opacity: 0.4;
+        }
+
+        @@media only screen and (min-width: 992px) and (max-width: 1200px) {
+            .main {
+                margin-bottom: 5%;
+            }
+
+            .links {
+                margin-top: 5%;
+            }
+        }
+
+        @@media only screen and (max-width: 991px)
+        {
+            .main {
+                margin-bottom: 43%;
+            }
+        }
+    </style>
 </head>
+
+
 <body>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
 
                 <div>
                     <svg height="50" width="50">
-                        <circle cx="25" cy="22" r="15" fill="orange" />
+                        <circle cx="25" cy="22" r="15" fill="#A9ABAC" />
                     </svg>
                     <a class="navbar-brand" asp-area="" asp-action="Index"><b>Alexandros Platanios</b></a>
                     <br />
@@ -44,21 +76,23 @@
                     </div>
                 </div>
 
-
             </div>
         </nav>
     </header>
-    <div class="container">
+
+
+
+    <div class="container main">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MyWebSite - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+
+    <br />
+
+    <partial name="_Footer" />
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -66,5 +100,21 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+        $(document).ready(function () {
+
+            // Save Clicked Tab on Brouser Memmory
+            $(".nav-item").on("click", function () {
+                //$("a").find(".active").removeClass("active");
+                //$(this).children().addClass("active");
+                //$(this).children().css("color", "green");
+            });
+
+        });
+    </script>
+
+
 </body>
 </html>
