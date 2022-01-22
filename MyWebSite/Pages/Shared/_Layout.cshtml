@@ -9,77 +9,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
     @RenderSection("styles", required: false)
 
     <style>
         .main {
             padding-bottom: 3%;
         }
-
-        .nav-item:hover {
-            opacity: 0.4;
-        }
-
         @@media only screen and (min-width: 992px) and (max-width: 1200px) {
             .main {
                 margin-bottom: 5%;
             }
-
-            .links {
-                margin-top: 5%;
-            }
         }
-
         @@media only screen and (max-width: 991px) {
             .main {
                 margin-bottom: 43%;
             }
         }
     </style>
+
 </head>
 
 
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
-            <!--  navbar-light bg-white border-bottom box-shadow mb-3 -->
-            <div class="container">
-
-                <div>
-                    <svg height="50" width="50">
-                        @*<circle cx="25" cy="22" r="15" fill="#A9ABAC" />*@
-                        <polygon points="25 0, 50 50, 0 50" fill="#A9ABAC" stroke="black" stroke-width="1" />
-                    </svg>
-                    <a class="navbar-brand" asp-area="" asp-action="Index"><b>Alexandros Platanios</b></a>
-                    <br />
-                    <i>Software Developer</i>
-                </div>
-
-
-                <div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-action="Resume">Resume</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-action="Portofolio">Portofolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-action="Contact">Contact</a>
-                            </li>
-                        </ul>
-                        @*<partial name="_LoginPartial" />*@
-                    </div>
-                </div>
-
-            </div>
-        </nav>
+        <partial name="_NavBar" />
     </header>
 
 
@@ -98,24 +53,11 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-
-    <script>
-        $(document).ready(function () {
-
-            // Save Clicked Tab on Brouser Memmory
-            $(".nav-item").on("click", function () {
-                //$("a").find(".active").removeClass("active");
-                //$(this).children().addClass("active");
-                //$(this).children().css("color", "green");
-            });
-
-        });
-    </script>
 
 
 </body>
