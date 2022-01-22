@@ -10,8 +10,8 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220120160144_Initial")]
-    partial class Initial
+    [Migration("20220122181731_AddBaseModels")]
+    partial class AddBaseModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,6 +221,107 @@ namespace MyWebSite.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MyWebSite.Data.Models.CV", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CVs");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Description = "My CV",
+                            IsActive = true,
+                            Path = "/CV/CV.pdf"
+                        });
+                });
+
+            modelBuilder.Entity("MyWebSite.Data.Models.Image", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProjectID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("MyWebSite.Data.Models.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MyMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("MyWebSite.Data.Models.Project", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DownloadLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Projects");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -270,6 +371,18 @@ namespace MyWebSite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MyWebSite.Data.Models.Image", b =>
+                {
+                    b.HasOne("MyWebSite.Data.Models.Project", null)
+                        .WithMany("ImagesPaths")
+                        .HasForeignKey("ProjectID");
+                });
+
+            modelBuilder.Entity("MyWebSite.Data.Models.Project", b =>
+                {
+                    b.Navigation("ImagesPaths");
                 });
 #pragma warning restore 612, 618
         }
