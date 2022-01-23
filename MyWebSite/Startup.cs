@@ -6,6 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Data;
+using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses;
+using MyWebSite.HorizontalClasses.Interfaces;
+using MyWebSite.Repositories;
+using MyWebSite.Repositories.Interface;
 
 namespace MyWebSite
 {
@@ -32,15 +37,21 @@ namespace MyWebSite
             services.AddDefaultIdentity<MyWebSiteUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddRazorPages();
+
+
+
 
             //                                       Dependency Injection
             // Transient objects are always different; a new instance is provided to every controller and every service.
             // Scoped objects are the same within a request, but different across different requests.
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             //services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
-
-
-            services.AddRazorPages();
+            services.AddScoped<IRepository<CV>, CvRepository>();
+            services.AddScoped<IRepository<Image>, ImageRepository>();
+            services.AddScoped<IRepository<Message>, MessageRepository>();
+            services.AddScoped<IRepository<Project>, ProjectRepository>();
+            services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

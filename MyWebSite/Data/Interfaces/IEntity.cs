@@ -1,6 +1,6 @@
 ﻿namespace MyWebSite.Data.Interfaces
 {
-    interface IEntity
+    public interface IEntity
     {
         int ID { get; set; }
     }

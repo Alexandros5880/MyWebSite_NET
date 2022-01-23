@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyWebSite.Repositories.Interface
 {
-    interface IRepository<T> where T : class, IEntity
+    public interface IRepository<T> where T : class, IEntity
     {
         Task<ICollection<T>> GetAll();
         IQueryable<T> GetAllQueryable();
