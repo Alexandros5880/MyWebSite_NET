@@ -44,6 +44,7 @@ namespace MyWebSite.Repositories
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
             var entity = await this._context.Images
+                                    .Include(i => i.Project)
                                     .FirstOrDefaultAsync(c => c.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -53,6 +54,7 @@ namespace MyWebSite.Repositories
         public async Task<ICollection<Image>> GetAll()
         {
             return await this._context.Images
+                                .Include(i => i.Project)
                                 .ToListAsync();
         }
 

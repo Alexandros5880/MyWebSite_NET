@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <Content Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <EmbeddedResource Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <None Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
@@ -19,88 +26,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\ProjectImages\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\ProjectImages\Economy\All _ IPs _ Salesforce - Google Chrome 5_20_2021 3_30_01 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\All _ IPs _ Salesforce - Google Chrome 5_20_2021 3_30_12 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\Economics _ Salesforce - Google Chrome 5_20_2021 3_29_06 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\Economics _ Salesforce - Google Chrome 5_20_2021 3_29_17 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\Economics _ Salesforce - Google Chrome 5_20_2021 3_29_31 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\Economics _ Salesforce - Google Chrome 5_20_2021 3_29_40 PM.png" />
-    <None Include="wwwroot\ProjectImages\Economy\Economics _ Salesforce - Google Chrome 5_20_2021 3_29_48 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Elementum - Google Chrome 5_20_2021 3_10_17 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Elementum - Google Chrome 5_20_2021 3_10_27 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Elementum - Google Chrome 5_20_2021 3_10_36 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Register – Elementum - Google Chrome 5_20_2021 3_14_02 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_05 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_14 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_27 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_36 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_44 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_12_55 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_13_08 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elementum\Wing Chun Kung FU – Elementum - Google Chrome 5_20_2021 3_13_17 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Add Client 5_19_2021 4_11_54 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Add DocNum 5_19_2021 4_14_16 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_11 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_32 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_38 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_43 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_50 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Client 5_19_2021 4_13_59 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Clients 5_19_2021 4_11_45 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Clients 5_19_2021 4_12_13 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Edit 5_19_2021 4_14_33 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Screenshot 5_19_2021 4_12_40 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Screenshot 5_19_2021 4_15_49 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevator Dash\Settings 5_20_2021 3_47_04 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevators Managment System\Search_Client _ Salesforce - Google Chrome 5_22_2021 7_59_00 PM.png" />
-    <None Include="wwwroot\ProjectImages\Elevators Managment System\Search_Client _ Salesforce - Google Chrome 5_22_2021 7_59_12 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\20210205165509_geekcreitr_esp32_cam_wifi_bluetooth_camera_module_dev_board_esp32_with_camera_module_ov2640.jpeg" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\ESP32 OV2460 - Google Chrome 5_20_2021 2_44_14 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\IPCameras 6_22_2021 2_26_00 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\IPCameras 6_22_2021 2_26_34 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Login 6_22_2021 2_26_09 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\My Account 6_22_2021 2_27_41 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\RecordFullScreen 6_22_2021 2_28_22 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\RecordFullScreen 6_22_2021 2_28_32 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Records 6_22_2021 2_28_14 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Settings 6_22_2021 2_27_06 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Settings 6_22_2021 2_27_26 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Settings 6_22_2021 2_27_31 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\Settings 6_22_2021 2_39_16 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\VideoFullscreen 6_22_2021 2_26_42 PM.png" />
-    <None Include="wwwroot\ProjectImages\IPCameras Dashboard\WindowControll 6_22_2021 2_26_53 PM.png" />
-    <None Include="wwwroot\ProjectImages\RemoteAutoMoto\Android Emulator - Pixel_3a_API_30_x86_5554 5_21_2021 12_42_46 PM.png" />
-    <None Include="wwwroot\ProjectImages\RemoteAutoMoto\Android Emulator - Pixel_3a_API_30_x86_5554 5_21_2021 12_42_55 PM.png" />
-    <None Include="wwwroot\ProjectImages\RemoteAutoMoto\Android Emulator - Pixel_3a_API_30_x86_5554 5_21_2021 12_43_04 PM.png" />
-    <None Include="wwwroot\ProjectImages\RemoteAutoMoto\xlarge_20200305114324_128878b7.jpeg" />
-    <None Include="wwwroot\ProjectImages\RemoteAutoMoto\αρχείο λήψης.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\android.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\arduino.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\desktop.ini" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\developer.html" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\developer.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\dotnet.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\esp32-cam.png" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\java.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\me.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\my.jpeg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\myImage.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\resbery.jpeg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\salesforce.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\salesforce.png" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\server.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\software.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\website.png" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\websitelogo.ico" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\WingChun.jpg" />
-    <None Include="wwwroot\ProjectImages\Saved Pictures\wordpress.jpg" />
   </ItemGroup>
 
 </Project>
