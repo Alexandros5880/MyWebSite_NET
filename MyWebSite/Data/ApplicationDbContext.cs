@@ -34,15 +34,10 @@ namespace MyWebSite.Data
 
 
 
-
-
             // Add seed Data
 
             // Add CV
             builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", Path = "/CV/CV.pdf" });
-
-
-
 
             // Add Projects
             builder.Entity<Project>().HasData(new Project() { ID = 1, Title="CBProject", Description= "Online School For Data Sience." });
@@ -52,8 +47,6 @@ namespace MyWebSite.Data
             builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Managment", Description = "A B&B App For Elevator Maintence Company." });
             builder.Entity<Project>().HasData(new Project() { ID = 6, Title = "IPCameras Dashboard", Description = "IPCameras Security Software." });
             builder.Entity<Project>().HasData(new Project() { ID = 7, Title = "Remote Auto Moto", Description = "Update Your Old Vichecle To Full Software Update." });
-
-
 
             // Add Images
             int id = 1;
@@ -100,8 +93,6 @@ namespace MyWebSite.Data
                 id++;
             }
 
-
-            
         }
 
     }

@@ -233,6 +233,7 @@ namespace MyWebSite.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Path")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -825,6 +826,7 @@ namespace MyWebSite.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

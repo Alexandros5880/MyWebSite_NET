@@ -1,4 +1,5 @@
 ﻿using MyWebSite.Data.Interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.Models
@@ -9,6 +10,7 @@ namespace MyWebSite.Data.Models
         public string Path { get; set; }
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
+        [Required]
         public Project Project { get; set; }
     }
 }

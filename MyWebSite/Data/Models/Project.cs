@@ -1,5 +1,6 @@
 ﻿using MyWebSite.Data.Interfaces;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyWebSite.Data.Models
 {
@@ -7,6 +8,7 @@ namespace MyWebSite.Data.Models
     {
         public int ID { get; set; }
         public ICollection<Image> Images { get; set; }
+        [Required]
         public string Title { get; set; }
         public string Description { get; set; }
         public string DownloadLink { get; set; }
