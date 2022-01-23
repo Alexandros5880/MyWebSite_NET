@@ -5,7 +5,7 @@ using MyWebSite.Data.Models;
 
 namespace MyWebSite.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<MyWebSiteUser>
+    public class ApplicationDbContext : IdentityDbContext<MyWebSiteUser>, IApplicationDbContext
     {
 
         public DbSet<CV> CVs { get; set; }
@@ -23,7 +23,7 @@ namespace MyWebSite.Data
             base.OnModelCreating(builder);
 
             // Add seed Data
-            builder.Entity<CV>().HasData(new CV() { ID=1, IsActive=true, Description="My CV", Path= "/CV/CV.pdf" });
+            builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", Path = "/CV/CV.pdf" });
         }
 
     }

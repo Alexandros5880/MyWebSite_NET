@@ -10,8 +10,8 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220122181731_AddBaseModels")]
-    partial class AddBaseModels
+    [Migration("20220123102433_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -376,13 +376,13 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Data.Models.Image", b =>
                 {
                     b.HasOne("MyWebSite.Data.Models.Project", null)
-                        .WithMany("ImagesPaths")
+                        .WithMany("Images")
                         .HasForeignKey("ProjectID");
                 });
 
             modelBuilder.Entity("MyWebSite.Data.Models.Project", b =>
                 {
-                    b.Navigation("ImagesPaths");
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

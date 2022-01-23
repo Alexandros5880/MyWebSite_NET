@@ -1,6 +1,8 @@
-﻿namespace MyWebSite.Data.Models
+﻿using MyWebSite.Data.Interfaces;
+
+namespace MyWebSite.Data.Models
 {
-    public class Message
+    public class Message : IEntity
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
