@@ -50,6 +50,15 @@ namespace MyWebSite.Repositories
             return entity;
         }
 
+        public async Task<CV> GetActive()
+        {
+            var entity = await this._context.CVs
+                            .FirstOrDefaultAsync(c => c.IsActive == true);
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            return entity;
+        }
+
         public async Task<ICollection<CV>> GetAll()
         {
             return await this._context.CVs.ToListAsync();
@@ -66,6 +75,16 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(entity));
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
+        }
+
+        public async Task DeactivateAll()
+        {
+            foreach (var cv in this._context.CVs)
+            {
+                cv.IsActive = false;
+                this.Update(cv);
+                await this.Save();
+            }
         }
 
         public async Task Save()

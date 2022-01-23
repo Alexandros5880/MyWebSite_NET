@@ -1,4 +1,4 @@
-﻿
+﻿@model MyWebSite.Data.Models.CV
 
 @section styles{
     <style>
@@ -31,7 +31,10 @@
 <hr />
 
 <div class="pdf-case">
-    <embed class="pdf" src="~/CV/CV.pdf#toolbar=1&navpanes=0&scrollbar=0&view=FitH" />
+    @{
+        var path = @Url.Content(@Model.Path) + "#toolbar=1&navpanes=0&scrollbar=0&view=FitH";
+    }
+    <embed class="pdf" src="@path"  />
 </div>
 
 
