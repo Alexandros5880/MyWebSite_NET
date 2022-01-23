@@ -206,7 +206,7 @@ namespace MyWebSite.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Path = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -241,7 +241,7 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.InsertData(
                 table: "Images",
-                columns: new[] { "ID", "Path", "ProjectId" },
+                columns: new[] { "ID", "ImagePath", "ProjectId" },
                 values: new object[,]
                 {
                     { 1, "~/ProjectImages/CBProject/img_1.png", 1 },
@@ -290,7 +290,7 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.InsertData(
                 table: "Images",
-                columns: new[] { "ID", "Path", "ProjectId" },
+                columns: new[] { "ID", "ImagePath", "ProjectId" },
                 values: new object[,]
                 {
                     { 43, "~/ProjectImages/Elementum/img_6.png", 3 },
@@ -339,7 +339,7 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.InsertData(
                 table: "Images",
-                columns: new[] { "ID", "Path", "ProjectId" },
+                columns: new[] { "ID", "ImagePath", "ProjectId" },
                 values: new object[] { 85, "~/ProjectImages/RemoteAutoMoto/img_5.png", 7 });
 
             migrationBuilder.CreateIndex(

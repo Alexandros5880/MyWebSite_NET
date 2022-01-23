@@ -53,43 +53,43 @@ namespace MyWebSite.Data
             // CB Project
             for (int i = 1; i < 31; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/CBProject/img_{i}.png", ProjectId = 1 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/CBProject/img_{i}.png", ProjectId = 1 });
                 id++;
             }
             // Economy Project
             for (int i = 1; i < 8; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/Economy/img_{i}.png", ProjectId = 2 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Economy/img_{i}.png", ProjectId = 2 });
                 id++;
             }
             // Elementum Project
             for (int i = 1; i < 13; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/Elementum/img_{i}.png", ProjectId = 3 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Elementum/img_{i}.png", ProjectId = 3 });
                 id++;
             }
             // ElevatorDash Project
             for (int i = 1; i < 15; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/ElevatorDash/img_{i}.png", ProjectId = 4 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorDash/img_{i}.png", ProjectId = 4 });
                 id++;
             }
             // Elevators Managment System Project
             for (int i = 1; i < 3; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/ElevatorsManagmentSystem/img_{i}.png", ProjectId = 5 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorsManagmentSystem/img_{i}.png", ProjectId = 5 });
                 id++;
             }
             // IPCamerasDashboard Project
             for (int i = 1; i < 16; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/IPCamerasDashboard/img_{i}.png", ProjectId = 6 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/IPCamerasDashboard/img_{i}.png", ProjectId = 6 });
                 id++;
             }
             // RemoteAutoMoto Project
-            for (int i = 1; i < 6; i++)
+            for (int i = 1;i < 4 ; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, Path = $"~/ProjectImages/RemoteAutoMoto/img_{i}.png", ProjectId = 7 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/RemoteAutoMoto/img_{i}.png", ProjectId = 7 });
                 id++;
             }
 

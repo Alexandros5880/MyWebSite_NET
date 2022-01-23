@@ -7,7 +7,8 @@ namespace MyWebSite.Data.Models
     public class Image : IEntity
     {
         public int ID { get; set; }
-        public string Path { get; set; }
+        [Required]
+        public string ImagePath { get; set; }
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
         [Required]

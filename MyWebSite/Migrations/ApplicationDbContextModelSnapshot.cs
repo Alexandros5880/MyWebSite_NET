@@ -257,7 +257,8 @@ namespace MyWebSite.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Path")
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProjectId")
@@ -273,511 +274,511 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            Path = "~/ProjectImages/CBProject/img_1.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_1.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 2,
-                            Path = "~/ProjectImages/CBProject/img_2.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_2.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 3,
-                            Path = "~/ProjectImages/CBProject/img_3.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_3.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 4,
-                            Path = "~/ProjectImages/CBProject/img_4.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_4.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 5,
-                            Path = "~/ProjectImages/CBProject/img_5.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_5.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 6,
-                            Path = "~/ProjectImages/CBProject/img_6.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_6.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 7,
-                            Path = "~/ProjectImages/CBProject/img_7.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_7.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 8,
-                            Path = "~/ProjectImages/CBProject/img_8.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_8.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 9,
-                            Path = "~/ProjectImages/CBProject/img_9.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_9.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 10,
-                            Path = "~/ProjectImages/CBProject/img_10.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_10.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 11,
-                            Path = "~/ProjectImages/CBProject/img_11.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_11.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 12,
-                            Path = "~/ProjectImages/CBProject/img_12.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_12.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 13,
-                            Path = "~/ProjectImages/CBProject/img_13.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_13.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 14,
-                            Path = "~/ProjectImages/CBProject/img_14.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_14.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 15,
-                            Path = "~/ProjectImages/CBProject/img_15.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_15.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 16,
-                            Path = "~/ProjectImages/CBProject/img_16.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_16.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 17,
-                            Path = "~/ProjectImages/CBProject/img_17.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_17.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 18,
-                            Path = "~/ProjectImages/CBProject/img_18.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_18.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 19,
-                            Path = "~/ProjectImages/CBProject/img_19.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_19.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 20,
-                            Path = "~/ProjectImages/CBProject/img_20.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_20.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 21,
-                            Path = "~/ProjectImages/CBProject/img_21.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_21.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 22,
-                            Path = "~/ProjectImages/CBProject/img_22.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_22.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 23,
-                            Path = "~/ProjectImages/CBProject/img_23.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_23.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 24,
-                            Path = "~/ProjectImages/CBProject/img_24.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_24.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 25,
-                            Path = "~/ProjectImages/CBProject/img_25.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_25.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 26,
-                            Path = "~/ProjectImages/CBProject/img_26.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_26.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 27,
-                            Path = "~/ProjectImages/CBProject/img_27.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_27.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 28,
-                            Path = "~/ProjectImages/CBProject/img_28.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_28.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 29,
-                            Path = "~/ProjectImages/CBProject/img_29.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_29.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 30,
-                            Path = "~/ProjectImages/CBProject/img_30.png",
+                            ImagePath = "~/ProjectImages/CBProject/img_30.png",
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 31,
-                            Path = "~/ProjectImages/Economy/img_1.png",
+                            ImagePath = "~/ProjectImages/Economy/img_1.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 32,
-                            Path = "~/ProjectImages/Economy/img_2.png",
+                            ImagePath = "~/ProjectImages/Economy/img_2.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 33,
-                            Path = "~/ProjectImages/Economy/img_3.png",
+                            ImagePath = "~/ProjectImages/Economy/img_3.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 34,
-                            Path = "~/ProjectImages/Economy/img_4.png",
+                            ImagePath = "~/ProjectImages/Economy/img_4.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 35,
-                            Path = "~/ProjectImages/Economy/img_5.png",
+                            ImagePath = "~/ProjectImages/Economy/img_5.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 36,
-                            Path = "~/ProjectImages/Economy/img_6.png",
+                            ImagePath = "~/ProjectImages/Economy/img_6.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 37,
-                            Path = "~/ProjectImages/Economy/img_7.png",
+                            ImagePath = "~/ProjectImages/Economy/img_7.png",
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 38,
-                            Path = "~/ProjectImages/Elementum/img_1.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_1.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 39,
-                            Path = "~/ProjectImages/Elementum/img_2.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_2.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 40,
-                            Path = "~/ProjectImages/Elementum/img_3.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_3.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 41,
-                            Path = "~/ProjectImages/Elementum/img_4.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_4.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 42,
-                            Path = "~/ProjectImages/Elementum/img_5.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_5.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 43,
-                            Path = "~/ProjectImages/Elementum/img_6.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_6.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 44,
-                            Path = "~/ProjectImages/Elementum/img_7.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_7.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 45,
-                            Path = "~/ProjectImages/Elementum/img_8.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_8.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 46,
-                            Path = "~/ProjectImages/Elementum/img_9.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_9.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 47,
-                            Path = "~/ProjectImages/Elementum/img_10.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_10.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 48,
-                            Path = "~/ProjectImages/Elementum/img_11.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_11.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 49,
-                            Path = "~/ProjectImages/Elementum/img_12.png",
+                            ImagePath = "~/ProjectImages/Elementum/img_12.png",
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 50,
-                            Path = "~/ProjectImages/ElevatorDash/img_1.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_1.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 51,
-                            Path = "~/ProjectImages/ElevatorDash/img_2.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_2.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 52,
-                            Path = "~/ProjectImages/ElevatorDash/img_3.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_3.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 53,
-                            Path = "~/ProjectImages/ElevatorDash/img_4.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_4.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 54,
-                            Path = "~/ProjectImages/ElevatorDash/img_5.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_5.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 55,
-                            Path = "~/ProjectImages/ElevatorDash/img_6.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_6.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 56,
-                            Path = "~/ProjectImages/ElevatorDash/img_7.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_7.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 57,
-                            Path = "~/ProjectImages/ElevatorDash/img_8.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_8.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 58,
-                            Path = "~/ProjectImages/ElevatorDash/img_9.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_9.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 59,
-                            Path = "~/ProjectImages/ElevatorDash/img_10.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_10.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 60,
-                            Path = "~/ProjectImages/ElevatorDash/img_11.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_11.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 61,
-                            Path = "~/ProjectImages/ElevatorDash/img_12.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_12.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 62,
-                            Path = "~/ProjectImages/ElevatorDash/img_13.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_13.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 63,
-                            Path = "~/ProjectImages/ElevatorDash/img_14.png",
+                            ImagePath = "~/ProjectImages/ElevatorDash/img_14.png",
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 64,
-                            Path = "~/ProjectImages/ElevatorsManagmentSystem/img_1.png",
+                            ImagePath = "~/ProjectImages/ElevatorsManagmentSystem/img_1.png",
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 65,
-                            Path = "~/ProjectImages/ElevatorsManagmentSystem/img_2.png",
+                            ImagePath = "~/ProjectImages/ElevatorsManagmentSystem/img_2.png",
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 66,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_1.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_1.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 67,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_2.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_2.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 68,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_3.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_3.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 69,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_4.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_4.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 70,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_5.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_5.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 71,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_6.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_6.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 72,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_7.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_7.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 73,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_8.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_8.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 74,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_9.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_9.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 75,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_10.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_10.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 76,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_11.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_11.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 77,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_12.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_12.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 78,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_13.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_13.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 79,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_14.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_14.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 80,
-                            Path = "~/ProjectImages/IPCamerasDashboard/img_15.png",
+                            ImagePath = "~/ProjectImages/IPCamerasDashboard/img_15.png",
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 81,
-                            Path = "~/ProjectImages/RemoteAutoMoto/img_1.png",
+                            ImagePath = "~/ProjectImages/RemoteAutoMoto/img_1.png",
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 82,
-                            Path = "~/ProjectImages/RemoteAutoMoto/img_2.png",
+                            ImagePath = "~/ProjectImages/RemoteAutoMoto/img_2.png",
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 83,
-                            Path = "~/ProjectImages/RemoteAutoMoto/img_3.png",
+                            ImagePath = "~/ProjectImages/RemoteAutoMoto/img_3.png",
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 84,
-                            Path = "~/ProjectImages/RemoteAutoMoto/img_4.png",
+                            ImagePath = "~/ProjectImages/RemoteAutoMoto/img_4.png",
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 85,
-                            Path = "~/ProjectImages/RemoteAutoMoto/img_5.png",
+                            ImagePath = "~/ProjectImages/RemoteAutoMoto/img_5.png",
                             ProjectId = 7
                         });
                 });
