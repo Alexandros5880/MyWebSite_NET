@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebSite.Areas.Identity.Data;
+using MyWebSite.AutoMapperProfiles;
 using MyWebSite.Data;
 using MyWebSite.Data.Models;
 using MyWebSite.HorizontalClasses;
@@ -39,7 +41,13 @@ namespace MyWebSite
 
             services.AddRazorPages();
 
-
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
 
             //                                       Dependency Injection
