@@ -41,6 +41,11 @@ namespace MyWebSite
 
             services.AddRazorPages();
 
+
+
+
+
+
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -60,6 +65,7 @@ namespace MyWebSite
             services.AddScoped<IRepository<Message>, MessageRepository>();
             services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
+            services.AddScoped<IEmailTool, EmailTool>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

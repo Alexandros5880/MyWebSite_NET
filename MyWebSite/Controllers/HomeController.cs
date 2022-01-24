@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Controllers
@@ -11,11 +12,13 @@ namespace MyWebSite.Controllers
     {
         private readonly IRepositoriesHundler _repos;
         private readonly IMapper _mapper;
+        private readonly IEmailTool _emailTool;
 
-        public HomeController(IRepositoriesHundler repos, IMapper mapper)
+        public HomeController(IRepositoriesHundler repos, IMapper mapper, IEmailTool emailTool)
         {
             this._repos = repos;
             this._mapper = mapper;
+            this._emailTool = emailTool;
         }
 
         public async Task<IActionResult> Index()
@@ -56,16 +59,29 @@ namespace MyWebSite.Controllers
         {
             if (message == null)
                 return BadRequest();
+            try
+            {
+                //throw new Exception();
+                var messageDB = this._mapper.Map<Message>(message);
 
-            // Save Message
-            var messageDB = this._mapper.Map<Message>(message);
-            await this._repos.Messages.Add(messageDB);
-            await this._repos.Messages.Save();
+                var subject = message.Subject.Length > 0 ? message.Subject : null;
+                messageDB.Subject = "MyWebSite: " + subject;
+                var title = messageDB.FullName;
 
-            // TODO: Send Email
+                // Save Message
+                await this._repos.Messages.Add(messageDB);
+                await this._repos.Messages.Save();
 
+                // Send Email
+                await this._emailTool.Send(messageDB.MyMessage, messageDB.Subject, title);
 
-            return View("Index");
+                return View("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Somthing wrong was happend, Please try again!";
+                return View("Contact");
+            }
         }
     }
 }
