@@ -1,0 +1,25 @@
+﻿
+
+
+
+<link rel="stylesheet" href="~/css/AdminSideNavBar.css" />
+
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a asp-controller="Cvs" asp-action="Index">CVs</a>
+    <a asp-controller="Images" asp-action="Index">Images</a>
+    <a asp-controller="Messages" asp-action="Index">Messages</a>
+    <a asp-controller="Projects" asp-action="Index">Projects</a>
+</div>
+
+
+<!-- Use any element to open the sidenav -->
+<h4><span onclick="openNav()"><i class="fas fa-ellipsis-v menu"></i><!--<i><strong>Menu</strong></i>--></span></h4>
+
+
+
+
+
+<script src="~/js/AdminSideNavBar.js"></script>

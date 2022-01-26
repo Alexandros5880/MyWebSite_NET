@@ -1,23 +1,20 @@
 ﻿
 
 
+@section styles { 
+
+
 <style>
 
     .nav-item:hover {
-        opacity: 0.4 !important;
-    }
-
-    .mr-auto {
-        margin-left: 65%;
-    }
-
-    @@media only screen and (max-width: 1112px) {
-        .mr-auto {
-            margin-left: 57% !important;
-        }
+        opacity: 0.4;
     }
 
 </style>
+
+
+}
+
 
 
 
@@ -34,7 +31,7 @@
             @*<circle cx="25" cy="22" r="15" fill="#A9ABAC" />*@
             <polygon points="25 0, 50 50, 0 50" fill="#A9ABAC" stroke="black" stroke-width="1" />
         </svg>
-        <a class="navbar-brand" href="/Home/Index"><h1><b>Alexandros Platanios</b></h1></a>
+        <a class="navbar-brand" href="/Home/Index"><b>Alexandros Platanios</b></a>
         <br />
         <i>Software Developer</i>
     </div>
@@ -42,7 +39,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="margin-left: 67%;">
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/Home/Resume">Resume</a>
             </li>
