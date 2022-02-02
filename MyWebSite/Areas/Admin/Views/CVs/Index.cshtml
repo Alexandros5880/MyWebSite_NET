@@ -6,45 +6,73 @@
     ViewData["Title"] = "Index";
 }
 
+
+
+@section styles {
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+}
+
+
+
+
+
 <h2>CVs</h2>
 
 <p>
     <a asp-controller="Cvs" asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Path)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Path)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-controller="Cvs" asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-controller="Cvs" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+
+<div style="margin-top: 5%;">
+    <table id="cvs-table" width="100%"></table>
+</div>
+
+
+
+@section Scripts{
+
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            var dataItem = [];
+
+            @foreach (var item in Model)
+            {
+                @:dataItem = [];
+                @:dataItem.push("@item.ID");
+                @:dataItem.push("@item.IsActive");
+                @:dataItem.push("@item.Path");
+                @:dataItem.push("@item.Description");
+                <text>
+                    dataItem.push(`
+                        <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-controller="Cvs" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Cvs" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
+            }
+
+
+            var table = $('#cvs-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "IsActive" },
+                    { title: "Path" },
+                    { title: "Description" },
+                    null
+                ],
+            });
+
+        });
+
+    </script>
+
+}

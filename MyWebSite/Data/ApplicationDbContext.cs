@@ -87,7 +87,7 @@ namespace MyWebSite.Data
                 id++;
             }
             // RemoteAutoMoto Project
-            for (int i = 1;i < 4 ; i++)
+            for (int i = 1; i < 3 ; i++)
             {
                 builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/RemoteAutoMoto/img_{i}.png", ProjectId = 7 });
                 id++;

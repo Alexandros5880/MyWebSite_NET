@@ -22,9 +22,15 @@
 
 <div class="pdf-case">
     @{
-        var path = @Url.Content(@Model.Path) + "#toolbar=1&navpanes=0&scrollbar=0&view=FitH";
+        if (@Model != null)
+        {
+            var path = @Url.Content(@Model.Path) + "#toolbar=1&navpanes=0&scrollbar=0&view=FitH";
+            <embed class="pdf" src="@path" />
+        } else
+        {
+            <h3 class="text-danger">No Active CV Found.</h3>
+        }
     }
-    <embed class="pdf" src="@path" />
 </div>
 
 

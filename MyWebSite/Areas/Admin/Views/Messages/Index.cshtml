@@ -4,56 +4,79 @@
     ViewData["Title"] = "Index";
 }
 
+
+
+@section styles {
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+}
+
+
+
+
+
+
 <h2>Messages</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MyMessage)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MyMessage)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+
+
+
+<div style="margin-top: 5%;">
+    <table id="messages-table" width="100%"></table>
+</div>
+
+
+
+
+
+@section Scripts{
+
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            @foreach (var item in Model)
+            {
+                @:dataItem = [];
+                @:dataItem.push("@item.ID");
+                @:dataItem.push("@item.FirstName");
+                @:dataItem.push("@item.LastName");
+                @:dataItem.push("@item.Email");
+                @:dataItem.push("@item.Subject");
+                @:dataItem.push("@item.MyMessage");
+                <text>
+                    dataItem.push(`
+                        <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-controller="Messages" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Messages" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
+            }
+
+
+            var table = $('#messages-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "First Name" },
+                    { title: "Last Name" },
+                    { title: "Email" },
+                    { title: "Subject" },
+                    { title: "Message" },
+                    null
+                ],
+            });
+
+        });
+
+    </script>
+
 }
-    </tbody>
-</table>
