@@ -1,27 +1,6 @@
 ﻿
 
-
-<style>
-
-    .nav-item:hover {
-        opacity: 0.4 !important;
-    }
-
-    .mr-auto {
-        margin-left: 65%;
-    }
-
-    @@media only screen and (max-width: 1112px) {
-        .mr-auto {
-            margin-left: 57% !important;
-        }
-    }
-
-</style>
-
-
-
-
+<link rel="stylesheet" href="~/css/_NavBar.css">
 
 
 
@@ -34,23 +13,25 @@
             @*<circle cx="25" cy="22" r="15" fill="#A9ABAC" />*@
             <polygon points="25 0, 50 50, 0 50" fill="#A9ABAC" stroke="black" stroke-width="1" />
         </svg>
-        <a class="navbar-brand" href="/Home/Index"><h1><b>Alexandros Platanios</b></h1></a>
+        <a id="title" class="navbar-brand" href="/Home/Index"><h1><b>Software Developer</b></h1></a>
         <br />
-        <i>Software Developer</i>
+        <i id="subtitle">Alexandros Platanios</i>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        @*<span class="navbar-toggler-icon"></span>*@
+        <i id="down" class="fas fa-chevron-circle-down fa-3x" style="display: none;"></i>
+        <i id="up" class="fas fa-chevron-circle-up fa-3x" style="display: none;"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link text-dark" href="/Home/Resume">Resume</a>
+                <a class="nav-link text-dark links" href="/Home/Resume">Resume</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="/Home/Portofolio">Portofolio</a>
+                <a class="nav-link text-dark links" href="/Home/Portofolio">Portofolio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="/Home/Contact">Contact</a>
+                <a class="nav-link text-dark links" href="/Home/Contact">Contact</a>
             </li>
         </ul>
         @*<partial name="_LoginPartial" />*@
@@ -67,18 +48,4 @@
 
 
 
-@section scripts {
-
-    <script>
-        $(document).ready(function () {
-
-            // Save Clicked Tab on Brouser Memmory
-            $(".nav-item").on("click", function () {
-                //$("a").find(".active").removeClass("active");
-                //$(this).children().addClass("active");
-                //$(this).children().css("color", "green");
-            });
-
-        });
-    </script>
-}
+<script src="~/js/_NavBar.js"> </script>

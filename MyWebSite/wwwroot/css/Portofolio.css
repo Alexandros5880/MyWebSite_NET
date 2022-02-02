@@ -2,6 +2,10 @@
     min-width: 539px;
 }
 
+.bottom {
+    margin-bottom: 7%;
+}
+
 @media only screen and (max-width: 760px) {
     .bottom {
         margin-bottom: 33%;
@@ -58,6 +62,7 @@ img {
 
 #projects-table {
     margin-top: 3%;
+    border: none;
 }
 
 
@@ -69,18 +74,10 @@ img {
     float: right;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background: none !important;
-    color: black !important;
-    border: none !important;
-}
-
-
-
 div.dataTables_info {
-
+    display: none;
 }
 
 div.dataTables_wrapper div.dataTables_paginate {
-
+    float: right;
 }

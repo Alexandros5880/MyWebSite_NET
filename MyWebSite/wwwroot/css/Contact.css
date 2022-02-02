@@ -1,0 +1,35 @@
+﻿body {
+    min-width: 539px;
+}
+
+.header {
+    margin-top: 7%;
+}
+
+.bottom {
+    margin-bottom: 7%;
+}
+
+@media only screen and (max-width: 760px) {
+    .bottom {
+        margin-bottom: 37%;
+    }
+}
+
+
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 500px;
+    width: 100%;
+}
+
+
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 500px;
+    width: 100%;
+}

@@ -1,0 +1,42 @@
+﻿
+
+.nav-item:hover {
+    opacity: 0.4 !important;
+}
+
+.mr-auto {
+    margin-left: 65%;
+}
+
+#title {
+    font-family: 'Brush Script MT', cursive;
+}
+
+#subtitle {
+    margin-left: 3%;
+    font-family: 'Brush Script MT', cursive;
+}
+
+@media only screen and (max-width: 1112px) {
+    .mr-auto {
+        margin-left: 57% !important;
+    }
+}
+
+
+
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+.links {
+    font-family: 'Brush Script MT', cursive;
+}

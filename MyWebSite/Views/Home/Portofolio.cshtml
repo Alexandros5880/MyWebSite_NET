@@ -3,21 +3,10 @@
 
 @section styles {
 
-    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css"/>
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
     <link rel="stylesheet" href="~/css/Portofolio.css" />
 
 }
-
-
-
-<br />
-<br />
-<br />
-<h3>Projects</h3>
-<hr />
-
-
-
 
 
 
@@ -40,7 +29,7 @@
 
 <!-- Details Moal -->
 <div id="modal-fullscreen-xl" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl"  role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
@@ -49,7 +38,7 @@
                 </button>
             </div>
             <div class="modal-body modal-details">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -62,10 +51,8 @@
 
 
 
-<br />
-<br />
-<br />
-<hr class="bottom" />
+
+<div class="bottom" />
 
 
 
@@ -75,12 +62,11 @@
 
 @section Scripts{
 
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/Portofolio.js"></script>
     <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
 
     <script>
-
-
 
 
         $(document).ready(function () {
@@ -141,17 +127,7 @@
                 "autoWidth": false,
 
                 "drawCallback": function () {
-                    $('.pagination a').removeClass();
-                    $('.pagination a').addClass('btn btn-dark');
-
-                    $('.pagination a').mouseenter(function () {
-                        //$(".paginate_button , .paginate_button > *").css("background-color", "green");
-                    });
-
-                    $('.pagination a').mouseleave(function () {
-                        //$(".paginate_button , .paginate_button > *").css("background-color", "none");
-                    });
-
+                    
                 }
 
             });
@@ -169,6 +145,6 @@
 
     </script>
 
-    
+
 
 }

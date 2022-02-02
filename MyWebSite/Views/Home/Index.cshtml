@@ -1,44 +1,14 @@
 ﻿
+
+
+
+
 @section styles {
-    <style>
-        body {
-            min-width: 539px;
-        }
-        img.header-image {
-            border-radius: 50%;
-            margin-top: 23%;
-            height: 77%;
-        }
-        .title-text {
-            margin-top: 23%;
-            font-size: 100px;
-        }
-
-        .my-links {
-            padding-top: 5%;
-        }
-
-        @@media only screen and (max-width: 1207px)
-        {
-            .title-div {
-                padding-left: 3%;
-                text-align:center;
-            }
-            .img-div {
-                text-align: center;
-            }
-            .my-links {
-                padding-top: 11%;
-            }
-        }
-        a:hover {
-            text-decoration: none;
-        }
-        .font_0 {
-            font: normal normal normal 100px/1.4em worksans-semibold,'work sans',sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/HomeIndex.css" />
 }
+
+
+
 
 
 
@@ -97,22 +67,7 @@
 
 
 
+
 @section Scripts{
-
-    <script>
-        $(document).ready(function () {
-
-            $(".link").hover(function () {
-                var polygon = $(this).children().children().children();
-                var text = polygon.children();
-                polygon.attr("fill-opacity", "0.4");
-            }, function () {
-                var polygon = $(this).children().children().children();
-                var text = polygon.children();
-                polygon.attr("fill-opacity", "1");
-            });
-
-        });
-    </script>
-
+    <script src="~/js/HomeIndex.js"></script>
 }
