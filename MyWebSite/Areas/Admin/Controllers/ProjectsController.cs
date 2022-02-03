@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace MyWebSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProjectsController : Controller
     {
         private readonly IRepositoriesHundler _repos;

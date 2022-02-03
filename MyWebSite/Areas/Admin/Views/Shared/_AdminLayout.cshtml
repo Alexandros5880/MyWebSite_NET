@@ -20,11 +20,13 @@
 <body>
 
     <header>
-        <partial name="_NavBar" />
-        <partial name="_SideNavBar" />
+        @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminNavBar.cshtml"); }
+        @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_SideNavBar.cshtml"); }
+        @*<partial name="_AdminNavBar" />
+            <partial name="_SideNavBar" />*@
     </header>
 
-    
+
 
 
     <div class="main">
@@ -34,7 +36,8 @@
 
     <br />
 
-    <partial name="_Footer" />
+    @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminFooter.cshtml"); }
+    @*<partial name="_AdminFooter" />*@
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

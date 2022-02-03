@@ -43,9 +43,6 @@ namespace MyWebSite
 
 
 
-
-
-
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -87,13 +84,14 @@ namespace MyWebSite
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            app.UseAuthorization();
-
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                
+                endpoints.MapControllers();
 
                 endpoints.MapControllerRoute(
                    name: "areas",
