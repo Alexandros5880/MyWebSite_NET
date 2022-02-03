@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
+using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -24,7 +26,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // GET: Admin/Projects
         public async Task<IActionResult> Index()
         {
-            return View(await this._repos.Projects.GetAll());
+            List<ProjectViewModel> viewModels = new List<ProjectViewModel>();
+            foreach (var project in await this._repos.Projects.GetAll())
+            {
+                viewModels.Add(this._mapper.Map<ProjectViewModel>(project));
+            }
+            return View(viewModels);
         }
 
         // GET: Admin/Projects/Details/5
@@ -34,14 +41,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
             }
-
-            return View(project);
+            var viewModel = this._mapper.Map<ProjectViewModel>(project);
+            return View(viewModel);
         }
 
         // GET: Admin/Projects/Create
@@ -55,11 +61,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Description,DownloadLink,Price")] Project project)
+        public async Task<IActionResult> Create(ProjectViewModel viewModel)
         {
+            var project = this._mapper.Map<Project>(viewModel);
             if (ModelState.IsValid)
             {
-                this._repos.Projects.Add(project);
+                await this ._repos.Projects.Add(project);
                 await this._repos.Projects.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -73,13 +80,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
             }
-            return View(project);
+            var viewModel = this._mapper.Map<ProjectViewModel>(project);
+            return View(viewModel);
         }
 
         // POST: Admin/Projects/Edit/5
@@ -87,8 +94,9 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Description,DownloadLink,Price")] Project project)
+        public async Task<IActionResult> Edit(int id, ProjectViewModel viewModel)
         {
+            var project = this._mapper.Map<Project>(viewModel);
             if (id != project.ID)
             {
                 return NotFound();
@@ -124,14 +132,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
             }
-
-            return View(project);
+            var viewModel = this._mapper.Map<ProjectViewModel>(project);
+            return View(viewModel);
         }
 
         // POST: Admin/Projects/Delete/5

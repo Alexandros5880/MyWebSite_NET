@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
+using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -25,7 +27,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // GET: Admin/Images
         public async Task<IActionResult> Index()
         {
-            return View(await this._repos.Images.GetAll());
+            List<ImageViewModel> viewModels = new List<ImageViewModel>();
+            foreach(var image in await this._repos.Images.GetAll())
+            {
+                viewModels.Add(this._mapper.Map<ImageViewModel>(image));
+            }
+            return View(viewModels);
         }
 
         // GET: Admin/Images/Details/5
@@ -41,8 +48,8 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-            return View(image);
+            var viewModel = this._mapper.Map<ImageViewModel>(image);
+            return View(viewModel);
         }
 
         // GET: Admin/Images/Create
@@ -57,11 +64,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ImagePath,ProjectId")] Image image)
+        public async Task<IActionResult> Create(ImageViewModel viewModel)
         {
+            var image = this._mapper.Map<Image>(viewModel);
             if (ModelState.IsValid)
             {
-                this._repos.Images.Add(image);
+                await this._repos.Images.Add(image);
                 await this._repos.Images.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -83,7 +91,8 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["ProjectId"] = new SelectList(await this._repos.Projects.GetAll(), "ID", "Title", image.ProjectId);
-            return View(image);
+            var viewModel = this._mapper.Map<ImageViewModel>(image);
+            return View(viewModel);
         }
 
         // POST: Admin/Images/Edit/5
@@ -91,8 +100,9 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ImagePath,ProjectId")] Image image)
+        public async Task<IActionResult> Edit(int id, ImageViewModel viewModel)
         {
+            var image = this._mapper.Map<Image>(viewModel);
             if (id != image.ID)
             {
                 return NotFound();
@@ -129,14 +139,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var image = await this._repos.Images.Get(id);
             if (image == null)
             {
                 return NotFound();
             }
-
-            return View(image);
+            var viewModel = this._mapper.Map<ImageViewModel>(image);
+            return View(viewModel);
         }
 
         // POST: Admin/Images/Delete/5

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
+using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -24,7 +26,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // GET: Admin/Messages
         public async Task<IActionResult> Index()
         {
-            return View(await this._repos.Messages.GetAll());
+            List<MessageViewModel> viewModels = new List<MessageViewModel>();
+            foreach (var message in await this._repos.Messages.GetAll())
+            {
+                viewModels.Add(this._mapper.Map<MessageViewModel>(message));
+            }
+            return View(viewModels);
         }
 
         // GET: Admin/Messages/Details/5
@@ -34,14 +41,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var message = await this._repos.Messages.Get(id);
             if (message == null)
             {
                 return NotFound();
             }
-
-            return View(message);
+            var viewModel = this._mapper.Map<MessageViewModel>(message);
+            return View(viewModel);
         }
 
         // GET: Admin/Messages/Create
@@ -55,11 +61,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email,Subject,MyMessage")] Message message)
+        public async Task<IActionResult> Create(MessageViewModel viewModel)
         {
+            var message = this._mapper.Map<Message>(viewModel);
             if (ModelState.IsValid)
             {
-                this._repos.Messages.Add(message);
+                await this ._repos.Messages.Add(message);
                 await this._repos.Messages.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -79,7 +86,8 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(message);
+            var viewModel = this._mapper.Map<MessageViewModel>(message);
+            return View(viewModel);
         }
 
         // POST: Admin/Messages/Edit/5
@@ -87,8 +95,9 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Email,Subject,MyMessage")] Message message)
+        public async Task<IActionResult> Edit(int id, MessageViewModel viewModel)
         {
+            var message = this._mapper.Map<Message>(viewModel);
             if (id != message.ID)
             {
                 return NotFound();
@@ -124,14 +133,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var message = await this._repos.Messages.Get(id);
             if (message == null)
             {
                 return NotFound();
             }
-
-            return View(message);
+            var viewModel = this._mapper.Map<MessageViewModel>(message);
+            return View(viewModel);
         }
 
         // POST: Admin/Messages/Delete/5

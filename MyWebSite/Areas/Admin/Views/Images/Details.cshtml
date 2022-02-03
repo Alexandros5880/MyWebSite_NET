@@ -1,4 +1,4 @@
-﻿@model MyWebSite.Data.Models.Image
+﻿@model MyWebSite.Data.ViewModels.ImageViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -10,16 +10,16 @@
     <h4>Image</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ImagePath)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Project)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Project.Title)
         </dd>
     </dl>

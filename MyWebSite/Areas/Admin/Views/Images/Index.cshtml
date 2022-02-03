@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyWebSite.Data.Models.Image>
+﻿@model IEnumerable<MyWebSite.Data.ViewModels.ImageViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -49,7 +49,7 @@
                 @:dataItem.push("@item.Project.Title");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
+                        <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                         <a asp-controller="Images" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>

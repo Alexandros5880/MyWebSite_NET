@@ -5,6 +5,7 @@ namespace MyWebSite.Data.ViewModels
 {
     public class ProjectViewModel
     {
+        public int ID { get; set; }
         public ICollection<Image> Images { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
