@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyWebSite.Data;
 using MyWebSite.Data.Models;
-using System.Linq;
+using MyWebSite.HorizontalClasses.Interfaces;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -11,18 +11,21 @@ namespace MyWebSite.Areas.Admin.Controllers
     [Area("Admin")]
     public class ImagesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepositoriesHundler _repos;
+        private readonly IMapper _mapper;
+        private readonly IEmailTool _emailTool;
 
-        public ImagesController(ApplicationDbContext context)
+        public ImagesController(IRepositoriesHundler repos, IMapper mapper, IEmailTool emailTool)
         {
-            _context = context;
+            this._repos = repos;
+            this._mapper = mapper;
+            this._emailTool = emailTool;
         }
 
         // GET: Admin/Images
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Images.Include(i => i.Project);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await this._repos.Images.GetAll());
         }
 
         // GET: Admin/Images/Details/5
@@ -33,9 +36,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images
-                .Include(i => i.Project)
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var image = await this._repos.Images.Get(id);
             if (image == null)
             {
                 return NotFound();
@@ -45,9 +46,9 @@ namespace MyWebSite.Areas.Admin.Controllers
         }
 
         // GET: Admin/Images/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "ID", "Title");
+            ViewData["ProjectId"] = new SelectList(await this._repos.Projects.GetAll(), "ID", "Title");
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace MyWebSite.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(image);
-                await _context.SaveChangesAsync();
+                this._repos.Images.Add(image);
+                await this._repos.Images.Save();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "ID", "Title", image.ProjectId);
+            ViewData["ProjectId"] = new SelectList(await this._repos.Projects.GetAll(), "ID", "Title", image.ProjectId);
             return View(image);
         }
 
@@ -76,12 +77,12 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images.FindAsync(id);
+            var image = await this._repos.Images.Get(id);
             if (image == null)
             {
                 return NotFound();
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "ID", "Title", image.ProjectId);
+            ViewData["ProjectId"] = new SelectList(await this._repos.Projects.GetAll(), "ID", "Title", image.ProjectId);
             return View(image);
         }
 
@@ -101,12 +102,12 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(image);
-                    await _context.SaveChangesAsync();
+                    this._repos.Images.Update(image);
+                    await this._repos.Images.Save();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ImageExists(image.ID))
+                    if (!await ImageExists(image.ID))
                     {
                         return NotFound();
                     }
@@ -117,7 +118,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "ID", "Title", image.ProjectId);
+            ViewData["ProjectId"] = new SelectList(await this._repos.Projects.GetAll(), "ID", "Title", image.ProjectId);
             return View(image);
         }
 
@@ -129,9 +130,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images
-                .Include(i => i.Project)
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var image = await this._repos.Images.Get(id);
             if (image == null)
             {
                 return NotFound();
@@ -145,15 +144,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var image = await _context.Images.FindAsync(id);
-            _context.Images.Remove(image);
-            await _context.SaveChangesAsync();
+            await this._repos.Images.Delete(id);
+            await this._repos.Images.Save();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ImageExists(int id)
+        private async Task<bool> ImageExists(int id)
         {
-            return _context.Images.Any(e => e.ID == id);
+            return await this._repos.Images.Get(id) != null;
         }
     }
 }

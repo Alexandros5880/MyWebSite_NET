@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyWebSite.Data;
 using MyWebSite.Data.Models;
-using System.Linq;
+using MyWebSite.HorizontalClasses.Interfaces;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -10,17 +10,21 @@ namespace MyWebSite.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProjectsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepositoriesHundler _repos;
+        private readonly IMapper _mapper;
+        private readonly IEmailTool _emailTool;
 
-        public ProjectsController(ApplicationDbContext context)
+        public ProjectsController(IRepositoriesHundler repos, IMapper mapper, IEmailTool emailTool)
         {
-            _context = context;
+            this._repos = repos;
+            this._mapper = mapper;
+            this._emailTool = emailTool;
         }
 
         // GET: Admin/Projects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Projects.Include(P => P.Images).ToListAsync());
+            return View(await this._repos.Projects.GetAll());
         }
 
         // GET: Admin/Projects/Details/5
@@ -31,8 +35,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Projects
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
@@ -56,8 +59,8 @@ namespace MyWebSite.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(project);
-                await _context.SaveChangesAsync();
+                this._repos.Projects.Add(project);
+                await this._repos.Projects.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(project);
@@ -71,7 +74,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Projects.FindAsync(id);
+            var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
@@ -95,12 +98,12 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(project);
-                    await _context.SaveChangesAsync();
+                    this._repos.Projects.Update(project);
+                    await this._repos.Projects.Save();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProjectExists(project.ID))
+                    if (! await ProjectExists(project.ID))
                     {
                         return NotFound();
                     }
@@ -122,8 +125,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Projects
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var project = await this._repos.Projects.Get(id);
             if (project == null)
             {
                 return NotFound();
@@ -137,15 +139,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var project = await _context.Projects.FindAsync(id);
-            _context.Projects.Remove(project);
-            await _context.SaveChangesAsync();
+            await this._repos.Projects.Delete(id);
+            await this._repos.Projects.Save();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProjectExists(int id)
+        private async Task<bool> ProjectExists(int id)
         {
-            return _context.Projects.Any(e => e.ID == id);
+            return this._repos.Projects.Get(id) != null;
         }
     }
 }

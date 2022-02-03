@@ -1,29 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyWebSite.Data;
 using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses.Interfaces;
+using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class MessagesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepositoriesHundler _repos;
+        private readonly IMapper _mapper;
+        private readonly IEmailTool _emailTool;
 
-        public MessagesController(ApplicationDbContext context)
+        public MessagesController(IRepositoriesHundler repos, IMapper mapper, IEmailTool emailTool)
         {
-            _context = context;
+            this._repos = repos;
+            this._mapper = mapper;
+            this._emailTool = emailTool;
         }
 
         // GET: Admin/Messages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Messages.ToListAsync());
+            return View(await this._repos.Messages.GetAll());
         }
 
         // GET: Admin/Messages/Details/5
@@ -34,8 +35,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var message = await _context.Messages
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var message = await this._repos.Messages.Get(id);
             if (message == null)
             {
                 return NotFound();
@@ -59,8 +59,8 @@ namespace MyWebSite.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(message);
-                await _context.SaveChangesAsync();
+                this._repos.Messages.Add(message);
+                await this._repos.Messages.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(message);
@@ -74,7 +74,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var message = await _context.Messages.FindAsync(id);
+            var message = await this._repos.Messages.Get(id);
             if (message == null)
             {
                 return NotFound();
@@ -98,12 +98,12 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(message);
-                    await _context.SaveChangesAsync();
+                    this._repos.Messages.Update(message);
+                    await this._repos.Messages.Save();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MessageExists(message.ID))
+                    if (! await MessageExists(message.ID))
                     {
                         return NotFound();
                     }
@@ -125,8 +125,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var message = await _context.Messages
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var message = await this._repos.Messages.Get(id);
             if (message == null)
             {
                 return NotFound();
@@ -140,15 +139,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var message = await _context.Messages.FindAsync(id);
-            _context.Messages.Remove(message);
-            await _context.SaveChangesAsync();
+            await this._repos.Messages.Delete(id);
+            await this._repos.Messages.Save();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MessageExists(int id)
+        private async Task<bool> MessageExists(int id)
         {
-            return _context.Messages.Any(e => e.ID == id);
+            return await this._repos.Messages.Get(id) != null;
         }
     }
 }
