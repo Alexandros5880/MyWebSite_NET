@@ -24,7 +24,7 @@
 
 
 <div style="margin-top: 5%;">
-    <table id="cvs-table" width="100%"></table>
+    <table id="cvs-table" width="100%" class="row-border display"></table>
 </div>
 
 
@@ -51,8 +51,7 @@
                 @:dataItem.push("@item.Description");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-controller="Cvs" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
                         <a asp-controller="Cvs" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -69,7 +68,17 @@
                     { title: "Description" },
                     null
                 ],
+                "pagingType": "full_numbers"
             });
+
+
+            $('#cvs-table').on('click', 'tbody td', function () {
+                var dataTable = $('#cvs-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/CVs/Details/' + id;
+            })
 
         });
 

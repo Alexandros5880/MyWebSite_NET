@@ -36,7 +36,7 @@
 
 
 <div style="margin-top: 5%;">
-    <table id="projects-table" width="100%"></table>
+    <table id="projects-table" width="100%" class="row-border display"></table>
 </div>
 
 
@@ -65,14 +65,14 @@
             {
                 @:dataItem = [];
                 @:dataItem.push("@item.ID");
+                @:dataItem.push(`<img src="@Url.Content(item.Images.ToList()[0].ImagePath)" width="133"/>`);
                 @:dataItem.push("@item.Title");
                 @:dataItem.push("@item.Description");
                 @:dataItem.push("@item.DownloadLink");
                 @:dataItem.push("@item.Price");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-controller="Projects" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
                         <a asp-controller="Projects" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -84,13 +84,24 @@
                 data: dataSet,
                 columns: [
                     { title: "ID" },
+                    { title: "Cover" },
                     { title: "Title" },
                     { title: "Description" },
                     { title: "Download Link" },
                     { title: "Price" },
                     null
                 ],
+                "pagingType": "full_numbers"
             });
+
+
+            $('#projects-table').on('click', 'tbody td', function () {
+                var dataTable = $('#projects-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/Projects/Details/' + id;
+            })
 
         });
 

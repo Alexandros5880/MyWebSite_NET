@@ -23,7 +23,7 @@
 
 
 <div style="margin-top: 5%;">
-    <table id="images-table" width="100%"></table>
+    <table id="images-table" width="100%" class="row-border display"></table>
 </div>
 
 
@@ -48,8 +48,7 @@
                 @:dataItem.push("@item.Project.Title");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-controller="Images" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
                         <a asp-controller="Images" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -65,7 +64,17 @@
                     { title: "Project Title" },
                     null
                 ],
+                "pagingType": "full_numbers"
             });
+
+
+            $('#images-table').on('click', 'tbody td', function () {
+                var dataTable = $('#images-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/Images/Details/' + id;
+            })
 
         });
 

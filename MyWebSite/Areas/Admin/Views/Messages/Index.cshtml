@@ -24,7 +24,7 @@
 
 
 <div style="margin-top: 5%;">
-    <table id="messages-table" width="100%"></table>
+    <table id="messages-table" width="100%" class="row-border display"></table>
 </div>
 
 
@@ -53,8 +53,7 @@
                 @:dataItem.push("@item.MyMessage");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-controller="Messages" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
                         <a asp-controller="Messages" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -73,7 +72,18 @@
                     { title: "Message" },
                     null
                 ],
+                "pagingType": "full_numbers"
             });
+
+
+
+            $('#messages-table').on('click', 'tbody td', function () {
+                var dataTable = $('#messages-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/Messages/Details/' + id;
+            })
 
         });
 

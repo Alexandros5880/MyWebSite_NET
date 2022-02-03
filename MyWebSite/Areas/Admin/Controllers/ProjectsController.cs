@@ -20,7 +20,7 @@ namespace MyWebSite.Areas.Admin.Controllers
         // GET: Admin/Projects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Projects.ToListAsync());
+            return View(await _context.Projects.Include(P => P.Images).ToListAsync());
         }
 
         // GET: Admin/Projects/Details/5
