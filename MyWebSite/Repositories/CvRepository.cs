@@ -45,8 +45,6 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(id));
             var entity = await this._context.CVs
                             .FirstOrDefaultAsync(c => c.ID == id);
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
             return entity;
         }
 
@@ -54,8 +52,6 @@ namespace MyWebSite.Repositories
         {
             var entity = await this._context.CVs
                             .FirstOrDefaultAsync(c => c.IsActive == true);
-            //if (entity == null)
-            //    throw new ArgumentNullException(nameof(entity));
             return entity;
         }
 

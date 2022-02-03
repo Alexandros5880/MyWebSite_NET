@@ -45,8 +45,6 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(id));
             var entity = await this._context.Messages
                                     .FirstOrDefaultAsync(m => m.ID == id);
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
             return entity;
         }
 

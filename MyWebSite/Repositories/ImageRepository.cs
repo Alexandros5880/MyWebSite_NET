@@ -46,8 +46,6 @@ namespace MyWebSite.Repositories
             var entity = await this._context.Images
                                     .Include(i => i.Project)
                                     .FirstOrDefaultAsync(c => c.ID == id);
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
             return entity;
         }
 
