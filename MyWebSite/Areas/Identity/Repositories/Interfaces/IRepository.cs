@@ -1,11 +1,10 @@
-﻿using MyWebSite.Areas.Identity.Data.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Identity.Repositories.Interfaces
 {
-    interface IRepository<T> where T : class, IEntity
+    public interface IRepository<T> where T : class
     {
         Task<ICollection<T>> GetAll();
         IQueryable<T> GetAllQueryable();

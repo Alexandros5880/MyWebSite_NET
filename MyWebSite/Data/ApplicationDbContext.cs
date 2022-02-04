@@ -5,13 +5,13 @@ using MyWebSite.Data.Models;
 
 namespace MyWebSite.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<MyWebSiteUser>, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<MyWebSiteUser, MyWebSiteRole, string>, IApplicationDbContext
     {
-
         public DbSet<CV> CVs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Project> Projects { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -94,6 +94,8 @@ namespace MyWebSite.Data
             }
 
         }
+
+        public DbSet<MyWebSite.Areas.Identity.Data.MyWebSiteRole> MyWebSiteRole { get; set; }
 
     }
 }

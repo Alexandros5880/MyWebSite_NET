@@ -1,11 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebSite.Areas.Identity.Data;
+using MyWebSite.Areas.Identity.Repositories;
 using MyWebSite.AutoMapperProfiles;
 using MyWebSite.Data;
 using MyWebSite.Data.Models;
@@ -36,8 +38,14 @@ namespace MyWebSite
             services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-            services.AddDefaultIdentity<MyWebSiteUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddDefaultIdentity<MyWebSiteUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddRoles<MyWebSiteRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDefaultIdentity<MyWebSiteUser>()
+                .AddRoles<MyWebSiteRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
             services.AddRazorPages();
 
@@ -61,6 +69,9 @@ namespace MyWebSite
             services.AddScoped<IRepository<Image>, ImageRepository>();
             services.AddScoped<IRepository<Message>, MessageRepository>();
             services.AddScoped<IRepository<Project>, ProjectRepository>();
+            services.AddScoped<IRepository<Project>, ProjectRepository>();
+            services.AddScoped<MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteUser>, UsersRepository>();
+            services.AddScoped<MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteRole>, RolesRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
         }

@@ -11,13 +11,11 @@ namespace MyWebSite.Areas.Identity.Repositories
 {
     public class RolesRepository : IRepository<MyWebSiteRole>, IDisposable
     {
-        private readonly UserManager<MyWebSiteUser> _userManager;
         private readonly RoleManager<MyWebSiteRole> _roleManager;
         private bool disposedValue;
 
-        public RolesRepository(UserManager<MyWebSiteUser> userManager, RoleManager<MyWebSiteRole> roleManager)
+        public RolesRepository(RoleManager<MyWebSiteRole> roleManager)
         {
-            this._userManager = userManager;
             this._roleManager = roleManager;
         }
 
@@ -68,7 +66,6 @@ namespace MyWebSite.Areas.Identity.Repositories
             {
                 if (disposing)
                 {
-                    this._userManager.Dispose();
                     this._roleManager.Dispose();
                 }
                 disposedValue = true;

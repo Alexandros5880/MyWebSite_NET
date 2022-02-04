@@ -45,8 +45,4 @@
     <None Include="wwwroot\css\AdminSideNavBar.css" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Shared\" />
-  </ItemGroup>
-
 </Project>

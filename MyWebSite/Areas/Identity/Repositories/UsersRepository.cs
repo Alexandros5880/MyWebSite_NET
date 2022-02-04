@@ -13,12 +13,10 @@ namespace MyWebSite.Areas.Identity.Repositories
     {
         private bool disposedValue;
         private readonly UserManager<MyWebSiteUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersRepository(UserManager<MyWebSiteUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersRepository(UserManager<MyWebSiteUser> userManager)
         {
             this._userManager = userManager;
-            this._roleManager = roleManager;
         }
 
         public async Task Add(MyWebSiteUser entity)
@@ -69,7 +67,6 @@ namespace MyWebSite.Areas.Identity.Repositories
                 if (disposing)
                 {
                     this._userManager.Dispose();
-                    this._roleManager.Dispose();
                 }
                 disposedValue = true;
             }

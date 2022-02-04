@@ -1,4 +1,5 @@
-﻿using MyWebSite.Repositories;
+﻿using MyWebSite.Areas.Identity.Repositories;
+using MyWebSite.Repositories;
 
 namespace MyWebSite.HorizontalClasses.Interfaces
 {
@@ -8,5 +9,7 @@ namespace MyWebSite.HorizontalClasses.Interfaces
         ImageRepository Images { get; }
         MessageRepository Messages { get; }
         ProjectRepository Projects { get; }
+        UsersRepository Users { get; }
+        RolesRepository Roles { get; }
     }
 }
