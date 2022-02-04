@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories.Interfaces;
+using MyWebSite.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace MyWebSite.Areas.Identity.Repositories
     {
         private bool disposedValue;
         private readonly UserManager<MyWebSiteUser> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public UsersRepository(UserManager<MyWebSiteUser> userManager)
+        public UsersRepository(UserManager<MyWebSiteUser> userManager, IApplicationDbContext context)
         {
             this._userManager = userManager;
+            this._context = (ApplicationDbContext)context;
         }
 
         public async Task Add(MyWebSiteUser entity)
@@ -24,6 +27,7 @@ namespace MyWebSite.Areas.Identity.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             await this._userManager.CreateAsync(entity);
+            await this._context.SaveChangesAsync();
         }
 
         public async Task<MyWebSiteUser> Delete(string id)
@@ -32,6 +36,7 @@ namespace MyWebSite.Areas.Identity.Repositories
                 throw new ArgumentNullException(nameof(id));
             var user = await this._userManager.FindByIdAsync(id);
             await this._userManager.DeleteAsync(user);
+            await this._context.SaveChangesAsync();
             return user;
         }
 
@@ -57,6 +62,7 @@ namespace MyWebSite.Areas.Identity.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             await this._userManager.UpdateAsync(entity);
+            await this._context.SaveChangesAsync();
             return entity;
         }
 
@@ -67,6 +73,7 @@ namespace MyWebSite.Areas.Identity.Repositories
                 if (disposing)
                 {
                     this._userManager.Dispose();
+                    this._context.Dispose();
                 }
                 disposedValue = true;
             }

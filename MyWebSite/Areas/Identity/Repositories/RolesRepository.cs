@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories.Interfaces;
+using MyWebSite.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace MyWebSite.Areas.Identity.Repositories
     public class RolesRepository : IRepository<MyWebSiteRole>, IDisposable
     {
         private readonly RoleManager<MyWebSiteRole> _roleManager;
+        private readonly ApplicationDbContext _context;
         private bool disposedValue;
 
-        public RolesRepository(RoleManager<MyWebSiteRole> roleManager)
+        public RolesRepository(RoleManager<MyWebSiteRole> roleManager, IApplicationDbContext context)
         {
             this._roleManager = roleManager;
+            this._context = (ApplicationDbContext)context;
         }
 
         public async Task<ICollection<MyWebSiteRole>> GetAll()
@@ -41,6 +44,7 @@ namespace MyWebSite.Areas.Identity.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             await this._roleManager.CreateAsync(entity);
+            await this._context.SaveChangesAsync();
         }
 
         public async Task<MyWebSiteRole> Update(MyWebSiteRole entity)
@@ -48,6 +52,7 @@ namespace MyWebSite.Areas.Identity.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             await this._roleManager.UpdateAsync(entity);
+            await this._context.SaveChangesAsync();
             return entity;
         }
 
@@ -57,6 +62,7 @@ namespace MyWebSite.Areas.Identity.Repositories
                 throw new ArgumentNullException(nameof(id));
             var role = await this._roleManager.FindByIdAsync(id);
             await this._roleManager.DeleteAsync(role);
+            await this._context.SaveChangesAsync();
             return role;
         }
 
@@ -67,6 +73,7 @@ namespace MyWebSite.Areas.Identity.Repositories
                 if (disposing)
                 {
                     this._roleManager.Dispose();
+                    this._context.Dispose();
                 }
                 disposedValue = true;
             }
