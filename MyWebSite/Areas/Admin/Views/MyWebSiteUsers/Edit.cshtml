@@ -9,46 +9,54 @@
 <h4>MyWebSiteRole</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-9">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <!-- Add Roles -->
-            <div class="form-group">
-                <label asp-for="SelectedRolesIds" class="control-label"></label>
-                <select asp-for="SelectedRolesIds" class="form-control" asp-items='new SelectList(@ViewBag.Roles,"Id","Name")'>
-                </select>
-                <span asp-validation-for="SelectedRolesIds" class="text-danger"></span>
-            </div>
-            <!-- Remove Roles -->
-            <div class="form-group">
-                <label asp-for="SelectedRolesForDeleteIds" class="control-label"></label>
-                <select asp-for="SelectedRolesForDeleteIds" class="form-control" asp-items='new SelectList(@ViewBag.MyRoles,"Id","Name")'>
-                </select>
-                <span asp-validation-for="SelectedRolesForDeleteIds" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Add Roles -->
+                    <div class="form-group">
+                        <label asp-for="SelectedRolesIds" class="control-label"></label>
+                        <select asp-for="SelectedRolesIds" class="form-control" asp-items='new SelectList(@ViewBag.Roles,"Id","Name")'>
+                        </select>
+                        <span asp-validation-for="SelectedRolesIds" class="text-danger"></span>
+                    </div>
+                    <!-- Remove Roles -->
+                    <div class="form-group">
+                        <label asp-for="SelectedRolesForDeleteIds" class="control-label"></label>
+                        <select asp-for="SelectedRolesForDeleteIds" class="form-control" asp-items='new SelectList(@ViewBag.MyRoles,"Id","Name")'>
+                        </select>
+                        <span asp-validation-for="SelectedRolesForDeleteIds" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
