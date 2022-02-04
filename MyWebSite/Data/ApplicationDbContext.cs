@@ -11,6 +11,8 @@ namespace MyWebSite.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Project> Projects { get; set; }
+        //public DbSet<MyWebSiteUser> Users { get; set; }
+        //public DbSet<MyWebSiteRole> Roles { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

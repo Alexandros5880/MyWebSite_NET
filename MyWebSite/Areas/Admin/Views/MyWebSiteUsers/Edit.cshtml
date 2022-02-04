@@ -19,15 +19,26 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
+
+            <!-- Add Roles -->
+            <div class="form-group">
+                <label asp-for="SelectedRolesIds" class="control-label"></label>
+                <select asp-for="SelectedRolesIds" class="form-control" asp-items='new SelectList(@ViewBag.Roles,"Id","Name")'>
+                </select>
+                <span asp-validation-for="SelectedRolesIds" class="text-danger"></span>
+            </div>
+            <!-- Remove Roles -->
+            <div class="form-group">
+                <label asp-for="SelectedRolesForDeleteIds" class="control-label"></label>
+                <select asp-for="SelectedRolesForDeleteIds" class="form-control" asp-items='new SelectList(@ViewBag.MyRoles,"Id","Name")'>
+                </select>
+                <span asp-validation-for="SelectedRolesForDeleteIds" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

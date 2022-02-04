@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories;
 using MyWebSite.Areas.Identity.Repositories.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -37,12 +38,14 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Roles = await this._Users.GetRoles(myWebSiteUser);
             return View(myWebSiteUser);
         }
 
         // GET: Admin/MyWebSiteUsers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Roles = await this._Roles.GetAll();
             return View();
         }
 
@@ -56,6 +59,15 @@ namespace MyWebSite.Areas.Admin.Controllers
                 if (user.Password == user.ConfingPassword)
                 {
                     await this._Users.Add(user, user.Password);
+                    // Add Roles
+                    if (user.SelectedRolesIds != null && user.SelectedRolesIds.Count > 0)
+                    {
+                        foreach (var roleId in user.SelectedRolesIds)
+                        {
+                            var role = await this._Roles.Get(roleId);
+                            await this._Users.AddToRole(user, role);
+                        }
+                    }
                     return RedirectToAction(nameof(Index));
                 }
                 ViewBag.Error = "Enter your password again.";
@@ -75,6 +87,8 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Roles = await this._Users.GetOtherRoles(myWebSiteUser);
+            ViewBag.MyRoles = await this._Users.GetRoles(myWebSiteUser);
             return View(myWebSiteUser);
         }
 
@@ -83,6 +97,33 @@ namespace MyWebSite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MyWebSiteUser user)
         {
+
+            if (user.SelectedRolesIds != null && user.SelectedRolesIds.Count > 0)
+            {
+                foreach (var roleId in user.SelectedRolesIds)
+                {
+                    var role = await this._Roles.Get(roleId);
+                    try
+                    {
+                        await this._Users.AddToRole(user, role);
+                    } catch (InvalidOperationException) { }
+                }
+            }
+
+            if (user.SelectedRolesForDeleteIds != null && user.SelectedRolesForDeleteIds.Count > 0)
+            {
+                foreach (var roleId in user.SelectedRolesForDeleteIds)
+                {
+                    var role = await this._Roles.Get(roleId);
+                    try
+                    {
+                        await this._Users.RemoveFromRole(user, role);
+                    }
+                    catch (InvalidOperationException) { }
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 try
@@ -100,8 +141,10 @@ namespace MyWebSite.Areas.Admin.Controllers
                         throw;
                     }
                 }
+                //catch (InvalidOperationException) { }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(user);
         }
 

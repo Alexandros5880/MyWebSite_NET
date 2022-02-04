@@ -14,11 +14,13 @@ namespace MyWebSite.Areas.Identity.Repositories
     {
         private bool disposedValue;
         private readonly UserManager<MyWebSiteUser> _userManager;
+        private readonly RoleManager<MyWebSiteRole> _roleManager;
         private readonly ApplicationDbContext _context;
 
-        public UsersRepository(UserManager<MyWebSiteUser> userManager, IApplicationDbContext context)
+        public UsersRepository(UserManager<MyWebSiteUser> userManager, RoleManager<MyWebSiteRole> roleManager, IApplicationDbContext context)
         {
             this._userManager = userManager;
+            this._roleManager = roleManager;
             this._context = (ApplicationDbContext)context;
         }
 
@@ -68,9 +70,57 @@ namespace MyWebSite.Areas.Identity.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            await this._userManager.UpdateAsync(entity);
+            
+            var user = await this._context.Users.FirstOrDefaultAsync(u => u.Id.Equals(entity.Id));
+            user.Email = entity.Email;
+            user.UserName = entity.Email;
+            user.PasswordHash = entity.PasswordHash;
+            user.EmailConfirmed = true;
+            user.PhoneNumberConfirmed = true;
+
+            this._context.Users.Attach(user);
+            this._context.Entry(user).State = EntityState.Modified;
             await this._context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task AddToRole(MyWebSiteUser user, MyWebSiteRole role)
+        {
+            //await this._userManager.AddToRoleAsync(user, role.Name);
+            IdentityUserRole<string> userRole = new IdentityUserRole<string>()
+            {
+                UserId = user.Id,
+                RoleId = role.Id
+            };
+            await this._context.UserRoles.AddAsync(userRole);
+            await this._context.SaveChangesAsync();
+        }
+
+        public async Task RemoveFromRole(MyWebSiteUser user, MyWebSiteRole role)
+        {
+            //await this._userManager.RemoveFromRoleAsync(user, role.Name);
+            IdentityUserRole<string> userRole = await this._context.UserRoles
+                .FirstOrDefaultAsync(r => r.RoleId.Equals(role.Id) && r.UserId.Equals(user.Id));
+            this._context.UserRoles.Remove(userRole);
+            await this._context.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<MyWebSiteRole>> GetRoles(MyWebSiteUser user)
+        {
+            var rolesNames = await this._userManager.GetRolesAsync(user);
+            return await this._roleManager.Roles
+                                            .Where(r => rolesNames.Contains(r.Name))
+                                            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MyWebSiteRole>> GetOtherRoles(MyWebSiteUser user)
+        {
+            var userRoles = await this.GetRoles(user);
+            var usersRolesIds = userRoles.Select(r => r.Id);
+            this._context.Attach(user);
+            return await this._roleManager.Roles
+                                            .Where(r => !usersRolesIds.Contains(r.Id))
+                                            .ToListAsync();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -80,6 +130,7 @@ namespace MyWebSite.Areas.Identity.Repositories
                 if (disposing)
                 {
                     this._userManager.Dispose();
+                    this._roleManager.Dispose();
                     this._context.Dispose();
                 }
                 disposedValue = true;

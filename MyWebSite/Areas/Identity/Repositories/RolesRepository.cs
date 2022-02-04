@@ -36,7 +36,8 @@ namespace MyWebSite.Areas.Identity.Repositories
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
-            return await this._roleManager.FindByIdAsync(id);
+            var role = await this._roleManager.FindByIdAsync(id);
+            return role;
         }
 
         public async Task Add(MyWebSiteRole entity)
@@ -51,7 +52,12 @@ namespace MyWebSite.Areas.Identity.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            await this._roleManager.UpdateAsync(entity);
+
+            var role = await this._context.Roles.FirstOrDefaultAsync(r => r.Id.Equals(entity.Id));
+            role.Name = entity.Name;
+            role.NormalizedName = entity.Name.ToUpper();
+            this._context.Roles.Attach(role);
+            this._context.Entry(role).State = EntityState.Modified;
             await this._context.SaveChangesAsync();
             return entity;
         }
