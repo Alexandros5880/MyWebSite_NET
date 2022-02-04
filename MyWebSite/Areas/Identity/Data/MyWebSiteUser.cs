@@ -5,6 +5,7 @@ namespace MyWebSite.Areas.Identity.Data
 {
     public class MyWebSiteUser : IdentityUser, IEntity
     {
-
+        public string Password { get; set; }
+        public string ConfingPassword { get; set; }
     }
 }

@@ -11,11 +11,13 @@ namespace MyWebSite.Areas.Admin.Controllers
     public class MyWebSiteRolesController : Controller
     {
         private readonly RolesRepository _Roles;
+        private readonly UsersRepository _Users;
 
-        public MyWebSiteRolesController(IRepository<MyWebSiteRole> roles)
+        public MyWebSiteRolesController(IUsersRepository users, IRolesRepository roles)
         {
             this._Roles = (RolesRepository)roles;
-        }
+            this._Users = (UsersRepository)users;
+    }
 
         // GET: Admin/MyWebSiteRoles
         public async Task<IActionResult> Index()

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Identity.Repositories
 {
-    public class RolesRepository : IRepository<MyWebSiteRole>, IDisposable
+    public class RolesRepository : IRolesRepository, IDisposable
     {
         private readonly RoleManager<MyWebSiteRole> _roleManager;
         private readonly ApplicationDbContext _context;

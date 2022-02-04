@@ -1,5 +1,5 @@
-﻿using MyWebSite.Areas.Identity.Data;
-using MyWebSite.Areas.Identity.Repositories;
+﻿using MyWebSite.Areas.Identity.Repositories;
+using MyWebSite.Areas.Identity.Repositories.Interfaces;
 using MyWebSite.Data.Models;
 using MyWebSite.HorizontalClasses.Interfaces;
 using MyWebSite.Repositories;
@@ -24,8 +24,8 @@ namespace MyWebSite.HorizontalClasses
             IRepository<Image> imgRepo, 
             IRepository<Message> messRepo, 
             IRepository<Project> proRepo,
-            MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteUser> users,
-            MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteRole> roles
+            IUsersRepository users,
+            IRolesRepository roles
             )
         {
             this.CVs = (CvRepository)cvRepo;

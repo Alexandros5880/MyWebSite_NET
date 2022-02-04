@@ -11,10 +11,12 @@ namespace MyWebSite.Areas.Admin.Controllers
     public class MyWebSiteUsersController : Controller
     {
         private readonly UsersRepository _Users;
+        private readonly RolesRepository _Roles;
 
-        public MyWebSiteUsersController(IRepository<MyWebSiteUser> users, IRepository<MyWebSiteRole> roles)
+        public MyWebSiteUsersController(IUsersRepository users, IRolesRepository roles)
         {
             this._Users = (UsersRepository)users;
+            this._Roles = (RolesRepository)roles;
         }
 
         // GET: Admin/MyWebSiteUsers
@@ -51,8 +53,12 @@ namespace MyWebSite.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await this._Users.Add(user);
-                return RedirectToAction(nameof(Index));
+                if (user.Password == user.ConfingPassword)
+                {
+                    await this._Users.Add(user, user.Password);
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewBag.Error = "Enter your password again.";
             }
             return View(user);
         }

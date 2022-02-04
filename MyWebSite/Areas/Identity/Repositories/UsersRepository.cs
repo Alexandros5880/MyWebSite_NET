@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Identity.Repositories
 {
-    public class UsersRepository : IRepository<MyWebSiteUser>, IDisposable
+    public class UsersRepository : IDisposable, IUsersRepository
     {
         private bool disposedValue;
         private readonly UserManager<MyWebSiteUser> _userManager;
@@ -22,12 +22,19 @@ namespace MyWebSite.Areas.Identity.Repositories
             this._context = (ApplicationDbContext)context;
         }
 
-        public async Task Add(MyWebSiteUser entity)
+        public async Task<bool> Add(MyWebSiteUser entity, string password)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            await this._userManager.CreateAsync(entity);
-            await this._context.SaveChangesAsync();
+            entity.UserName = entity.Email;
+            var result = await this._userManager.CreateAsync(entity, password);
+            if (result.Succeeded)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public async Task<MyWebSiteUser> Delete(string id)

@@ -1,13 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories;
+using MyWebSite.Areas.Identity.Repositories.Interfaces;
 using MyWebSite.AutoMapperProfiles;
 using MyWebSite.Data;
 using MyWebSite.Data.Models;
@@ -70,8 +70,8 @@ namespace MyWebSite
             services.AddScoped<IRepository<Message>, MessageRepository>();
             services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<IRepository<Project>, ProjectRepository>();
-            services.AddScoped<MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteUser>, UsersRepository>();
-            services.AddScoped<MyWebSite.Areas.Identity.Repositories.Interfaces.IRepository<MyWebSiteRole>, RolesRepository>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
         }

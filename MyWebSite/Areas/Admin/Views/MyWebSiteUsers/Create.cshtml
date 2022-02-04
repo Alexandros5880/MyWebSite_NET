@@ -18,9 +18,14 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfingPassword" class="control-label"></label>
+                <input asp-for="ConfingPassword" class="form-control" type="password"/>
+                <span asp-validation-for="ConfingPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
@@ -28,6 +33,7 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">@ViewBag.Error</span>
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
