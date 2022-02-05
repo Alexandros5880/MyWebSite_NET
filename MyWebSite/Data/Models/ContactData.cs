@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MyWebSite.Data.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyWebSite.Data.Models
 {
-    public class ContactData
+    public class ContactData : IEntity
     {
         public int ID { get; set; }
         public string Title { get; set; }
