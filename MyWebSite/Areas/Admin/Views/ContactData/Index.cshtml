@@ -4,66 +4,101 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+
+
+
+@section styles {
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+}
+
+
+
+<h1>Contact Data Profiles</h1>
+
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
+
+
+
 <div class="table-responsive" style="margin-top: 5%;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SubTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+    <table id="contact-data-table" width="100%" class="row-border display"></table>
+    <br />
+    <br />
+</div>
+
+
+
+
+
+
+
+
+@section Scripts{
+
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            var dataItem = [];
+
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SubTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
-                </tr>
+                @:dataItem = [];
+                @:dataItem.push("@item.ID");
+                @:dataItem.push("@item.Title");
+                @:dataItem.push("<p>@item.SubTitle</p>");
+                @:dataItem.push("@item.Address");
+                @:dataItem.push("@item.AddressMap");
+                @:dataItem.push("@item.Phone");
+                @:dataItem.push("@item.Email");
+                @:dataItem.push("@item.IsActive");
+                <text>
+                    dataItem.push(`
+                        <a asp-controller="ContactData" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-controller="ContactData" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
             }
-        </tbody>
-    </table>
-</div>
+
+
+            var table = $('#contact-data-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "Title" },
+                    { title: "SubTitle" },
+                    { title: "Address" },
+                    { title: "AddressMap" },
+                    { title: "Phone" },
+                    { title: "Email" },
+                    { title: "IsActive" },
+                    null
+                ],
+                "pagingType": "full_numbers",
+                scrollY: true,
+                scrollX: true
+            });
+
+
+            $('#contact-data-table').on('click', 'tbody td', function () {
+                var dataTable = $('#contact-data-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/ContactData/Details/' + id;
+            })
+
+        });
+
+    </script>
+
+}

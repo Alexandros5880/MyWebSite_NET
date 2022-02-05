@@ -4,54 +4,80 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@section styles {
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+}
+
+<h1>Roles</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
 <div class="table-responsive" style="margin-top: 5%;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NormalizedName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+    <table id="roles-table" width="100%" class="row-border display"></table>
+    <br />
+    <br />
+</div>
+
+
+
+
+
+
+@section Scripts{
+
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            var dataItem = [];
+
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NormalizedName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+                @:dataItem = [];
+                @:dataItem.push("@item.Id");
+                @:dataItem.push("@item.Name");
+                @:dataItem.push("@item.NormalizedName");
+                @:dataItem.push("@item.ConcurrencyStamp");
+                <text>
+                    dataItem.push(`
+                        <a asp-controller="MyWebSiteRoles" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-controller="MyWebSiteRoles" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
             }
-        </tbody>
-    </table>
-</div>
+
+
+            var table = $('#roles-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "Name" },
+                    { title: "Normalized Name" },
+                    { title: "Concurrency Stamp" },
+                    null
+                ],
+                "pagingType": "full_numbers"
+            });
+
+
+            $('#roles-table').on('click', 'tbody td', function () {
+                var dataTable = $('#roles-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/MyWebSiteRoles/Details/' + id;
+            })
+
+        });
+
+    </script>
+
+}

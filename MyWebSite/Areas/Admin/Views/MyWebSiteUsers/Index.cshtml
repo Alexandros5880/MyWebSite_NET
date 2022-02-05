@@ -4,54 +4,77 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@section styles {
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+}
+
+<h1>Users</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
 <div class="table-responsive" style="margin-top: 5%;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+    <table id="users-table" width="100%" class="row-border display"></table>
+    <br />
+    <br />
+</div>
+
+
+
+@section Scripts{
+
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            var dataItem = [];
+
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhoneNumber)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+                @:dataItem = [];
+                @:dataItem.push("@item.Id");
+                @:dataItem.push("@item.Email");
+                @:dataItem.push("@item.UserName");
+                @:dataItem.push("@item.PhoneNumber");
+                <text>
+                    dataItem.push(`
+                        <a asp-controller="MyWebSiteUsers" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-controller="MyWebSiteUsers" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
             }
-        </tbody>
-    </table>
-</div>
+
+
+            var table = $('#users-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "Email" },
+                    { title: "UserName" },
+                    { title: "Phone" },
+                    null
+                ],
+                "pagingType": "full_numbers"
+            });
+
+
+            $('#users-table').on('click', 'tbody td', function () {
+                var dataTable = $('#users-table').dataTable();
+                var tr = $(this).closest('tr');
+                var index = dataTable.fnGetPosition(tr[0]);
+                var id = dataTable.fnGetData(index)[0];
+                window.location.href = '/Admin/MyWebSiteUsers/Details/' + id;
+            })
+
+        });
+
+    </script>
+
+}
