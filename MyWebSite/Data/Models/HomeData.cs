@@ -1,5 +1,7 @@
 ﻿using MyWebSite.Data.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.Models
 {
@@ -20,8 +22,16 @@ namespace MyWebSite.Data.Models
         public string InstagramLink { get; set; }
         [DataType(DataType.Url)]
         public string LinkedLin { get; set; }
-        [DataType(DataType.DateTime)]
-        public string UploadDate { get; set; }
         public bool IsActive { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
+        public HomeData()
+        {
+            this.CreatedDate = DateTime.Today;
+        }
     }
 }

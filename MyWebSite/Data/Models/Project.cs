@@ -1,6 +1,8 @@
 ﻿using MyWebSite.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.Models
 {
@@ -13,5 +15,15 @@ namespace MyWebSite.Data.Models
         public string Description { get; set; }
         public string DownloadLink { get; set; }
         public decimal Price { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
+        public Project()
+        {
+            this.CreatedDate = DateTime.Today;
+        }
     }
 }

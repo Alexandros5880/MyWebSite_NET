@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebSite.Data;
 
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220205133455_AddCreatedDateAndLastUploadeDate")]
+    partial class AddCreatedDateAndLastUploadeDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,13 +106,6 @@ namespace MyWebSite.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            RoleId = "ad376a8f-9eab-4bb9-9fca-30b01540f445"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -165,17 +160,6 @@ namespace MyWebSite.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "40b1f240-fa7b-4679-8518-0a3ded818003",
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Admin",
-                            NormalizedName = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("MyWebSite.Areas.Identity.Data.MyWebSiteUser", b =>
@@ -253,29 +237,6 @@ namespace MyWebSite.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "3b8aa77a-3dd9-46fd-b2d4-b71804809984",
-                            ConfingPassword = "-Platanios719791",
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
-                            Email = "alexandrosplatanios15@gmail.com",
-                            EmailConfirmed = false,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LockoutEnabled = false,
-                            NormalizedEmail = "alexandrosplatanios15@gmail.com",
-                            NormalizedUserName = "alexandrosplatanios15@gmail.com",
-                            Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGDlZPD/YME33TAL8meXGCXAWZ3VQNQgulm9s6X2MwJZflRJoUV4MhP6cGhPMxO4MQ==",
-                            PhoneNumber = "6949277783",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "alexandrosplatanios15@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("MyWebSite.Data.Models.CV", b =>
@@ -309,7 +270,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "My CV",
                             IsActive = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -428,7 +389,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -436,7 +397,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -444,7 +405,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_3.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -452,7 +413,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_4.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -460,7 +421,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_5.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -468,7 +429,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_6.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -476,7 +437,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_7.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -484,7 +445,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 8,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_8.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -492,7 +453,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 9,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_9.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -500,7 +461,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 10,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_10.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -508,7 +469,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 11,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_11.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -516,7 +477,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 12,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_12.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -524,7 +485,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 13,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_13.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -532,7 +493,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 14,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_14.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -540,7 +501,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 15,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_15.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -548,7 +509,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 16,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_16.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -556,7 +517,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 17,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_17.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -564,7 +525,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 18,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_18.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -572,7 +533,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 19,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_19.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -580,7 +541,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 20,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_20.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -588,7 +549,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 21,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_21.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -596,7 +557,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 22,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_22.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -604,7 +565,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 23,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_23.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -612,7 +573,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 24,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_24.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -620,7 +581,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 25,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_25.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -628,7 +589,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 26,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_26.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -636,7 +597,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 27,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_27.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -644,7 +605,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 28,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_28.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -652,7 +613,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 29,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_29.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -660,7 +621,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 30,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_30.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
@@ -668,7 +629,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 31,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -676,7 +637,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 32,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -684,7 +645,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 33,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_3.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -692,7 +653,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 34,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_4.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -700,7 +661,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 35,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_5.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -708,7 +669,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 36,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_6.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -716,7 +677,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 37,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_7.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
@@ -724,7 +685,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 38,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -732,7 +693,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 39,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -740,7 +701,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 40,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_3.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -748,7 +709,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 41,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_4.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -756,7 +717,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 42,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_5.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -764,7 +725,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 43,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_6.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -772,7 +733,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 44,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_7.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -780,7 +741,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 45,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_8.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -788,7 +749,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 46,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_9.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -796,7 +757,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 47,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_10.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -804,7 +765,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 48,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_11.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -812,7 +773,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 49,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_12.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
@@ -820,7 +781,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 50,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -828,7 +789,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 51,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -836,7 +797,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 52,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_3.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -844,7 +805,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 53,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_4.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -852,7 +813,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 54,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_5.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -860,7 +821,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 55,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_6.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -868,7 +829,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 56,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_7.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -876,7 +837,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 57,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_8.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -884,7 +845,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 58,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_9.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -892,7 +853,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 59,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_10.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -900,7 +861,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 60,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_11.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -908,7 +869,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 61,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_12.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -916,7 +877,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 62,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_13.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -924,7 +885,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 63,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDash/img_14.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
@@ -932,7 +893,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 64,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorsManagmentSystem/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
@@ -940,7 +901,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 65,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorsManagmentSystem/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
@@ -948,7 +909,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 66,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -956,7 +917,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 67,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -964,7 +925,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 68,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_3.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -972,7 +933,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 69,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_4.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -980,7 +941,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 70,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_5.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -988,7 +949,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 71,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_6.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -996,7 +957,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 72,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_7.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1004,7 +965,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 73,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_8.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1012,7 +973,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 74,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_9.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1020,7 +981,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 75,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_10.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1028,7 +989,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 76,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_11.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1036,7 +997,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 77,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_12.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1044,7 +1005,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 78,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_13.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1052,7 +1013,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 79,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_14.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1060,7 +1021,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 80,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_15.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
@@ -1068,7 +1029,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 81,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_1.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 7
@@ -1076,7 +1037,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 82,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_2.png",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 7
@@ -1150,7 +1111,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Online School For Data Sience.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1159,7 +1120,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Salesforce App To Manipulate Your Wallet.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1168,7 +1129,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "WordPress WebSite For KungFou School.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1177,7 +1138,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A B&B App For Elevator Maintence Company.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1186,7 +1147,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A B&B App For Elevator Maintence Company.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1195,7 +1156,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "IPCameras Security Software.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
@@ -1204,7 +1165,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Your Old Vichecle To Full Software Update.",
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,

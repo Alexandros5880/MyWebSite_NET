@@ -119,7 +119,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await ImageExists(image.ID))
+                    if (! await ImageExists(image.ID))
                     {
                         return NotFound();
                     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace MyWebSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MyWebSiteRolesController : Controller
     {
         private readonly RolesRepository _Roles;
@@ -87,7 +89,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MyWebSiteRoleExists(myWebSiteRole.Id))
+                    if (! await MyWebSiteRoleExists(myWebSiteRole.Id))
                     {
                         return NotFound();
                     }
@@ -125,9 +127,9 @@ namespace MyWebSite.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MyWebSiteRoleExists(string id)
+        private async Task<bool> MyWebSiteRoleExists(string id)
         {
-            return this._Roles.Get(id) != null;
+            return (await this._Roles.Get(id)) != null;
         }
     }
 }

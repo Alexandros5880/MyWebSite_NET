@@ -1,4 +1,5 @@
 ﻿using MyWebSite.Data.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,5 +14,15 @@ namespace MyWebSite.Data.Models
         public int ProjectId { get; set; }
         [Required]
         public Project Project { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
+        public Image()
+        {
+            this.CreatedDate = DateTime.Today;
+        }
     }
 }

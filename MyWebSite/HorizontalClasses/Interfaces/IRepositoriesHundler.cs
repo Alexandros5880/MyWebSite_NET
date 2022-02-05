@@ -11,5 +11,7 @@ namespace MyWebSite.HorizontalClasses.Interfaces
         ProjectRepository Projects { get; }
         UsersRepository Users { get; }
         RolesRepository Roles { get; }
+        HomeDataRepository HomeData { get; }
+        ContactDataRepository ContactData { get; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MyWebSite.Areas.Identity.Data.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Areas.Identity.Data
@@ -13,5 +15,15 @@ namespace MyWebSite.Areas.Identity.Data
         public ICollection<string> SelectedRolesIds { get; set; }
         [NotMapped]
         public ICollection<string> SelectedRolesForDeleteIds { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
+        public MyWebSiteUser()
+        {
+            this.CreatedDate = DateTime.Today;
+        }
     }
 }

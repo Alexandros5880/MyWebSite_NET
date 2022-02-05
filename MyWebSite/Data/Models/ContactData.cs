@@ -1,5 +1,7 @@
 ﻿using MyWebSite.Data.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.Models
 {
@@ -13,8 +15,16 @@ namespace MyWebSite.Data.Models
         public string Phone { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [DataType(DataType.DateTime)]
-        public string UploadDate { get; set; }
         public bool IsActive { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
+        public ContactData()
+        {
+            this.CreatedDate = DateTime.Today;
+        }
     }
 }

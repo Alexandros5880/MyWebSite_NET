@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Data.Models;
@@ -13,6 +14,8 @@ namespace MyWebSite.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<HomeData> HomeData { get; set; }
         public DbSet<ContactData> ContactData { get; set; }
+        public DbSet<MyWebSiteRole> Roles { get; set; }
+        public DbSet<MyWebSiteUser> Users { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -95,9 +98,40 @@ namespace MyWebSite.Data
                 id++;
             }
 
-        }
 
-        public DbSet<MyWebSite.Areas.Identity.Data.MyWebSiteRole> MyWebSiteRole { get; set; }
+
+            // Add Role && User
+            var hasher = new PasswordHasher<MyWebSiteUser>();
+            const string USER_ID = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+            const string ROLE_ID = "ad376a8f-9eab-4bb9-9fca-30b01540f445";
+            builder.Entity<MyWebSiteRole>().HasData(new MyWebSiteRole()
+            {
+                Id = ROLE_ID,
+                Name = "Admin",
+                NormalizedName = "Admin"
+            });
+            builder.Entity<MyWebSiteUser>().HasData(new MyWebSiteUser() {
+                Id = USER_ID,
+                Email = "alexandrosplatanios15@gmail.com",
+                NormalizedEmail = "alexandrosplatanios15@gmail.com",
+                UserName = "alexandrosplatanios15@gmail.com",
+                NormalizedUserName = "alexandrosplatanios15@gmail.com",
+                PhoneNumber ="6949277783",
+                EmailConfirmed = false,
+                PhoneNumberConfirmed = false,
+                PasswordHash = hasher.HashPassword(null, "-Platanios719791"),
+                SecurityStamp = string.Empty,
+                Password = "-Platanios719791",
+                ConfingPassword = "-Platanios719791"
+            });
+            // Connect this User with this Role
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = ROLE_ID,
+                UserId = USER_ID
+            });
+
+        }
 
     }
 }

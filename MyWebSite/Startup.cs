@@ -72,6 +72,8 @@ namespace MyWebSite
             services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<IRepository<HomeData>, HomeDataRepository>();
+            services.AddScoped<IRepository<ContactData>, ContactDataRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
         }

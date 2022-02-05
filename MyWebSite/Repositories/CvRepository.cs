@@ -23,6 +23,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            entity.CreatedDate = DateTime.Today;
             await this._context.CVs.AddAsync(entity);
             return entity;
         }
@@ -69,6 +70,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            entity.CreatedDate = DateTime.Today;
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }

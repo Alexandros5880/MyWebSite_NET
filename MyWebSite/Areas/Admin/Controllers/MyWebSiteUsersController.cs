@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Areas.Identity.Repositories;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace MyWebSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MyWebSiteUsersController : Controller
     {
         private readonly UsersRepository _Users;
@@ -97,7 +99,6 @@ namespace MyWebSite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MyWebSiteUser user)
         {
-
             if (user.SelectedRolesIds != null && user.SelectedRolesIds.Count > 0)
             {
                 foreach (var roleId in user.SelectedRolesIds)
@@ -109,7 +110,6 @@ namespace MyWebSite.Areas.Admin.Controllers
                     } catch (InvalidOperationException) { }
                 }
             }
-
             if (user.SelectedRolesForDeleteIds != null && user.SelectedRolesForDeleteIds.Count > 0)
             {
                 foreach (var roleId in user.SelectedRolesForDeleteIds)
@@ -122,8 +122,6 @@ namespace MyWebSite.Areas.Admin.Controllers
                     catch (InvalidOperationException) { }
                 }
             }
-
-
             if (ModelState.IsValid)
             {
                 try
@@ -132,7 +130,7 @@ namespace MyWebSite.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MyWebSiteRoleExists(user.Id))
+                    if (! await MyWebSiteRoleExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -172,9 +170,9 @@ namespace MyWebSite.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MyWebSiteRoleExists(string id)
+        private async Task<bool> MyWebSiteRoleExists(string id)
         {
-            return this._Users.Get(id) != null;
+            return (await this._Users.Get(id)) != null;
         }
     }
 }
