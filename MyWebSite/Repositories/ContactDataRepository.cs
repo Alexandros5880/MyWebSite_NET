@@ -52,6 +52,12 @@ namespace MyWebSite.Repositories
                                 .FirstOrDefaultAsync(c => c.IsActive == true);
         }
 
+        public ContactData GetActiveSync()
+        {
+            return this._context.ContactData
+                                .FirstOrDefault(c => c.IsActive == true);
+        }
+
         public async Task<ICollection<ContactData>> GetAll()
         {
             return await this._context.ContactData

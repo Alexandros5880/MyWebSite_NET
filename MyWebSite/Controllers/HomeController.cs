@@ -23,23 +23,27 @@ namespace MyWebSite.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
             return View(await this._repos.HomeData.GetActive());
         }
 
         public async Task<IActionResult> Resume()
         {
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
             var cv = await this._repos.CVs.GetActive();
             return View(cv);
         }
 
         public async Task<IActionResult> Portofolio()
         {
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
             var projects = await this._repos.Projects.GetAll();
             return View(projects);
         }
 
         public async Task<IActionResult> Contact()
         {
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
             return View(await this._repos.ContactData.GetActive());
         }
 

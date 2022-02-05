@@ -10,7 +10,7 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220205172816_Initial")]
+    [Migration("20220205175736_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,7 +172,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "8f732824-e298-4924-b2f0-03326f99f657",
+                            ConcurrencyStamp = "ac710e5e-d735-46e1-b1e5-28376f367cdc",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
@@ -261,7 +261,7 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4ad96d74-577a-4061-a717-499bf54bfd56",
+                            ConcurrencyStamp = "d03a8b68-3485-4b71-8d46-d4dda0bb4874",
                             ConfingPassword = "-Platanios719791",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios15@gmail.com",
@@ -271,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEf/UWJ/qKlD7dbZFIVevDIMYCrTi63sOKRBzWlC1UrPBdaNhKqE19fbM8jR2T5n/A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELLZSMZPtX/Or/mtEiA+8mQyu5+FA9EwpqoIEhQoBdT2gsWpz+O8DHc6EzfkK7OrNw==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -338,11 +338,23 @@ namespace MyWebSite.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FacebookLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstagramLink")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("LinkedLin")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -365,8 +377,12 @@ namespace MyWebSite.Migrations
                             AddressMap = "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios28@gmail.com",
+                            FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
+                            FullName = "Alexandros Platanios",
+                            InstagramLink = "https://www.instagram.com/alexandros_platanios/",
                             IsActive = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
                             Phone = "+30-6949277783",
                             SubTitle = "Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.",
                             Title = "Contact us"

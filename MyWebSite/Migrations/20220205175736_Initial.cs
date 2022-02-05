@@ -64,6 +64,10 @@ namespace MyWebSite.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacebookLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InstagramLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LinkedLin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -277,12 +281,12 @@ namespace MyWebSite.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "LastUpdateDate", "Name", "NormalizedName" },
-                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "8f732824-e298-4924-b2f0-03326f99f657", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "Admin" });
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "ac710e5e-d735-46e1-b1e5-28376f367cdc", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "ConfingPassword", "CreatedDate", "Email", "EmailConfirmed", "LastUpdateDate", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "4ad96d74-577a-4061-a717-499bf54bfd56", "-Platanios719791", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios15@gmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEEf/UWJ/qKlD7dbZFIVevDIMYCrTi63sOKRBzWlC1UrPBdaNhKqE19fbM8jR2T5n/A==", "6949277783", false, "", false, "alexandrosplatanios15@gmail.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "d03a8b68-3485-4b71-8d46-d4dda0bb4874", "-Platanios719791", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios15@gmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAELLZSMZPtX/Or/mtEiA+8mQyu5+FA9EwpqoIEhQoBdT2gsWpz+O8DHc6EzfkK7OrNw==", "6949277783", false, "", false, "alexandrosplatanios15@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "CVs",
@@ -291,8 +295,8 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.InsertData(
                 table: "ContactData",
-                columns: new[] { "ID", "Address", "AddressMap", "CreatedDate", "Email", "IsActive", "LastUpdateDate", "Phone", "SubTitle", "Title" },
-                values: new object[] { 1, "Fleming 14, Voula, 16673, Greece", "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios28@gmail.com", true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "+30-6949277783", "Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.", "Contact us" });
+                columns: new[] { "ID", "Address", "AddressMap", "CreatedDate", "Email", "FacebookLink", "FullName", "InstagramLink", "IsActive", "LastUpdateDate", "LinkedLin", "Phone", "SubTitle", "Title" },
+                values: new object[] { 1, "Fleming 14, Voula, 16673, Greece", "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios28@gmail.com", "https://www.facebook.com/profile.php?id=100013059701658", "Alexandros Platanios", "https://www.instagram.com/alexandros_platanios/", true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://www.linkedin.com/in/alexandros-platanios-723984203/", "+30-6949277783", "Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.", "Contact us" });
 
             migrationBuilder.InsertData(
                 table: "HomeData",

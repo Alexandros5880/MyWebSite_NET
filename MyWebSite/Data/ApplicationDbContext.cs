@@ -132,6 +132,10 @@ namespace MyWebSite.Data
                     Address = "Fleming 14, Voula, 16673, Greece",
                     Phone = "+30-6949277783",
                     Email = "alexandrosplatanios28@gmail.com",
+                    FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
+                    InstagramLink = "https://www.instagram.com/alexandros_platanios/",
+                    LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
+                    FullName = "Alexandros Platanios",
                     IsActive = true,
                     CreatedDate = DateTime.Today
                 }
