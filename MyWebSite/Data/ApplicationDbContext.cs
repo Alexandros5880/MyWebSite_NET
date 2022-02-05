@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
@@ -9,6 +10,9 @@ namespace MyWebSite.Data
 {
     public class ApplicationDbContext : IdentityDbContext<MyWebSiteUser, MyWebSiteRole, string>, IApplicationDbContext
     {
+        [Obsolete]
+        private IHostingEnvironment _environment;
+
         public DbSet<CV> CVs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Image> Images { get; set; }
@@ -18,12 +22,14 @@ namespace MyWebSite.Data
         public DbSet<MyWebSiteRole> Roles { get; set; }
         public DbSet<MyWebSiteUser> Users { get; set; }
 
-
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        [Obsolete]
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHostingEnvironment _environment)
             : base(options)
         {
+            this._environment = _environment;
         }
 
+        [Obsolete]
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -110,16 +116,11 @@ namespace MyWebSite.Data
                     Title = "Hello",
                     SubTitle = "A bot about me",
                     Paragraph = "I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.",
-                    Phone = "+30-6949277783",
-                    Email = "alexandrosplatanios28@gmail.com",
-                    FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
-                    InstagramLink = "https://www.instagram.com/alexandros_platanios/",
-                    LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
+                    ImagePath = "~/img/me/me.jpg",
                     IsActive = true,
                     CreatedDate = DateTime.Today
                 }
             );
-
             // Create Contact Data
             builder.Entity<ContactData>().HasData(
                 new ContactData()
@@ -127,7 +128,8 @@ namespace MyWebSite.Data
                     ID = 1,
                     Title = "Contact us",
                     SubTitle = "Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.",
-                    Address = @"<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5067962388116!2d23.77378301561652!3d37.825019817039625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1954d6fc743a1%3A0x5fb660bb4c6d4864!2sFlemingk%2014%2C%20Voula%20166%2073!5e0!3m2!1sen!2sgr!4v1644077031803!5m2!1sen!2sgr' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy'></iframe>",
+                    AddressMap = "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed",
+                    Address = "Fleming 14, Voula, 16673, Greece",
                     Phone = "+30-6949277783",
                     Email = "alexandrosplatanios28@gmail.com",
                     IsActive = true,

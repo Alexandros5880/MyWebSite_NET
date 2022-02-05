@@ -23,7 +23,7 @@ namespace MyWebSite.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await this._repos.HomeData.GetActive());
         }
 
         public async Task<IActionResult> Resume()
@@ -40,7 +40,7 @@ namespace MyWebSite.Controllers
 
         public async Task<IActionResult> Contact()
         {
-            return View();
+            return View(await this._repos.ContactData.GetActive());
         }
 
         public async Task<ActionResult> _Details(int? id)

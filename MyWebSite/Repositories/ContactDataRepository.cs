@@ -46,6 +46,12 @@ namespace MyWebSite.Repositories
                 .FirstOrDefaultAsync(c => c.ID == id);
         }
 
+        public async Task<ContactData> GetActive()
+        {
+            return await this._context.ContactData
+                                .FirstOrDefaultAsync(c => c.IsActive == true);
+        }
+
         public async Task<ICollection<ContactData>> GetAll()
         {
             return await this._context.ContactData

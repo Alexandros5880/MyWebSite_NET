@@ -10,8 +10,8 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220205160550_ContactDataChangeAddressTypeToHTML")]
-    partial class ContactDataChangeAddressTypeToHTML
+    [Migration("20220205172816_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,7 +172,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "c1ec0b8e-0d1d-4f47-9008-f98759cab534",
+                            ConcurrencyStamp = "8f732824-e298-4924-b2f0-03326f99f657",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
@@ -261,7 +261,7 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "23cc3722-b94c-4c67-afa1-d7ab2d222c5c",
+                            ConcurrencyStamp = "4ad96d74-577a-4061-a717-499bf54bfd56",
                             ConfingPassword = "-Platanios719791",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios15@gmail.com",
@@ -271,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN0cuE56zZDi1NFX/NOKJWyREjy1l80bzanh1iiAwLrpMMP0aTm602097m5rTpV3bw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEf/UWJ/qKlD7dbZFIVevDIMYCrTi63sOKRBzWlC1UrPBdaNhKqE19fbM8jR2T5n/A==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -329,6 +329,9 @@ namespace MyWebSite.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressMap")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -358,7 +361,8 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            Address = "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5067962388116!2d23.77378301561652!3d37.825019817039625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1954d6fc743a1%3A0x5fb660bb4c6d4864!2sFlemingk%2014%2C%20Voula%20166%2073!5e0!3m2!1sen!2sgr!4v1644077031803!5m2!1sen!2sgr' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy'></iframe>",
+                            Address = "Fleming 14, Voula, 16673, Greece",
+                            AddressMap = "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed",
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios28@gmail.com",
                             IsActive = true,
@@ -379,13 +383,7 @@ namespace MyWebSite.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FacebookLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InstagramLink")
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -394,13 +392,7 @@ namespace MyWebSite.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LinkedLin")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Paragraph")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubTitle")
@@ -418,14 +410,10 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             CreatedDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Local),
-                            Email = "alexandrosplatanios28@gmail.com",
-                            FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
-                            InstagramLink = "https://www.instagram.com/alexandros_platanios/",
+                            ImagePath = "~/img/me/me.jpg",
                             IsActive = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
                             Paragraph = "I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.",
-                            Phone = "+30-6949277783",
                             SubTitle = "A bot about me",
                             Title = "Hello"
                         });

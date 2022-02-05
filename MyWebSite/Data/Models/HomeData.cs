@@ -12,16 +12,7 @@ namespace MyWebSite.Data.Models
         public string SubTitle { get; set; }
         [DataType(DataType.MultilineText)]
         public string Paragraph { get; set; }
-        [DataType(DataType.PhoneNumber)]
-        public string Phone { get; set; }
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-        [DataType(DataType.Url)]
-        public string FacebookLink { get; set; }
-        [DataType(DataType.Url)]
-        public string InstagramLink { get; set; }
-        [DataType(DataType.Url)]
-        public string LinkedLin { get; set; }
+        public string ImagePath { get; set; }
         public bool IsActive { get; set; }
         [DataType(DataType.DateTime)]
         [Column(TypeName = "datetime2")]
