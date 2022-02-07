@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="~/fontawesome-free-5.15.4-web/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">
+
     @RenderSection("styles", required: false)
 
     <style>
@@ -56,19 +59,22 @@
 
     @*<partial name="_Footer" />*@
 
-    @using MyWebSite.Data.Models 
-    @{ 
+    @using MyWebSite.Data.Models
+    @{
         var contact = ViewBag.Contact;
     }
     @Html.Partial("_Footer", (ContactData)contact)
 
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @*<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>*@
-    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/fontawesome-free-5.15.4-web/js/all.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="/lib/DataTables/datatables.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
 

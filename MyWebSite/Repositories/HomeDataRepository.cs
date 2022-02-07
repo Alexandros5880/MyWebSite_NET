@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data;
+using MyWebSite.Data.DataTypes;
 using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses;
 using MyWebSite.Repositories.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,27 +15,35 @@ namespace MyWebSite.Repositories
     {
         private bool disposedValue;
         private readonly ApplicationDbContext _context;
+        private readonly FilesTools _filesTools;
 
-        public HomeDataRepository(IApplicationDbContext context)
+        public HomeDataRepository(IApplicationDbContext context, FilesTools filesTools)
         {
             this._context = (ApplicationDbContext)context;
+            this._filesTools = filesTools;
         }
 
+        [Obsolete]
         public async Task<HomeData> Add(HomeData entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Today;
+            Paths imagePaths = this._filesTools.CreateFile(entity.file, "img\\home\\", "homeImage");
+            entity.ImageFullPath = imagePaths.Absolute;
+            entity.ImagePath = imagePaths.Path;
             await this._context.HomeData.AddAsync(entity);
             return entity;
         }
 
+        [Obsolete]
         public async Task<HomeData> Delete(int? id)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
             var entity = await this._context.HomeData
                                         .FirstOrDefaultAsync(e => e.ID == id);
+            this._filesTools.DeleteFile(entity.ImageFullPath);
             this._context.HomeData.Remove(entity);
             return entity;
         }
@@ -68,12 +78,30 @@ namespace MyWebSite.Repositories
             await this._context.SaveChangesAsync();
         }
 
+        [Obsolete]
         public HomeData Update(HomeData entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.LastUpdateDate = DateTime.Today;
+            if (entity.file != null)
+            {
+                Paths imagePaths = this._filesTools.CreateFile(entity.file, "img\\home\\", "homeImage");
+                if ( (imagePaths.Absolute != null) && 
+                    (imagePaths.Path != null) )
+                {
+                    entity.ImageFullPath = imagePaths.Absolute;
+                    entity.ImagePath = imagePaths.Path;
+                }
+            }
             this._context.Entry(entity).State = EntityState.Modified;
+            if (entity.IsActive == true)
+            {
+                foreach (var rec in this._context.HomeData.Where(r => r.ID != entity.ID))
+                {
+                    rec.IsActive = false;
+                }
+            }
             return entity;
         }
 

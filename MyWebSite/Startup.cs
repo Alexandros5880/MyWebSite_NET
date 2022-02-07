@@ -76,6 +76,7 @@ namespace MyWebSite
             services.AddScoped<IRepository<ContactData>, ContactDataRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
+            services.AddScoped<FilesTools>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

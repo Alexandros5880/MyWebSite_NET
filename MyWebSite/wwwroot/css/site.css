@@ -11,6 +11,9 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -28,9 +31,12 @@ a {
   border-color: #1861ac;
 }
 
+
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/*html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
@@ -38,7 +44,6 @@ html {
     font-size: 16px;
   }
 }
-
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -54,25 +59,27 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
-
+*/
 /* Sticky footer styles
 -------------------------------------------------- */
+
+
+
+
+
+
+
+
+
 html {
   position: relative;
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
+
+
+
+
 
 
 
@@ -81,24 +88,44 @@ body {
 
 
 .main {
-    padding-bottom: 3%;
+    z-index: 2;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-    .main {
-        margin-bottom: 5%;
+
+
+
+
+
+
+
+
+.fa-facebook {
+    color: #0078FF;
+}
+
+.fa-instagram {
+    color: #B900FF;
+}
+
+.fa-linkedin {
+    color: #1DE7FF;
+}
+
+.social:hover {
+    opacity: 0.4 !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    min-width: 541px;
+    /*background-color: green;*/
+}
+
+@media screen and (max-height: 990px) {
+    .footer {
+        padding-left: 11%;
     }
-}
-
-@media only screen and (max-width: 991px) {
-    .main {
-        margin-bottom: 43%;
-    }
-}
-
-
-
-
-* {
-    font-family: 'Brush Script MT', cursive;
 }

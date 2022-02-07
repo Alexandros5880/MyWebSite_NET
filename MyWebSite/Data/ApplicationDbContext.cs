@@ -109,6 +109,8 @@ namespace MyWebSite.Data
 
 
             // Create Home Data
+            string subPath = "/img/home/me.jpg";
+            string path = "";
             builder.Entity<HomeData>().HasData(
                 new HomeData()
                 {
@@ -116,7 +118,8 @@ namespace MyWebSite.Data
                     Title = "Hello",
                     SubTitle = "A bot about me",
                     Paragraph = "I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.",
-                    ImagePath = "~/img/me/me.jpg",
+                    ImagePath = subPath,
+                    ImageFullPath = path,
                     IsActive = true,
                     CreatedDate = DateTime.Today
                 }

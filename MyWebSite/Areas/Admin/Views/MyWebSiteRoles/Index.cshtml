@@ -5,7 +5,7 @@
 }
 
 @section styles {
-    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+
 }
 
 <h1>Roles</h1>
@@ -15,7 +15,7 @@
 </p>
 
 <div class="table-responsive" style="margin-top: 5%;">
-    <table id="roles-table" width="100%" class="row-border display"></table>
+    <table id="roles-table" width="100%" class="display" cellspacing="0"></table>
     <br />
     <br />
 </div>
@@ -25,10 +25,9 @@
 
 
 
-@section Scripts{
 
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
+
+@section Scripts{
 
     <script>
 
@@ -55,7 +54,7 @@
             }
 
 
-            var table = $('#roles-table').DataTable({
+            $('#roles-table').DataTable({
                 data: dataSet,
                 columns: [
                     { title: "ID" },
@@ -64,17 +63,29 @@
                     { title: "Concurrency Stamp" },
                     null
                 ],
-                "pagingType": "full_numbers"
+                "pagingType": "full_numbers",
+                scrollY: true,
+                scrollX: true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                "stateSave": true,
+                "order": [0, 'asc'],
+                //colReorder: {
+                //    realtime: false
+                //},
+                initComplete: function (settings) {
+                    $('#roles-table').on('click', 'tbody td', function () {
+                        var dataTable = $('#roles-table').dataTable();
+                        var tr = $(this).closest('tr');
+                        var index = dataTable.fnGetPosition(tr[0]);
+                        var id = dataTable.fnGetData(index)[0];
+                        window.location.href = '/Admin/MyWebSiteRoles/Details/' + id;
+                    })
+                }
             });
 
 
-            $('#roles-table').on('click', 'tbody td', function () {
-                var dataTable = $('#roles-table').dataTable();
-                var tr = $(this).closest('tr');
-                var index = dataTable.fnGetPosition(tr[0]);
-                var id = dataTable.fnGetData(index)[0];
-                window.location.href = '/Admin/MyWebSiteRoles/Details/' + id;
-            })
+            
 
         });
 

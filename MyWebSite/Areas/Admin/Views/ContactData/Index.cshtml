@@ -8,7 +8,7 @@
 
 
 @section styles {
-    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+    
 }
 
 
@@ -23,8 +23,8 @@
 
 
 
-<div class="table-responsive" style="margin-top: 5%;">
-    <table id="contact-data-table" width="100%" class="row-border display"></table>
+<div class="table-responsive" style="margin-top: 1%;">
+    <table id="contact-data-table" width="100%" class="display" cellspacing="0"></table>
     <br />
     <br />
 </div>
@@ -37,10 +37,6 @@
 
 
 @section Scripts{
-
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
-
     <script>
 
 
@@ -54,9 +50,9 @@
                 @:dataItem = [];
                 @:dataItem.push("@item.ID");
                 @:dataItem.push("@item.Title");
-                @:dataItem.push("<p>@item.SubTitle</p>");
+                @:dataItem.push("<p>@item.SubTitle.Substring(0, 11)</p>");
                 @:dataItem.push("@item.Address");
-                @:dataItem.push("@item.AddressMap");
+                @:dataItem.push("@item.AddressMap.Substring(0, 11)");
                 @:dataItem.push("@item.Phone");
                 @:dataItem.push("@item.Email");
                 @:dataItem.push("@item.IsActive");
@@ -70,7 +66,7 @@
             }
 
 
-            var table = $('#contact-data-table').DataTable({
+            $('#contact-data-table').DataTable({
                 data: dataSet,
                 columns: [
                     { title: "ID" },
@@ -85,17 +81,28 @@
                 ],
                 "pagingType": "full_numbers",
                 scrollY: true,
-                scrollX: true
+                scrollX: true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                "order": [0, 'asc'],
+                "stateSave": true,
+                //colReorder: {
+                //    realtime: false
+                //},
+                initComplete: function (settings) {
+                    $('#contact-data-table').on('click', 'tbody td', function () {
+                        var dataTable = $('#contact-data-table').dataTable();
+                        var tr = $(this).closest('tr');
+                        var index = dataTable.fnGetPosition(tr[0]);
+                        var id = dataTable.fnGetData(index)[0];
+                        window.location.href = '/Admin/ContactData/Details/' + id;
+                    })
+                }
             });
 
 
-            $('#contact-data-table').on('click', 'tbody td', function () {
-                var dataTable = $('#contact-data-table').dataTable();
-                var tr = $(this).closest('tr');
-                var index = dataTable.fnGetPosition(tr[0]);
-                var id = dataTable.fnGetData(index)[0];
-                window.location.href = '/Admin/ContactData/Details/' + id;
-            })
+
+            
 
         });
 

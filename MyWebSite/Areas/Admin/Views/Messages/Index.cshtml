@@ -7,7 +7,7 @@
 
 
 @section styles {
-    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+
 }
 
 
@@ -24,7 +24,7 @@
 
 
 <div class="table-responsive" style="margin-top: 5%;">
-    <table id="messages-table" width="100%" class="row-border display"></table>
+    <table id="messages-table" width="100%" class="display" cellspacing="0"></table>
     <br />
     <br />
 </div>
@@ -35,8 +35,6 @@
 
 @section Scripts{
 
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
 
     <script>
 
@@ -51,8 +49,8 @@
                 @:dataItem.push("@item.FirstName");
                 @:dataItem.push("@item.LastName");
                 @:dataItem.push("@item.Email");
-                @:dataItem.push("@item.Subject");
-                @:dataItem.push("@item.MyMessage");
+                @:dataItem.push("@item.Subject.Substring(0, 11)");
+                @:dataItem.push("@item.MyMessage.Substring(0, 11)");
                 <text>
                     dataItem.push(`
                         <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
@@ -63,7 +61,7 @@
             }
 
 
-            var table = $('#messages-table').DataTable({
+            $('#messages-table').DataTable({
                 data: dataSet,
                 columns: [
                     { title: "ID" },
@@ -74,18 +72,30 @@
                     { title: "Message" },
                     null
                 ],
-                "pagingType": "full_numbers"
+                "pagingType": "full_numbers",
+                scrollY: true,
+                scrollX: true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                "order": [0, 'asc'],
+                "stateSave": true,
+                //colReorder: {
+                //    realtime: false
+                //},
+                initComplete: function (settings) {
+                    $('#messages-table').on('click', 'tbody td', function () {
+                        var dataTable = $('#messages-table').dataTable();
+                        var tr = $(this).closest('tr');
+                        var index = dataTable.fnGetPosition(tr[0]);
+                        var id = dataTable.fnGetData(index)[0];
+                        window.location.href = '/Admin/Messages/Details/' + id;
+                    })
+                }
             });
 
 
 
-            $('#messages-table').on('click', 'tbody td', function () {
-                var dataTable = $('#messages-table').dataTable();
-                var tr = $(this).closest('tr');
-                var index = dataTable.fnGetPosition(tr[0]);
-                var id = dataTable.fnGetData(index)[0];
-                window.location.href = '/Admin/Messages/Details/' + id;
-            })
+            
 
         });
 

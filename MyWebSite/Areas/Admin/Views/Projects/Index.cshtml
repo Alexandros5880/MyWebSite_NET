@@ -10,7 +10,7 @@
 
 
 @section styles {
-    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+
 }
 
 
@@ -36,7 +36,7 @@
 
 
 <div class="table-responsive" style="margin-top: 5%;">
-    <table id="projects-table" width="100%" class="row-border display"></table>
+    <table id="projects-table" width="100%" class="display" cellspacing="0"></table>
     <br />
     <br />
 </div>
@@ -53,9 +53,6 @@
 
 
 @section Scripts{
-
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
 
     <script>
 
@@ -82,7 +79,7 @@
             }
 
 
-            var table = $('#projects-table').DataTable({
+            $('#projects-table').DataTable({
                 data: dataSet,
                 columns: [
                     { title: "ID" },
@@ -93,17 +90,28 @@
                     { title: "Price" },
                     null
                 ],
-                "pagingType": "full_numbers"
+                "pagingType": "full_numbers",
+                scrollY: true,
+                scrollX: true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                "stateSave": true,
+                "order": [0, 'asc'],
+                //colReorder: {
+                //    realtime: false
+                //},
+                initComplete: function (settings) {
+                    $('#projects-table').on('click', 'tbody td', function () {
+                        var dataTable = $('#projects-table').dataTable();
+                        var tr = $(this).closest('tr');
+                        var index = dataTable.fnGetPosition(tr[0]);
+                        var id = dataTable.fnGetData(index)[0];
+                        window.location.href = '/Admin/Projects/Details/' + id;
+                    })
+                }
             });
 
-
-            $('#projects-table').on('click', 'tbody td', function () {
-                var dataTable = $('#projects-table').dataTable();
-                var tr = $(this).closest('tr');
-                var index = dataTable.fnGetPosition(tr[0]);
-                var id = dataTable.fnGetData(index)[0];
-                window.location.href = '/Admin/Projects/Details/' + id;
-            })
+            
 
         });
 

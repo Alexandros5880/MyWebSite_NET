@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
@@ -53,10 +54,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(HomeData homeData)
+        [System.Obsolete]
+        public async Task<IActionResult> Create(HomeData homeData, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                // Get File
+                //var files = Request.Form.Files;
+                homeData.file = file;
                 await this._repos.HomeData.Add(homeData);
                 await this._repos.HomeData.Save();
                 return RedirectToAction(nameof(Index));
@@ -84,12 +89,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(HomeData homeData)
+        [System.Obsolete]
+        public async Task<IActionResult> Edit(HomeData homeData, IFormFile file)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    homeData.file = file;
                     this._repos.HomeData.Update(homeData);
                     await this._repos.HomeData.Save();
                 }
@@ -113,22 +120,20 @@ namespace MyWebSite.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
             var homeData = await this._repos.HomeData.Get(id);
             if (homeData == null)
-            {
                 return NotFound();
-            }
             return View(homeData);
         }
 
         // POST: Admin/HomeData/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [System.Obsolete]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var homeData = await this._repos.HomeData.Get(id);
             await this._repos.HomeData.Delete(id);
             await this._repos.HomeData.Save();
             return RedirectToAction(nameof(Index));
