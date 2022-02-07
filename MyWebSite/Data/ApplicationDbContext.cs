@@ -49,7 +49,7 @@ namespace MyWebSite.Data
             // Add seed Data
 
             // Add CV
-            builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", Path = "/CV/CV.pdf" });
+            builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", CVPath = "/CV/CV.pdf" });
 
             // Add Projects
             builder.Entity<Project>().HasData(new Project() { ID = 1, Title="CBProject", Description= "Online School For Data Sience." });

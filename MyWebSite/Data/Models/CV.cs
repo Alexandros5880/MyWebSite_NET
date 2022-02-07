@@ -1,4 +1,5 @@
-﻿using MyWebSite.Data.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using MyWebSite.Data.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,8 +10,10 @@ namespace MyWebSite.Data.Models
     {
         public int ID  { get; set; }
         public bool IsActive { get; set; }
-        [Required]
-        public string Path { get; set; }
+        [NotMapped]
+        public IFormFile File { get; set; }
+        public string CVPath { get; set; }
+        public string CVFullPath { get; set; }
         public string Description { get; set; }
         [DataType(DataType.DateTime)]
         [Column(TypeName = "datetime2")]

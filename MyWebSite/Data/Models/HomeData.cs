@@ -14,7 +14,7 @@ namespace MyWebSite.Data.Models
         [DataType(DataType.MultilineText)]
         public string Paragraph { get; set; }
         [NotMapped]
-        public IFormFile file { get; set; }
+        public IFormFile File { get; set; }
         public string ImagePath { get; set; }
         public string ImageFullPath { get; set; }
         public bool IsActive { get; set; }

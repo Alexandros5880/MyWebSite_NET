@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
@@ -63,11 +64,13 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CvViewModel cvViewModel)
+        [System.Obsolete]
+        public async Task<IActionResult> Create(CvViewModel cvViewModel, IFormFile file)
         {
             var cV = this._mapper.Map<CV>(cvViewModel);
             if (ModelState.IsValid)
             {
+                cV.File = file;
                 await this._repos.CVs.Add(cV);
                 await this._repos.CVs.Save();
                 return RedirectToAction(nameof(Index));
@@ -97,18 +100,15 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, CvViewModel cvViewModel)
+        [System.Obsolete]
+        public async Task<IActionResult> Edit(CvViewModel cvViewModel, IFormFile file)
         {
             var cV = this._mapper.Map<CV>(cvViewModel);
-            if (id != cV.ID)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    cV.File = file;
                     this._repos.CVs.Update(cV);
                     await this._repos.CVs.Save();
                 }
@@ -147,6 +147,7 @@ namespace MyWebSite.Areas.Admin.Controllers
         // POST: Admin/CVs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [System.Obsolete]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await this._repos.CVs.Delete(id);

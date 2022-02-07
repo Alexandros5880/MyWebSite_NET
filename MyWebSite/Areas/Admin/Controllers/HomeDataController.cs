@@ -61,7 +61,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 // Get File
                 //var files = Request.Form.Files;
-                homeData.file = file;
+                homeData.File = file;
                 await this._repos.HomeData.Add(homeData);
                 await this._repos.HomeData.Save();
                 return RedirectToAction(nameof(Index));
@@ -96,7 +96,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 try
                 {
-                    homeData.file = file;
+                    homeData.File = file;
                     this._repos.HomeData.Update(homeData);
                     await this._repos.HomeData.Save();
                 }
@@ -133,7 +133,6 @@ namespace MyWebSite.Areas.Admin.Controllers
         [System.Obsolete]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var homeData = await this._repos.HomeData.Get(id);
             await this._repos.HomeData.Delete(id);
             await this._repos.HomeData.Save();
             return RedirectToAction(nameof(Index));

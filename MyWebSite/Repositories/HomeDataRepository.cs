@@ -29,10 +29,17 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Today;
-            Paths imagePaths = this._filesTools.CreateFile(entity.file, "img\\home\\", "homeImage");
+            Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
             entity.ImageFullPath = imagePaths.Absolute;
             entity.ImagePath = imagePaths.Path;
             await this._context.HomeData.AddAsync(entity);
+            if (entity.IsActive == true)
+            {
+                foreach (var rec in this._context.HomeData.Where(r => r.ID != entity.ID))
+                {
+                    rec.IsActive = false;
+                }
+            }
             return entity;
         }
 
@@ -43,6 +50,8 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(id));
             var entity = await this._context.HomeData
                                         .FirstOrDefaultAsync(e => e.ID == id);
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
             this._filesTools.DeleteFile(entity.ImageFullPath);
             this._context.HomeData.Remove(entity);
             return entity;
@@ -84,9 +93,9 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.LastUpdateDate = DateTime.Today;
-            if (entity.file != null)
+            if (entity.File != null)
             {
-                Paths imagePaths = this._filesTools.CreateFile(entity.file, "img\\home\\", "homeImage");
+                Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
                 if ( (imagePaths.Absolute != null) && 
                     (imagePaths.Path != null) )
                 {

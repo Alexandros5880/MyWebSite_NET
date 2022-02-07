@@ -47,12 +47,13 @@
             {
                 @:dataItem = [];
                 @:dataItem.push("@item.ID");
-                @:dataItem.push("@item.IsActive");
-                @:dataItem.push("@item.Path");
+                var path = Url.Content(item.CVPath.Replace("\\", "/"));
+                @:dataItem.push(`<embed src='@path' height='200' width='200'></embed>`);
                 @:dataItem.push("@item.Description");
+            @:dataItem.push("@item.IsActive");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
+                        <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                         <a asp-controller="Cvs" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -64,9 +65,9 @@
                 data: dataSet,
                 columns: [
                     { title: "ID" },
-                    { title: "IsActive" },
                     { title: "Path" },
                     { title: "Description" },
+                    { title: "IsActive" },
                     null
                 ],
                 "pagingType": "full_numbers",
@@ -91,7 +92,7 @@
             });
 
 
-            
+
 
         });
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data;
+using MyWebSite.Data.DataTypes;
 using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses;
 using MyWebSite.Repositories.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,21 +15,35 @@ namespace MyWebSite.Repositories
     {
         private bool disposedValue;
         private readonly ApplicationDbContext _context;
+        private readonly FilesTools _filesTools;
 
-        public CvRepository(IApplicationDbContext context)
+        public CvRepository(IApplicationDbContext context, FilesTools filesTools)
         {
             this._context = (ApplicationDbContext)context;
+            this._filesTools = filesTools;
         }
 
+        [Obsolete]
         public async Task<CV> Add(CV entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Today;
+            Paths paths = this._filesTools.CreateFile(entity.File, "CV\\");
+            entity.CVFullPath = paths.Absolute;
+            entity.CVPath = paths.Path;
             await this._context.CVs.AddAsync(entity);
+            if (entity.IsActive == true)
+            {
+                foreach (var rec in this._context.CVs.Where(r => r.ID != entity.ID))
+                {
+                    rec.IsActive = false;
+                }
+            }
             return entity;
         }
 
+        [Obsolete]
         public async Task<CV> Delete(int? id)
         {
             if (id == null)
@@ -36,6 +52,7 @@ namespace MyWebSite.Repositories
                 .FirstOrDefaultAsync(c => c.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            this._filesTools.DeleteFile(entity.CVFullPath);
             this._context.CVs.Remove(entity);
             return entity;
         }
@@ -66,12 +83,30 @@ namespace MyWebSite.Repositories
             return this._context.CVs;
         }
 
+        [Obsolete]
         public CV Update(CV entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Today;
+            if (entity.File != null)
+            {
+                Paths paths = this._filesTools.CreateFile(entity.File, "CV\\");
+                if ((paths.Absolute != null) &&
+                    (paths.Path != null))
+                {
+                    entity.CVFullPath = paths.Absolute;
+                    entity.CVPath = paths.Path;
+                }
+            }
             this._context.Entry(entity).State = EntityState.Modified;
+            if (entity.IsActive == true)
+            {
+                foreach (var rec in this._context.CVs.Where(r => r.ID != entity.ID))
+                {
+                    rec.IsActive = false;
+                }
+            }
             return entity;
         }
 

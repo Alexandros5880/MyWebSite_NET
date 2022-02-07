@@ -14,6 +14,7 @@ namespace MyWebSite.Data.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string DownloadLink { get; set; }
+        [Column(TypeName = "decimal(8,4)")]
         public decimal Price { get; set; }
         [DataType(DataType.DateTime)]
         [Column(TypeName = "datetime2")]

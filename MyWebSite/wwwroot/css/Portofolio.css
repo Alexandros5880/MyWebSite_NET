@@ -51,7 +51,9 @@ img {
 
 
 
-
+#projects-table tr td {
+    background-color: white !important;
+}
 
 #projects-table thead th,
 #projects-table tbody,
@@ -81,3 +83,5 @@ div.dataTables_info {
 div.dataTables_wrapper div.dataTables_paginate {
     float: right;
 }
+
+
