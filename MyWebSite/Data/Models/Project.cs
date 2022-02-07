@@ -1,4 +1,5 @@
-﻿using MyWebSite.Data.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using MyWebSite.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +11,8 @@ namespace MyWebSite.Data.Models
     {
         public int ID { get; set; }
         public ICollection<Image> Images { get; set; }
+        [NotMapped]
+        public IFormFile[] Files { get; set; }
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
@@ -28,3 +31,4 @@ namespace MyWebSite.Data.Models
         }
     }
 }
+

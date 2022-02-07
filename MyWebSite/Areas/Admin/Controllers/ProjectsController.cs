@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
@@ -63,11 +64,13 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProjectViewModel viewModel)
+        [System.Obsolete]
+        public async Task<IActionResult> Create(ProjectViewModel viewModel, IFormFile[] files)
         {
             var project = this._mapper.Map<Project>(viewModel);
             if (ModelState.IsValid)
             {
+                project.Files = files;
                 await this ._repos.Projects.Add(project);
                 await this._repos.Projects.Save();
                 return RedirectToAction(nameof(Index));

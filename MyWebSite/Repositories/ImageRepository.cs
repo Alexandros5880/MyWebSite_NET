@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data;
 using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses;
 using MyWebSite.Repositories.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace MyWebSite.Repositories
     {
         private bool disposedValue;
         private readonly ApplicationDbContext _context;
+        private readonly FilesTools _filesTools;
 
-        public ImageRepository(IApplicationDbContext context)
+        public ImageRepository(IApplicationDbContext context, FilesTools filesTools)
         {
             this._context = (ApplicationDbContext)context;
+            this._filesTools = filesTools;
         }
 
         public async Task<Image> Add(Image entity)

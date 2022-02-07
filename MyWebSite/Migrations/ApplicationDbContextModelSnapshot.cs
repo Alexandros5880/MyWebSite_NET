@@ -170,7 +170,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "9c190819-5a5f-44c0-a6c3-9f9c6187dd77",
+                            ConcurrencyStamp = "a18e124a-2563-4ba7-8f1f-f1e07e41b3ff",
                             CreatedDate = new DateTime(2022, 2, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
@@ -259,7 +259,7 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b123799c-9b26-4282-b86e-2feb741c7b4c",
+                            ConcurrencyStamp = "17b0ff6f-a819-475d-8e31-ffb1f1eb62f5",
                             ConfingPassword = "-Platanios719791",
                             CreatedDate = new DateTime(2022, 2, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios15@gmail.com",
@@ -269,7 +269,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOKqyhTYffeyPko5Frva0RiGd3ZEwnvGoFYwkaO16eA0ZptQ1uw3MviAvPV8v5onNQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGBZv/lufLgVjlP23IvfwpchjPx0qzNklJFYreW1uMMYxJMxr8phFrpgQoeDgX3IFA==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -448,6 +448,9 @@ namespace MyWebSite.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageFullPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .IsRequired()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data;
 using MyWebSite.Data.Models;
+using MyWebSite.HorizontalClasses;
 using MyWebSite.Repositories.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,21 +14,50 @@ namespace MyWebSite.Repositories
     {
         private bool disposedValue;
         private readonly ApplicationDbContext _context;
+        private readonly FilesTools _filesTools;
 
-        public ProjectRepository(IApplicationDbContext context)
+        public ProjectRepository(IApplicationDbContext context, FilesTools filesTools)
         {
             this._context = (ApplicationDbContext)context;
+            this._filesTools = filesTools;
         }
 
+        [Obsolete]
         public async Task<Project> Add(Project entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Today;
+            await this.AddImages(entity);
             await this._context.Projects.AddAsync(entity);
             return entity;
         }
 
+        [Obsolete]
+        public async Task AddImages(Project project)
+        {
+            if (project == null)
+                throw new ArgumentNullException(nameof(project));
+            if (project.Files.Length == 0)
+                throw new ArgumentException(nameof(project.Files));
+            foreach (var file in project.Files)
+            {
+                var image = new Image()
+                {
+                    Project = project,
+                    CreatedDate = DateTime.Today,
+                    LastUpdateDate = DateTime.Today
+                };
+                var subPath = $"img\\projects\\{project.Title}\\";
+                var paths = this._filesTools.CreateFile(file, subPath);
+                image.ImageFullPath = paths.Absolute;
+                image.ImagePath = paths.Path;
+                await this._context.Images.AddAsync(image);
+                //await this.Save();
+            }
+        }
+
+        [Obsolete]
         public async Task<Project> Delete(int? id)
         {
             if (id == null)
@@ -36,9 +66,25 @@ namespace MyWebSite.Repositories
                                     .FirstOrDefaultAsync(p => p.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            await this.RemoveImages(entity);
             this._context.Projects.Remove(entity);
             return entity;
 
+        }
+
+        [Obsolete]
+        public async Task RemoveImages(Project project)
+        {
+            if (project == null)
+                throw new ArgumentNullException(nameof(project));
+            project = await this.Get(project.ID);
+            string path = "";
+            foreach (var image in project.Images)
+            {
+                this._filesTools.DeleteFile(image.ImageFullPath);
+                path = this._filesTools.GetDir(image.ImagePath);
+            }
+            this._filesTools.DeleteDir(path);
         }
 
         public async Task<Project> Get(int? id)
