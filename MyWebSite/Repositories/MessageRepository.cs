@@ -63,6 +63,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            entity.LastUpdateDate = DateTime.Today;
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }

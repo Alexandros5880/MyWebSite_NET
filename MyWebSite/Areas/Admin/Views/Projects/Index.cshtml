@@ -64,8 +64,11 @@
             {
                 @:dataItem = [];
                 @:dataItem.push("@item.ID");
-                var path = Url.Content(item.Images.ToList()[0].ImagePath.Replace("\\", "/"));
-                @:dataItem.push(`<img src="@Url.Content(path)" width="133"/>`);
+                @if(item.Images.Count > 0)
+                {
+                    var path = Url.Content(item.Images.ToList()[0].ImagePath.Replace("\\", "/"));
+                    @:dataItem.push(`<img src="@Url.Content(path)" width="133"/>`);
+                }
                 @:dataItem.push("@item.Title");
                 @:dataItem.push("@item.Description");
                 @:dataItem.push("@item.DownloadLink");

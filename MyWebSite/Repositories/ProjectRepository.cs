@@ -34,30 +34,6 @@ namespace MyWebSite.Repositories
         }
 
         [Obsolete]
-        public async Task AddImages(Project project)
-        {
-            if (project == null)
-                throw new ArgumentNullException(nameof(project));
-            if (project.Files.Length == 0)
-                throw new ArgumentException(nameof(project.Files));
-            foreach (var file in project.Files)
-            {
-                var image = new Image()
-                {
-                    Project = project,
-                    CreatedDate = DateTime.Today,
-                    LastUpdateDate = DateTime.Today
-                };
-                var subPath = $"img\\projects\\{project.Title}\\";
-                var paths = this._filesTools.CreateFile(file, subPath);
-                image.ImageFullPath = paths.Absolute;
-                image.ImagePath = paths.Path;
-                await this._context.Images.AddAsync(image);
-                //await this.Save();
-            }
-        }
-
-        [Obsolete]
         public async Task<Project> Delete(int? id)
         {
             if (id == null)
@@ -72,29 +48,22 @@ namespace MyWebSite.Repositories
 
         }
 
-        [Obsolete]
-        public async Task RemoveImages(Project project)
-        {
-            if (project == null)
-                throw new ArgumentNullException(nameof(project));
-            project = await this.Get(project.ID);
-            string path = "";
-            foreach (var image in project.Images)
-            {
-                this._filesTools.DeleteFile(image.ImageFullPath);
-                path = this._filesTools.GetDir(image.ImagePath);
-            }
-            this._filesTools.DeleteDir(path);
-        }
-
         public async Task<Project> Get(int? id)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
-            var entity = await this._context.Projects
+            return await this._context.Projects
                                     .Include(p => p.Images)
                                     .FirstOrDefaultAsync(p => p.ID == id);
-            return entity;
+        }
+
+        public Project GetSync(int? id)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+            return this._context.Projects
+                                    .Include(p => p.Images)
+                                    .FirstOrDefault(p => p.ID == id);
         }
 
         public async Task<ICollection<Project>> GetAll()
@@ -109,11 +78,13 @@ namespace MyWebSite.Repositories
             return this._context.Projects;
         }
 
+        [Obsolete]
         public Project Update(Project entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.CreatedDate = DateTime.Today;
+            entity.LastUpdateDate = DateTime.Today;
+            this.AddImagesSync(entity);
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }
@@ -121,6 +92,77 @@ namespace MyWebSite.Repositories
         public async Task Save()
         {
             await this._context.SaveChangesAsync();
+        }
+
+        [Obsolete]
+        private async Task AddImages(Project project)
+        {
+            if (project == null)
+                throw new ArgumentNullException(nameof(project));
+            if (project.Files.Length == 0)
+                throw new ArgumentException(nameof(project.Files));
+            foreach (var file in project.Files)
+            {
+                var image = new Image()
+                {
+                    Project = project,
+                    CreatedDate = DateTime.Today,
+                    LastUpdateDate = DateTime.Today
+                };
+                var subPath = $"ProjectImages\\{project.Title}\\";
+                var paths = this._filesTools.CreateFile(file, subPath);
+                image.ImageFullPath = paths.Absolute;
+                image.ImagePath = paths.Path;
+                await this._context.Images.AddAsync(image);
+            }
+        }
+
+        [Obsolete]
+        private void AddImagesSync(Project project)
+        {
+            if (project == null)
+                throw new ArgumentNullException(nameof(project));
+            if (project.Files.Length == 0)
+                throw new ArgumentException(nameof(project.Files));
+            foreach (var file in project.Files)
+            {
+                var image = new Image()
+                {
+                    Project = project,
+                    CreatedDate = DateTime.Today,
+                    LastUpdateDate = DateTime.Today
+                };
+                var subPath = $"ProjectImages\\{project.Title}\\";
+                var paths = this._filesTools.CreateFile(file, subPath);
+                image.ImageFullPath = paths.Absolute;
+                image.ImagePath = paths.Path;
+                this._context.Images.Add(image);
+            }
+        }
+
+        [Obsolete]
+        private async Task RemoveImages(Project project)
+        {
+            if (project == null)
+                throw new ArgumentNullException(nameof(project));
+            project = await this.Get(project.ID);
+            string path = "";
+            foreach (var image in project.Images)
+            {
+                this._filesTools.DeleteFile(image.ImageFullPath);
+                path = this._filesTools.GetDir(image.ImagePath);
+                this._context.Images.Remove(image);
+            }
+            this._filesTools.DeleteDir(path);
+        }
+
+        [Obsolete]
+        private void RemoveImage(Image image)
+        {
+            if (image == null)
+                throw new ArgumentNullException(nameof(image));
+            this._filesTools.DeleteFile(image.ImageFullPath);
+            this._context.Images.Remove(image);
         }
 
         protected virtual void Dispose(bool disposing)

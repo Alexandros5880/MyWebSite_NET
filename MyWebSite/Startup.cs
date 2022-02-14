@@ -50,6 +50,13 @@ namespace MyWebSite
             services.AddRazorPages();
 
 
+            // API Related Records Cicly
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+
 
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
@@ -68,7 +75,6 @@ namespace MyWebSite
             services.AddScoped<IRepository<CV>, CvRepository>();
             services.AddScoped<IRepository<Image>, ImageRepository>();
             services.AddScoped<IRepository<Message>, MessageRepository>();
-            services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();

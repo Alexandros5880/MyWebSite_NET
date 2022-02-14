@@ -34,13 +34,10 @@
             </div>
             <div class="form-group">
                 <div class="file-field">
-                    @*<div class="z-depth-1-half mb-4" style="text-align: center;">
-                        <embed id="pdf-viewer" src="@Url.Content("~/img/home/pdf-placeholder.png")" height="500" width="500"></embed>
-                    </div>*@
                     <div class="d-flex justify-content-center">
                         <div class="btn btn-mdb-color btn-rounded float-left">
-                            <span>Choose files</span>
-                            <input type="file" name="files" id="files" onchange="readURL(this);" multiple>
+                            <span>Choose Images</span>
+                            <input type="file" name="files" id="files" multiple>
                         </div>
                     </div>
                 </div>
@@ -68,18 +65,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#pdf-viewer').attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 
 }

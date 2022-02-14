@@ -39,7 +39,12 @@ namespace MyWebSite.Repositories
                                     .FirstOrDefaultAsync(c => c.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            this._context.Remove(entity);
+            // Remove File
+            this._filesTools.DeleteFile(entity.ImageFullPath);
+            var path = this._filesTools.GetDir(entity.ImagePath);
+            this._filesTools.DeleteDir(path);
+            // Remove From DB
+            this._context.Images.Remove(entity);
             return entity;
         }
 
@@ -69,7 +74,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.CreatedDate = DateTime.Today;
+            entity.LastUpdateDate = DateTime.Today;
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }

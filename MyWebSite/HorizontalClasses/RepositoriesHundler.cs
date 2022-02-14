@@ -24,7 +24,7 @@ namespace MyWebSite.HorizontalClasses
         public RepositoriesHundler(
             IRepository<CV> cvRepo, 
             IRepository<Image> imgRepo, 
-            IRepository<Message> messRepo, 
+            IRepository<Message> messRepo,
             IRepository<Project> proRepo,
             IUsersRepository users,
             IRolesRepository roles,

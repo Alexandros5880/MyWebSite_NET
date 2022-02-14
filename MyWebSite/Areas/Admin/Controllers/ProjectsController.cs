@@ -99,18 +99,14 @@ namespace MyWebSite.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, ProjectViewModel viewModel)
+        public async Task<IActionResult> Edit(ProjectViewModel viewModel, IFormFile[] files)
         {
             var project = this._mapper.Map<Project>(viewModel);
-            if (id != project.ID)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    project.Files = files;
                     this._repos.Projects.Update(project);
                     await this._repos.Projects.Save();
                 }
@@ -154,6 +150,18 @@ namespace MyWebSite.Areas.Admin.Controllers
             await this._repos.Projects.Delete(id);
             await this._repos.Projects.Save();
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Admin/Projects/DeleteImage?imageId=<id>
+        public async Task<IActionResult> DeleteImage(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+            var projectId = (await this._repos.Images.Get(id)).ProjectId;
+            var project = (await this._repos.Projects.Get(projectId));
+            await this._repos.Images.Delete(id);
+            await this._repos.Images.Save();
+            return Ok(project.Images);
         }
 
         private async Task<bool> ProjectExists(int id)

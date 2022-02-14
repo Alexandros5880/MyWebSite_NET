@@ -9,7 +9,7 @@
 <h4>Project</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
@@ -34,16 +34,66 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <div class="file-field">
+                    <div class="d-flex justify-content-center">
+                        <div class="btn btn-mdb-color btn-rounded float-left">
+                            <span>Choose Images</span>
+                            <input type="file" name="files" id="files" multiple>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div style="margin-bottom: 3%;">
+                <a asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
+    <div class="col-lg-8">
+        <div id="render-images">
+            <div class="row">
+                @foreach (var img in Model.Images)
+                {
+                    <div class="col-lg-3" style="margin-bottom: 3%;">
+                        <input type="hidden" value="@img.ID" />
+                        <img class="edit-pro-image" alt="Project Image" src="@Url.Content(img.ImagePath)" style="width: 100%; min-width: 100px;" />
+                        <button class="btn btn-danger delete-img" style="font-size: 15px; padding: 1px; margin-top: 1px;">Delete</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            $('.delete-img').on("click", function () {
+                var imgId = $(this).parent().find('input').val();
+
+                $.ajax({
+                    type: "GET",
+                    url: `../../Projects/DeleteImage?id=${imgId}`,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
