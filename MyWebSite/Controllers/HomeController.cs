@@ -61,31 +61,27 @@ namespace MyWebSite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Message(MessageViewModel message)
         {
-            if (message == null)
+            var messageDB = this._mapper.Map<Message>(message);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Contact = await this._repos.ContactData.GetActive();
+                return View("Contact", await this._repos.ContactData.GetActive());
+            }
+            if (message == null || message.Subject == null)
                 return BadRequest();
-            try
-            {
-                //throw new Exception();
-                var messageDB = this._mapper.Map<Message>(message);
+            var subject = message.Subject.Length > 0 ? message.Subject : null;
+            messageDB.Subject = "MyWebSite: " + subject;
+            var title = messageDB.FullName;
 
-                var subject = message.Subject.Length > 0 ? message.Subject : null;
-                messageDB.Subject = "MyWebSite: " + subject;
-                var title = messageDB.FullName;
+            // Save Message
+            await this._repos.Messages.Add(messageDB);
+            await this._repos.Messages.Save();
 
-                // Save Message
-                await this._repos.Messages.Add(messageDB);
-                await this._repos.Messages.Save();
+            // Send Email
+            await this._emailTool.Send(messageDB.MyMessage, messageDB.Subject, title);
 
-                // Send Email
-                await this._emailTool.Send(messageDB.MyMessage, messageDB.Subject, title);
-
-                return View("Index");
-            }
-            catch (Exception)
-            {
-                ViewBag.Error = "Somthing wrong was happend, Please try again!";
-                return View("Contact");
-            }
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
+            return View("Index", await this._repos.HomeData.GetActive());
         }
     }
 }

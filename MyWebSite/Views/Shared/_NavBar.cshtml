@@ -1,0 +1,81 @@
+﻿
+
+
+@section styles { 
+
+
+<style>
+
+    .nav-item:hover {
+        opacity: 0.4;
+    }
+
+</style>
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div>
+        <svg height="50" width="50">
+            @*<circle cx="25" cy="22" r="15" fill="#A9ABAC" />*@
+            <polygon points="25 0, 50 50, 0 50" fill="#A9ABAC" stroke="black" stroke-width="1" />
+        </svg>
+        <a class="navbar-brand" href="/Home/Index"><b>Alexandros Platanios</b></a>
+        <br />
+        <i>Software Developer</i>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="margin-left: 67%;">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/Home/Resume">Resume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/Home/Portofolio">Portofolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/Home/Contact">Contact</a>
+            </li>
+        </ul>
+        @*<partial name="_LoginPartial" />*@
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            // Save Clicked Tab on Brouser Memmory
+            $(".nav-item").on("click", function () {
+                //$("a").find(".active").removeClass("active");
+                //$(this).children().addClass("active");
+                //$(this).children().css("color", "green");
+            });
+
+        });
+    </script>
+}

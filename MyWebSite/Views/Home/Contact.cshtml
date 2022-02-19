@@ -11,6 +11,7 @@
 
 
 
+
 <div class="header" />
 
 
@@ -29,6 +30,7 @@
             <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
             <form id="contact-form" name="contact-form" method="post" enctype="multipart/form-data" action="Message">
                 @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 <!-- target="dummyframe" -->
                 <div class="row">
                     <div class="col-md-6">
@@ -71,8 +73,45 @@
                     </div>
                 </div>
             </form>
+
+            <!-- Google Capt Cha -->
+            <div>
+                <script type="text/javascript">
+                    var verifyCallback = function (response) {
+                        if (grecaptcha.getResponse() == "") {
+                            alert("You can't proceed!");
+                        } else {
+                            $('#contact-form-submit').removeClass('disabled');
+                        }
+                    };
+                    var onloadCallback = function () {
+                        widgetId1 = grecaptcha.render('example1', {
+                            'sitekey': '6LdE1IgeAAAAAARd-cTTK3LOL8frSfMsqOpYu75Q',
+                            'theme': 'light',
+                            'callback': verifyCallback,
+                            //'theme': 'dark'
+                        });
+                    };
+                </script>
+                <form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+                    <div id="example1"></div>
+                    <br>
+                </form>
+                <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+
+                </script>
+            </div>
+
+
+
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <style>
+                    a.disabled {
+                        pointer-events: none;
+                        cursor: default;
+                    }
+                </style>
+                <a id="contact-form-submit" class="btn btn-primary disabled" onclick="document.getElementById('contact-form').submit();">Send</a>
             </div>
             <div class="status"></div>
         </div>
@@ -153,3 +192,7 @@
 @section Scripts{
     <script src="~/js/Contact.js"></script>
 }
+
+
+
+@Html.Partial("_ValidationScriptsPartial")
