@@ -12,7 +12,7 @@
 
 
 
-
+<script src="~/js/PayPal.js"></script>
 
 
 
@@ -85,12 +85,20 @@
             </div>
             <div class="col-md-11">
                 <a class="btn btn-primary" type="button" href="#" style="display: @(Model.Price != 0.00m ? "none" : null);">Download</a>
-                <a class="btn btn-primary" type="button" href="#" style="display: @(Model.Price == 0.00m ? "none" : null);">Buy it</a>
+                <div style="display: @(Model.Price == 0.00m ? "none" : null);">
+                    <!-- Payment Container (Here loads payment UI) -->
+                    <div class="payment-window">
+
+                    </div>
+                    <a class="btn btn-primary" type="button" href="#" onclick="payPayPal(@Model.Price);">Buy it</a>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
+
+
 
 
 
