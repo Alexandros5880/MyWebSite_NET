@@ -85,12 +85,15 @@
             </div>
             <div class="col-md-11">
                 <a class="btn btn-primary" type="button" href="#" style="display: @(Model.Price != 0.00m ? "none" : null);">Download</a>
-                <div style="display: @(Model.Price == 0.00m ? "none" : null);">
+                <div style="display: @(Model.Price == 0.00m ? "none" : null); width: 100%;">
+                    <script>
+                        payPayPal(@Model.Price);
+                    </script>
                     <!-- Payment Container (Here loads payment UI) -->
-                    <div class="payment-window">
+                    <div class="payment-window" style="width: 100%; text-align: center;">
 
                     </div>
-                    <a class="btn btn-primary" type="button" href="#" onclick="payPayPal(@Model.Price);">Buy it</a>
+                    @*<a class="btn btn-primary" type="button" href="#" onclick="payPayPal(@Model.Price);">Buy it</a>*@
                 </div>
             </div>
         </div>

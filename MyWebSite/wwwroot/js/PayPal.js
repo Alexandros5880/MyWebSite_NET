@@ -15,36 +15,35 @@ function payPayPal(price) {
     }
 
     // Call PayPal Function
-    loadPayPalScript('https://www.paypal.com/sdk/js?client-id=AaPpA83J5kFL7jquL9JPPjBM6H7_Pc6DYw3h5TSUhlbpHxKJ5Au7S7XvjcZBzOjtuBXDLQZiIQ70f7yO&currency=EUR', () => {
+    var sundBoxClientID = "AWTbQEyt9Y82E59W6V35ecGdNtMb0C3GKg0BayPnzd_HsTy2V4YSfII2kATpIsberhyaOmKF2g0iPc_m";
+    var productionClientID = "ARNBDqppQ6ltJJyjRg8qeXV15Tm6cCCnGgiVsEfk9EqxQ9BlW4DHYE19tQRnQnTas19eC2Tz8--SZYxh";
+    loadPayPalScript("https://www.paypal.com/sdk/js?client-id=" + sundBoxClientID + "&currency=EUR", () => { // &commit=false&vault=true
         paypal.Buttons({
 
             // Setup Transaction
             createOrder(data, actions) {
                 return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            "currency_code": "EUR",
-                            "value": price.toString(),
-                        },
-                        //"payer": {
-                        //    "name": {
-                        //        "given_name": "John",
-                        //        "surname": "Doe"
-                        //    },
-                        //    "email_address": "customer@example.com",
-                        //    "payer_id": "QYR5Z8XDVJNXQ"
-                        //}
-                        //"shipping": {
-                        //    "address": {
-                        //        "address_line_1": "2211 N First Street",
-                        //        "address_line_2": "Building 17",
-                        //        "admin_area_2": "San Jose",
-                        //        "admin_area_1": "CA",
-                        //        "postal_code": "95131",
-                        //        "country_code": "US"
-                        //    }
-                        //}
-                    }],
+                    purchase_units: [
+                        {
+                            "amount": {
+                                "currency_code": "EUR",
+                                "value": price.toString(),
+                            }
+                            //"shipping": {
+                            //    "address": {
+                            //        "address_line_1": "2211 N First Street",
+                            //        "address_line_2": "Building 17",
+                            //        "admin_area_2": "San Jose",
+                            //        "admin_area_1": "CA",
+                            //        "postal_code": "95131",
+                            //        "country_code": "US",
+                            //        "state": "Attika",
+                            //        "phone": "6939277783",
+                            //        "recipient_name": "Alexandros Platanios"
+                            //    }
+                            //},
+                        }
+                    ]
                 });
             },
 
@@ -54,17 +53,50 @@ function payPayPal(price) {
 
             // On Payment Done
             onApprove(data, actions) {
+                //var order = JSON.parse(localStorage.getItem('order'));
+                //localStorage.removeItem('order');
+
+                // data.billingToken                   x
+                // data.facilitatorAccessToken         x
+                // data.orderID                        o
+                // data.payerID                        o
+                // data.paymentID                      x
                 
+                console.log("Approved");
+                console.log(data); // data.payer.name.given_name
+
+                // Create Order_Key
+                //var order = {
+                //    id: "",
+                //    paymentKey: "",
+                //    projectId: 1
+                //}
+                //$.ajax({
+                //    url: "",
+                //    type: "POST",
+                //    data: order,
+                //    success: function (response) {
+
+                //    },
+                //    error: function (error) {
+
+                //    }
+                //});
             },
 
             // On Payment Canceled
             onCancel(data, actions) {
-                
+                //var order = JSON.parse(localStorage.getItem('order'));
+                //localStorage.removeItem('order');
             },
 
             // On Transactions Error
             onError(err, actions) {
-                
+                console.log("Error:");
+                console.log(err);
+
+                //var order = JSON.parse(localStorage.getItem('order'));
+                //localStorage.removeItem('order');
             },
 
             onInit(data, actions) {
@@ -72,7 +104,7 @@ function payPayPal(price) {
             },
 
             onClick(data, actions) {
-                
+                //localStorage.setItem('order', JSON.stringify(order));
             },
 
             onShippingChange(data, actions) {
@@ -80,11 +112,24 @@ function payPayPal(price) {
             },
 
             style: {
+                //layout: 'vertical',
+                //color: 'blue',
+                //shape: 'rect',
+                //label: 'paypal',
+
                 layout: 'vertical',
-                color: 'blue',
+                //size: 'responsive',
+                color: 'silver',
                 shape: 'rect',
-                label: 'paypal'
+                label: 'checkout',
+                tagline: 'false',
+                fundingicons: 'true',
             },
+
+            funding: {
+                allowed: [paypal.FUNDING.CARD, paypal.FUNDING.CREDIT, paypal.FUNDING.ELV],
+                disallowed: []
+            }
 
         }).render('.payment-window');
 

@@ -82,6 +82,17 @@
                 });
             });
 
+            $("body").on('click', '.img-button', function () {
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: '/Home/_Details/' + id,
+                    type: 'GET',
+                    success: function (response) {
+                        $('.modal-details').html(response);
+                    }
+                });
+            });
+
 
 
             // Fill DataTable 'id=projects-table'
@@ -100,7 +111,7 @@
                                     <a  class="btn btn-light details-button" data-toggle="modal" data-target="#modal-fullscreen-xl" type="button" data-id="${"@item.ID"}">Details</a>
                                 </div>
                                 <div class="col-xl-6">
-                                    <a class="details-button" data-toggle="modal" data-target="#modal-fullscreen-xl" data-id="${"@item.ID"}">
+                                    <a class="img-button" data-toggle="modal" data-target="#modal-fullscreen-xl" data-id="${"@item.ID"}">
                                         <img class="card-img-top" src="${"@Url.Content(item.Images.ToList()[0].ImagePath)"}" alt="Card image cap">
                                     </a>
                                 </div>
