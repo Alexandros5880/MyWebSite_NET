@@ -12,7 +12,7 @@
 <div class="container">
     <h2>@ViewData["Title"]</h2>
     <hr />
-    <form id="account" method="post" style="width: 50%; margin: 0 auto;">
+    <form id="account-form" method="post" style="width: 50%; margin: 0 auto;">
         <h4>Use a local account to log in.</h4>
         <hr />
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -35,18 +35,42 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Log in</button>
+            <!-- Google CaptCha -->
+            <div>
+                <script type="text/javascript">
+                    var onloadCallback = function () {
+                        widgetId1 = grecaptcha.render('login-captcha', {
+                            'sitekey': '6LdE1IgeAAAAAARd-cTTK3LOL8frSfMsqOpYu75Q',
+                            'theme': 'light',
+                            'callback': function (response) {
+                                if (grecaptcha.getResponse() == "") {
+                                    $('#login-submit').addClass('disabled');
+                                } else {
+                                    $('#login-submit').removeClass('disabled');
+                                }
+                            },
+                            //'theme': 'dark'
+                        });
+                    };
+                </script>
+                <div id="login-captcha"></div>
+                <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+                </script>
+            </div>
+        </div>
+        <div class="form-group">
+            <a id="login-submit" type="submit" class="btn btn-primary disabled"  onclick="document.getElementById('account-form').submit();">Log in</a>
         </div>
         <div class="form-group">
             <p>
                 <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
             </p>
             @*<p>
-                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-            </p>*@
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                </p>*@
             @*<p>
-                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-            </p>*@
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                </p>*@
         </div>
     </form>
 </div>
@@ -55,5 +79,6 @@
 
 
 @section Scripts {
+
     <partial name="_ValidationScriptsPartial" />
 }

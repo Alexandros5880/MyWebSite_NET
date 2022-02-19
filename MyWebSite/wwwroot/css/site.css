@@ -71,6 +71,8 @@ button.accept-policy {
 
 
 
+
+
 html {
   position: relative;
   min-height: 100%;
@@ -128,4 +130,15 @@ html {
     .footer {
         padding-left: 11%;
     }
+}
+
+
+
+
+
+
+
+disabled {
+    pointer-events: none;
+    cursor: default;
 }

@@ -64,53 +64,39 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="md-form">
                             <textarea type="text" id="message" name="MyMessage" rows="2" class="form-control md-textarea"></textarea>
                             <label for="message">Your message</label>
                         </div>
-
                     </div>
                 </div>
             </form>
 
-            <!-- Google Capt Cha -->
+            <!-- Google CaptCha -->
             <div>
                 <script type="text/javascript">
-                    var verifyCallback = function (response) {
-                        if (grecaptcha.getResponse() == "") {
-                            alert("You can't proceed!");
-                        } else {
-                            $('#contact-form-submit').removeClass('disabled');
-                        }
-                    };
                     var onloadCallback = function () {
-                        widgetId1 = grecaptcha.render('example1', {
+                        widgetId1 = grecaptcha.render('contact-captcha', {
                             'sitekey': '6LdE1IgeAAAAAARd-cTTK3LOL8frSfMsqOpYu75Q',
                             'theme': 'light',
-                            'callback': verifyCallback,
+                            'callback': function (response) {
+                                if (grecaptcha.getResponse() == "") {
+                                    $('#contact-form-submit').addClass('disabled');
+                                } else {
+                                    $('#contact-form-submit').removeClass('disabled');
+                                }
+                            },
                             //'theme': 'dark'
                         });
                     };
                 </script>
-                <form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
-                    <div id="example1"></div>
-                    <br>
-                </form>
+                <div id="contact-captcha"></div>
                 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-
                 </script>
+                <br/>
             </div>
 
-
-
             <div class="text-center text-md-left">
-                <style>
-                    a.disabled {
-                        pointer-events: none;
-                        cursor: default;
-                    }
-                </style>
                 <a id="contact-form-submit" class="btn btn-primary disabled" onclick="document.getElementById('contact-form').submit();">Send</a>
             </div>
             <div class="status"></div>
