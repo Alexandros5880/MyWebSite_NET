@@ -120,23 +120,30 @@ namespace MyWebSite.Repositories
         [Obsolete]
         private void AddImagesSync(Project project)
         {
-            if (project == null)
-                throw new ArgumentNullException(nameof(project));
-            if (project.Files.Length == 0)
-                throw new ArgumentException(nameof(project.Files));
-            foreach (var file in project.Files)
+            try
             {
-                var image = new Image()
+                if (project == null)
+                    throw new ArgumentNullException(nameof(project));
+                if (project.Files.Length == 0)
+                    throw new ArgumentException(nameof(project.Files));
+                foreach (var file in project.Files)
                 {
-                    Project = project,
-                    CreatedDate = DateTime.Today,
-                    LastUpdateDate = DateTime.Today
-                };
-                var subPath = $"ProjectImages\\{project.Title}\\";
-                var paths = this._filesTools.CreateFile(file, subPath);
-                image.ImageFullPath = paths.Absolute;
-                image.ImagePath = paths.Path;
-                this._context.Images.Add(image);
+                    var image = new Image()
+                    {
+                        Project = project,
+                        CreatedDate = DateTime.Today,
+                        LastUpdateDate = DateTime.Today
+                    };
+                    var subPath = $"ProjectImages\\{project.Title}\\";
+                    var paths = this._filesTools.CreateFile(file, subPath);
+                    image.ImageFullPath = paths.Absolute;
+                    image.ImagePath = paths.Path;
+                    this._context.Images.Add(image);
+                }
+            }
+            catch (ArgumentException)
+            {
+
             }
         }
 
