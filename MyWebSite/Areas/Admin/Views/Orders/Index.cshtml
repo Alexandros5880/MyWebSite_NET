@@ -48,7 +48,7 @@
                 @:dataItem.push("@item.ID");
                 @:dataItem.push("@item.OrderID");
                 @:dataItem.push("@item.PayerID");
-                @:dataItem.push("@item.Project");
+                @:dataItem.push(`<a href="/Admin/Projects/Details/${@item.Project.ID}">@item.Project.Title</a>`);
                 @:dataItem.push("@item.CreatedDate");
                 @:dataItem.push("@item.LastUpdateDate");
                 <text>

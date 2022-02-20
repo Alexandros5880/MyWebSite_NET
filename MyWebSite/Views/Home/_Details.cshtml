@@ -107,7 +107,11 @@
                 <div id="pay-project" style="display: @(Model.Price == 0.00m ? "none" : "block"); width: 100%;">
                     <script>
                         $("#pay-project").ready(function () {
-                            payPayPal(@Model.Price);
+                            var model = {
+                                projectID: @Model.ID,
+                                price: @Model.Price
+                            }
+                            payPayPal(model);
                         });
                     </script>
                     <!-- Payment Container (Here loads payment UI) -->

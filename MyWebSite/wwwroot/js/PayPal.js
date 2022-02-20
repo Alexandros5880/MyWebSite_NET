@@ -1,7 +1,7 @@
 ﻿
 
 // PayPal
-function payPayPal(price) {
+function payPayPal(model) {
 
     // Create PayPall Function
     function loadPayPalScript(url, callback) {
@@ -34,7 +34,7 @@ function payPayPal(price) {
                         {
                             "amount": {
                                 "currency_code": "EUR",
-                                "value": price.toString(),
+                                "value": model.price.toString(),
                             }
                             //"shipping": {
                             //    "address": {
@@ -73,22 +73,24 @@ function payPayPal(price) {
                 console.log(data); // data.payer.name.given_name
 
                 // Create Order_Key
-                //var order = {
-                //    id: "",
-                //    paymentKey: "",
-                //    projectId: 1
-                //}
-                //$.ajax({
-                //    url: "",
-                //    type: "POST",
-                //    data: order,
-                //    success: function (response) {
-
-                //    },
-                //    error: function (error) {
-
-                //    }
-                //});
+                var order = {
+                    OrderID: data.orderID,
+                    PayerID: data.payerID,
+                    ProjectId: model.projectID,
+                }
+                $.ajax({
+                    url: "/Home/CreateOrder",
+                    type: "POST",
+                    data: order,
+                    success: function (response) {
+                        console.log(response);
+                        // TODO: Redirect to new Window to download the payed Project
+                        window.open('http://stackoverflow.com', '_blank');
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             },
 
             // On Payment Canceled

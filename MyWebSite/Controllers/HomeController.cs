@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
-using System;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Controllers
@@ -82,6 +81,20 @@ namespace MyWebSite.Controllers
 
             ViewBag.Contact = await this._repos.ContactData.GetActive();
             return View("Index", await this._repos.HomeData.GetActive());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateOrder(OrderViewModel order)
+        {
+            var orderDB = this._mapper.Map<Order>(order);
+            if(ModelState.IsValid)
+            {
+                order.Project = await this._repos.Projects.Get(order.ProjectId);
+                await this._repos.Orders.Add(orderDB);
+                await this._repos.Orders.Save();
+                return Ok(order);
+            }
+            return Ok("Not Valid");
         }
     }
 }
