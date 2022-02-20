@@ -20,6 +20,7 @@ namespace MyWebSite.HorizontalClasses
         public RolesRepository Roles { get; protected set; }
         public HomeDataRepository HomeData { get; protected set; }
         public ContactDataRepository ContactData { get; protected set; }
+        public OrderRepository Orders { get; protected set; }
 
         public RepositoriesHundler(
             IRepository<CV> cvRepo, 
@@ -29,7 +30,8 @@ namespace MyWebSite.HorizontalClasses
             IUsersRepository users,
             IRolesRepository roles,
             IRepository<HomeData> homeDataRepo,
-            IRepository<ContactData> contactDataRepo
+            IRepository<ContactData> contactDataRepo,
+            IRepository<Order> orders
             )
         {
             this.CVs = (CvRepository)cvRepo;
@@ -40,6 +42,7 @@ namespace MyWebSite.HorizontalClasses
             this.Roles = (RolesRepository)roles;
             this.HomeData = (HomeDataRepository)homeDataRepo;
             this.ContactData = (ContactDataRepository)contactDataRepo;
+            this.Orders = (OrderRepository)orders;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -56,6 +59,7 @@ namespace MyWebSite.HorizontalClasses
                     this.Roles.Dispose();
                     this.HomeData.Dispose();
                     this.ContactData.Dispose();
+                    this.Orders.Dispose();
                 }
                 disposedValue = true;
             }

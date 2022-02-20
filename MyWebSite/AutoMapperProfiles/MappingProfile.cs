@@ -19,6 +19,9 @@ namespace MyWebSite.AutoMapperProfiles
 
             CreateMap<Project, ProjectViewModel>();
             CreateMap<ProjectViewModel, Project>();
+
+            CreateMap<Order, OrderViewModel>();
+            CreateMap<OrderViewModel, Order>();
         }
     }
 }

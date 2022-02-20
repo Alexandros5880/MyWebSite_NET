@@ -10,7 +10,7 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220220175330_Initial")]
+    [Migration("20220220201644_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,7 +172,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "8dba596c-023a-4d2f-ab2d-c4a1d8c6a562",
+                            ConcurrencyStamp = "06d626dd-1712-4ed4-8ec2-8a83e4cff4e5",
                             CreatedDate = new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
@@ -261,7 +261,7 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e6a5bc03-8f99-47a5-a1fa-d9fd566fd5e9",
+                            ConcurrencyStamp = "93aecec0-0142-4948-9366-324180fbc615",
                             ConfingPassword = "-Platanios719791",
                             CreatedDate = new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             Email = "alexandrosplatanios15@gmail.com",
@@ -271,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGgPUKRWu9fiJFccL5Pe6XEDdpQ6iy0IcMpABOxgYiBfozIBKr+NQl/6WxICjxbXuA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENd7XXEFJRoJs3JJTZjHHKEZh/MvyHPiR8yj1DZ19T4tp4sWtAtIzjb2jfP1ik8NRw==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -1167,6 +1167,35 @@ namespace MyWebSite.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("MyWebSite.Data.Models.Order", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PayerID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("MyWebSite.Data.Models.Project", b =>
                 {
                     b.Property<int>("ID")
@@ -1342,9 +1371,22 @@ namespace MyWebSite.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("MyWebSite.Data.Models.Order", b =>
+                {
+                    b.HasOne("MyWebSite.Data.Models.Project", "Project")
+                        .WithMany("Orders")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("MyWebSite.Data.Models.Project", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

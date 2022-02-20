@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MyWebSite.Data.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Orders</h1>
+
+@*<p>
+    <a asp-controller="Orders" asp-action="Create">Create New</a>
+</p>*@
+
+
+
+
+
+
+<div class="table-responsive" style="margin-top: 5%;">
+    <table id="orders-table" width="100%" class="display" cellspacing="0"></table>
+    <br />
+    <br />
+</div>
+
+
+
+
+
+
+
+
+
+
+@section Scripts{
+
+
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            var dataSet = [];
+            var dataItem = [];
+
+            @foreach (var item in Model)
+            {
+                @:dataItem = [];
+                @:dataItem.push("@item.ID");
+                @:dataItem.push("@item.OrderID");
+                @:dataItem.push("@item.PayerID");
+                @:dataItem.push("@item.Project");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
+                <text>
+                    dataItem.push(`
+                        @*<a asp-controller="Orders" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |*@
+                        <a asp-controller="Orders" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    `);
+                </text>
+                @:dataSet.push(dataItem);
+            }
+
+
+            $('#orders-table').DataTable({
+                data: dataSet,
+                columns: [
+                    { title: "ID" },
+                    { title: "OrderID" },
+                    { title: "PayerID" },
+                    { title: "Project" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
+                    null
+                ],
+                "pagingType": "full_numbers",
+                scrollY: true,
+                scrollX: true,
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                "order": [0, 'asc'],
+                "stateSave": true,
+                //colReorder: {
+                //    realtime: false
+                //},
+                initComplete: function (settings) {
+                    $('#cvs-table').on('click', 'tbody td', function () {
+                        var dataTable = $('#cvs-table').dataTable();
+                        var tr = $(this).closest('tr');
+                        var index = dataTable.fnGetPosition(tr[0]);
+                        var id = dataTable.fnGetData(index)[0];
+                        window.location.href = '/Admin/CVs/Details/' + id;
+                    })
+                }
+            });
+
+
+
+
+        });
+
+    </script>
+
+}

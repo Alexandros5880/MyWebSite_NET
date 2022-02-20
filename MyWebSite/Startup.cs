@@ -80,6 +80,7 @@ namespace MyWebSite
             services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IRepository<HomeData>, HomeDataRepository>();
             services.AddScoped<IRepository<ContactData>, ContactDataRepository>();
+            services.AddScoped<IRepository<Order>, OrderRepository>();
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
             services.AddScoped<FilesTools>();

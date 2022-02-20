@@ -145,8 +145,13 @@ namespace MyWebSite.Areas.Admin.Controllers
         // POST: Admin/Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [System.Obsolete]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             await this._repos.Projects.Delete(id);
             await this._repos.Projects.Save();
             return RedirectToAction(nameof(Index));

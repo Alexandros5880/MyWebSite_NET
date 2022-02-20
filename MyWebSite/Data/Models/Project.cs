@@ -20,6 +20,7 @@ namespace MyWebSite.Data.Models
         public string DownloadLinkTar { get; set; }
         public string Link { get; set; }
         public string WebPage { get; set; }
+        public ICollection<Order> Orders { get; set; }
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(8,4)")]
         public decimal Price { get; set; }

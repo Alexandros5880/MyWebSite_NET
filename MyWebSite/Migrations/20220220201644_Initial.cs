@@ -284,15 +284,38 @@ namespace MyWebSite.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PayerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastUpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Orders_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "LastUpdateDate", "Name", "NormalizedName" },
-                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "8dba596c-023a-4d2f-ab2d-c4a1d8c6a562", new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "Admin" });
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "06d626dd-1712-4ed4-8ec2-8a83e4cff4e5", new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "ConfingPassword", "CreatedDate", "Email", "EmailConfirmed", "LastUpdateDate", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "e6a5bc03-8f99-47a5-a1fa-d9fd566fd5e9", "-Platanios719791", new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios15@gmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEGgPUKRWu9fiJFccL5Pe6XEDdpQ6iy0IcMpABOxgYiBfozIBKr+NQl/6WxICjxbXuA==", "6949277783", false, "", false, "alexandrosplatanios15@gmail.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "93aecec0-0142-4948-9366-324180fbc615", "-Platanios719791", new DateTime(2022, 2, 20, 0, 0, 0, 0, DateTimeKind.Local), "alexandrosplatanios15@gmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAENd7XXEFJRoJs3JJTZjHHKEZh/MvyHPiR8yj1DZ19T4tp4sWtAtIzjb2jfP1ik8NRw==", "6949277783", false, "", false, "alexandrosplatanios15@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "CVs",
@@ -467,6 +490,11 @@ namespace MyWebSite.Migrations
                 name: "IX_Images_ProjectId",
                 table: "Images",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_ProjectId",
+                table: "Orders",
+                column: "ProjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -500,6 +528,9 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.DropTable(
                 name: "Messages");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

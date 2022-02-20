@@ -19,8 +19,7 @@ namespace MyWebSite.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<HomeData> HomeData { get; set; }
         public DbSet<ContactData> ContactData { get; set; }
-        public DbSet<MyWebSiteRole> Roles { get; set; }
-        public DbSet<MyWebSiteUser> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         [Obsolete]
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHostingEnvironment _environment)
