@@ -52,12 +52,12 @@ namespace MyWebSite.Data
             builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", CVPath = "/CV/CV.pdf" });
 
             // Add Projects
-            builder.Entity<Project>().HasData(new Project() { ID = 1, Title="CBProject", Description= "Online School For Data Sience." });
+            builder.Entity<Project>().HasData(new Project() { ID = 1, Title="CBProject", Description= "Online School For Data Sience.", Price = 33.03m, DownloadLinkZip= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.zip", DownloadLinkTar= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.tar.gz" });
             builder.Entity<Project>().HasData(new Project() { ID = 2, Title = "Economy", Description = "Salesforce App To Manipulate Your Wallet." });
-            builder.Entity<Project>().HasData(new Project() { ID = 3, Title = "Eelementum", Description = "WordPress WebSite For KungFou School." });
-            builder.Entity<Project>().HasData(new Project() { ID = 4, Title = "Elevators Dashboard", Description = "A B&B App For Elevator Maintence Company." });
-            builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Managment", Description = "A B&B App For Elevator Maintence Company." });
-            builder.Entity<Project>().HasData(new Project() { ID = 6, Title = "IPCameras Dashboard", Description = "IPCameras Security Software." });
+            builder.Entity<Project>().HasData(new Project() { ID = 3, Title = "Eelementum", Description = "WordPress WebSite For KungFou School.", WebPage = "https://elementumartialfitness.com" });
+            builder.Entity<Project>().HasData(new Project() { ID = 4, Title = "Elevators Managment", Description = "A B&B App on Salesforce For Elevator Maintence Company.", DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz" });
+            builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Dashboard", Description = "A B&B App writen in Java For Elevator Maintence Company.", WebPage = "https://alexandrosplatanios15-dev-ed.lightning.force.com/lightning/n/Work_Managment_Desktop" });
+            builder.Entity<Project>().HasData(new Project() { ID = 6, Title = "IPCameras Dashboard", Description = "IPCameras Security Software.", DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz" });
             builder.Entity<Project>().HasData(new Project() { ID = 7, Title = "Remote Auto Moto", Description = "Update Your Old Vichecle To Full Software Update." });
 
             // Add Images
@@ -83,13 +83,13 @@ namespace MyWebSite.Data
             // ElevatorDash Project
             for (int i = 1; i < 15; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorDash/img_{i}.png", ProjectId = 4 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorManagment/img_{i}.png", ProjectId = 4 });
                 id++;
             }
             // Elevators Managment System Project
             for (int i = 1; i < 3; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorsManagmentSystem/img_{i}.png", ProjectId = 5 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorDashboard/img_{i}.png", ProjectId = 5 });
                 id++;
             }
             // IPCamerasDashboard Project

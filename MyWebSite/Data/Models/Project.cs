@@ -16,7 +16,11 @@ namespace MyWebSite.Data.Models
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
-        public string DownloadLink { get; set; }
+        public string DownloadLinkZip { get; set; }
+        public string DownloadLinkTar { get; set; }
+        public string Link { get; set; }
+        public string WebPage { get; set; }
+        [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(8,4)")]
         public decimal Price { get; set; }
         [DataType(DataType.DateTime)]

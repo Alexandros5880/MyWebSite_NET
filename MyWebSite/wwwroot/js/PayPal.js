@@ -11,6 +11,13 @@ function payPayPal(price) {
             s.setAttribute('src', url);
             s.onload = callback;
             document.head.insertBefore(s, document.head.firstElementChild);
+        } else {
+            el.remove();
+            const s = document.createElement('script');
+            s.setAttribute('src', url);
+            s.onload = callback;
+            document.head.insertBefore(s, document.head.firstElementChild);
+            $('.payment-window').html = '';
         }
     }
 
@@ -132,6 +139,8 @@ function payPayPal(price) {
             }
 
         }).render('.payment-window');
+
+       
 
     });
 }

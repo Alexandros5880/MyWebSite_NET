@@ -5,11 +5,9 @@
 
 
 
-@section styles {
-    <link rel="stylesheet" href="~/css/_Details.css" />
-}
 
-
+<link rel="stylesheet" href="~/css/IframeLoader.css" />
+<link rel="stylesheet" href="~/css/_Details.css" />
 
 
 <script src="~/js/PayPal.js"></script>
@@ -69,6 +67,17 @@
                 <p class="card-text">@Model.Description</p>
             </div>
         </div>
+        <br/>
+        <div class="row" style="display: @(Model.WebPage != null ? "block" : "none");">
+            <div class="col-md-12">
+
+                <div class="iframe-container">
+                    <div class="loader"></div>
+                    <iframe class="iframe" src="@Url.Content(Model.WebPage)" title="@Model.Title"></iframe>
+                </div>
+
+            </div>
+        </div>
         <br />
         <div class="row" style="display: @(Model.Price == 0.00m ? "none" : null);">
             <div class="col-md-1">
@@ -83,18 +92,32 @@
             <div class="col-md-1">
 
             </div>
-            <div class="col-md-11">
-                <a class="btn btn-primary" type="button" href="#" style="display: @(Model.Price != 0.00m ? "none" : null);">Download</a>
-                <div style="display: @(Model.Price == 0.00m ? "none" : null); width: 100%;">
+            <div class="col-md-11" style="display: @(( Model.DownloadLinkZip != null || Model.DownloadLinkTar != null) ? "block" : "none");">
+
+                <div style="display: @(Model.Price == 0.00m ? "flex" : "none");">
+                    <a class="btn btn-primary" type="button" href="@Url.Content(Model.DownloadLinkZip )" style="display: @(Model.DownloadLinkZip != null ? "block" : "none"); margin-left: 3%;">
+                        Download ZIP
+                    </a>
+                    <br/>
+                    <a class="btn btn-primary" type="button" href="@Url.Content(Model.DownloadLinkTar )" style="display: @(Model.DownloadLinkTar != null ? "block" : "none"); margin-left: 3%;">
+                        Download TAR
+                    </a>
+                </div>
+
+                <div id="pay-project" style="display: @(Model.Price == 0.00m ? "none" : "block"); width: 100%;">
                     <script>
-                        payPayPal(@Model.Price);
+                        $("#pay-project").ready(function () {
+                            payPayPal(@Model.Price);
+                        });
                     </script>
                     <!-- Payment Container (Here loads payment UI) -->
                     <div class="payment-window" style="width: 100%; text-align: center;">
 
                     </div>
+
                     @*<a class="btn btn-primary" type="button" href="#" onclick="payPayPal(@Model.Price);">Buy it</a>*@
                 </div>
+
             </div>
         </div>
     </div>
@@ -107,8 +130,5 @@
 
 
 
-
-
-@section Scripts{
-    <script src="~/js/_Details.js"></script>
-}
+<script src="~/js/IframeLoader.js"></script>
+<script src="~/js/_Details.js"></script>
