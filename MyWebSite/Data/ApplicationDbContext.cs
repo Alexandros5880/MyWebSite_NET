@@ -55,7 +55,7 @@ namespace MyWebSite.Data
             builder.Entity<Project>().HasData(new Project() { ID = 2, Title = "Economy", Description = "Salesforce App To Manipulate Your Wallet." });
             builder.Entity<Project>().HasData(new Project() { ID = 3, Title = "Eelementum", Description = "WordPress WebSite For KungFou School.", WebPage = "https://elementumartialfitness.com" });
             builder.Entity<Project>().HasData(new Project() { ID = 4, Title = "Elevators Managment", Description = "A B&B App on Salesforce For Elevator Maintence Company.", DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz" });
-            builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Dashboard", Description = "A B&B App writen in Java For Elevator Maintence Company.", WebPage = "https://alexandrosplatanios15-dev-ed.lightning.force.com/lightning/n/Work_Managment_Desktop" });
+            builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Dashboard", Description = "A B&B App writen in Java For Elevator Maintence Company."});
             builder.Entity<Project>().HasData(new Project() { ID = 6, Title = "IPCameras Dashboard", Description = "IPCameras Security Software.", DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz" });
             builder.Entity<Project>().HasData(new Project() { ID = 7, Title = "Remote Auto Moto", Description = "Update Your Old Vichecle To Full Software Update." });
 

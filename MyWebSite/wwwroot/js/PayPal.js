@@ -24,7 +24,7 @@ function payPayPal(model) {
     // Call PayPal Function
     var sundBoxClientID = "AWTbQEyt9Y82E59W6V35ecGdNtMb0C3GKg0BayPnzd_HsTy2V4YSfII2kATpIsberhyaOmKF2g0iPc_m";
     var productionClientID = "ARNBDqppQ6ltJJyjRg8qeXV15Tm6cCCnGgiVsEfk9EqxQ9BlW4DHYE19tQRnQnTas19eC2Tz8--SZYxh";
-    loadPayPalScript("https://www.paypal.com/sdk/js?client-id=" + sundBoxClientID + "&currency=EUR", () => { // &commit=false&vault=true
+    loadPayPalScript("https://www.paypal.com/sdk/js?client-id=" + sundBoxClientID + "&currency=EUR", () => { // &debug=true
         paypal.Buttons({
 
             // Setup Transaction
@@ -60,11 +60,12 @@ function payPayPal(model) {
 
             // On Payment Done
             onApprove(data, actions) {
+
                 //var order = JSON.parse(localStorage.getItem('order'));
                 //localStorage.removeItem('order');
 
                 // data.billingToken                   x
-                // data.facilitatorAccessToken         x
+                // data.facilitatorAccessToken         o
                 // data.orderID                        o
                 // data.payerID                        o
                 // data.paymentID                      x
@@ -83,11 +84,12 @@ function payPayPal(model) {
                     type: "POST",
                     data: order,
                     success: function (response) {
+                        console.log("Success");
                         console.log(response);
-                        // TODO: Redirect to new Window to download the payed Project
-                        window.open('http://stackoverflow.com', '_blank');
+                        window.open(response.url, '_blank');
                     },
                     error: function (error) {
+                        console.log("Error.");
                         console.log(error);
                     }
                 });

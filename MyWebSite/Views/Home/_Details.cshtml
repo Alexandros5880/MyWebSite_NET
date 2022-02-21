@@ -1,5 +1,5 @@
 ﻿@model MyWebSite.Data.Models.Project
-
+ 
 
 
 
@@ -67,8 +67,9 @@
                 <p class="card-text">@Model.Description</p>
             </div>
         </div>
-        <br/>
-        <div class="row" style="display: @(Model.WebPage != null ? "block" : "none");">
+        <br />
+        <!-- Web Site Of The Project -->
+        <div class="row" style="display: @(Model.WebPage != null && !Model.WebPage.Equals("") ? "block" : "none");">
             <div class="col-md-12">
 
                 <div class="iframe-container">
@@ -79,6 +80,31 @@
             </div>
         </div>
         <br />
+        <!-- Download Files Free -->
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-11">
+                <div>
+                    <a class="btn btn-primary" 
+                       type="button" 
+                       href="@Url.Content(Model.DownloadLinkZip)" 
+                       style="display: @(Model.DownloadLinkZip == null ? "none" : "block")!important; margin-left: 3%;">
+                        Download Zip
+                    </a>
+                    <br />
+                    <a class="btn btn-primary" 
+                       type="button" 
+                       href="@Url.Content(Model.DownloadLinkTar)" 
+                       style="display: @(Model.DownloadLinkTar == null ? "none" : "block")!important; margin-left: 3%;">
+                        Download Tar
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <!-- Price Of The Project -->
         <div class="row" style="display: @(Model.Price == 0.00m ? "none" : null);">
             <div class="col-md-1">
                 <h5>Price:</h5>
@@ -88,23 +114,10 @@
             </div>
         </div>
         <br />
-        <div class="row">
-            <div class="col-md-1">
-
-            </div>
-            <div class="col-md-11" style="display: @(( Model.DownloadLinkZip != null || Model.DownloadLinkTar != null) ? "block" : "none");">
-
-                <div style="display: @(Model.Price == 0.00m ? "flex" : "none");">
-                    <a class="btn btn-primary" type="button" href="@Url.Content(Model.DownloadLinkZip )" style="display: @(Model.DownloadLinkZip != null ? "block" : "none"); margin-left: 3%;">
-                        Download ZIP
-                    </a>
-                    <br/>
-                    <a class="btn btn-primary" type="button" href="@Url.Content(Model.DownloadLinkTar )" style="display: @(Model.DownloadLinkTar != null ? "block" : "none"); margin-left: 3%;">
-                        Download TAR
-                    </a>
-                </div>
-
-                <div id="pay-project" style="display: @(Model.Price == 0.00m ? "none" : "block"); width: 100%;">
+        <!-- Buy The Project -->
+        <div class="row" style="display: @(Model.Price == 0.00m ? "none" : "block");">
+            <div class="col-md-12">
+                <div id="pay-project" style="width: 100%;">
                     <script>
                         $("#pay-project").ready(function () {
                             var model = {
@@ -118,10 +131,8 @@
                     <div class="payment-window" style="width: 100%; text-align: center;">
 
                     </div>
-
                     @*<a class="btn btn-primary" type="button" href="#" onclick="payPayPal(@Model.Price);">Buy it</a>*@
                 </div>
-
             </div>
         </div>
     </div>

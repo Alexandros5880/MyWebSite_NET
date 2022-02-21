@@ -37,6 +37,14 @@ namespace MyWebSite.Controllers
         {
             ViewBag.Contact = await this._repos.ContactData.GetActive();
             var projects = await this._repos.Projects.GetAll();
+            foreach (var project in projects)
+            {
+                if (project.Price != 0.00m)
+                {
+                    project.DownloadLinkZip = null;
+                    project.DownloadLinkTar = null;
+                }
+            }
             return View(projects);
         }
 
@@ -53,6 +61,11 @@ namespace MyWebSite.Controllers
             var project = await this._repos.Projects.Get(id);
             if (project == null)
                 return BadRequest();
+            if (project.Price != 0.00m)
+            {
+                project.DownloadLinkZip = null;
+                project.DownloadLinkTar = null;
+            }
             return PartialView("_Details", project);
         }
 
@@ -92,6 +105,12 @@ namespace MyWebSite.Controllers
                 order.Project = await this._repos.Projects.Get(order.ProjectId);
                 await this._repos.Orders.Add(orderDB);
                 await this._repos.Orders.Save();
+                var returnOBJ = new
+                {
+                    url = "https://www.google.com",
+                    orderID = orderDB.ID,
+                    projectID = orderDB.ProjectId
+                };
                 return Ok(order);
             }
             return Ok("Not Valid");
