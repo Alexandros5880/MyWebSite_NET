@@ -31,7 +31,8 @@
                     }
                     else
                     {
-                        <li data-target="#myCarousel" data-slide-to="@{@i}"></li>
+                        
+        <li data-target="#myCarousel" data-slide-to="@{@i}"></li>
                     }
                 }
             </ol>
@@ -118,6 +119,11 @@
         <div class="row" style="display: @(Model.Price == 0.00m ? "none" : "block");">
             <div class="col-md-12">
                 <div id="pay-project" style="width: 100%;">
+
+                    @*<div id="download">
+
+                    </div>*@
+
                     <script>
                         $("#pay-project").ready(function () {
                             var model = {

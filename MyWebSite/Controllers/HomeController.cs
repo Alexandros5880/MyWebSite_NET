@@ -71,7 +71,7 @@ namespace MyWebSite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Message(MessageViewModel message)
+        public async Task<IActionResult> Message(MessageViewModel message)
         {
             var messageDB = this._mapper.Map<Message>(message);
             if (!ModelState.IsValid)
@@ -97,7 +97,8 @@ namespace MyWebSite.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateOrder(OrderViewModel order)
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateOrder(OrderViewModel order)
         {
             var orderDB = this._mapper.Map<Order>(order);
             if(ModelState.IsValid)
@@ -105,13 +106,8 @@ namespace MyWebSite.Controllers
                 order.Project = await this._repos.Projects.Get(order.ProjectId);
                 await this._repos.Orders.Add(orderDB);
                 await this._repos.Orders.Save();
-                var returnOBJ = new
-                {
-                    url = "https://www.google.com",
-                    orderID = orderDB.ID,
-                    projectID = orderDB.ProjectId
-                };
-                return Ok(order);
+                var orderViewModel = this._mapper.Map<OrderViewModel>(order);
+                return PartialView("_Download", orderViewModel);
             }
             return Ok("Not Valid");
         }

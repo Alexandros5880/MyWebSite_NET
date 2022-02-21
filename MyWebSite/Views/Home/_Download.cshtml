@@ -1,0 +1,52 @@
+﻿@model MyWebSite.Data.ViewModels.OrderViewModel
+
+<div class="container">
+
+    <div>
+        <h4>Your Product</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PayerID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PayerID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Project)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Project.Title)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <p>
+            <strong>OrderID</strong> is the key to downloading your project again.
+        </p>
+        <br />
+        <div style="display: flex;">
+            <a class="btn btn-primary"
+               type="button"
+               href="@Url.Content(Model.Project.DownloadLinkZip)"
+               style="display: @(Model.Project.DownloadLinkZip == null ? "none" : "block")!important; margin-left: 3%;">
+                Download Zip
+            </a>
+            <a class="btn btn-primary"
+               type="button"
+               href="@Url.Content(Model.Project.DownloadLinkTar)"
+               style="        display: @(Model.Project.DownloadLinkTar == null ? "none" : "block") !important;
+        margin-left: 3%;
+">
+                Download Tar
+            </a>
+        </div>
+    </div>
+</div>
+

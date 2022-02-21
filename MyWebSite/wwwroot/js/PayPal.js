@@ -69,9 +69,6 @@ function payPayPal(model) {
                 // data.orderID                        o
                 // data.payerID                        o
                 // data.paymentID                      x
-                
-                console.log("Approved");
-                console.log(data); // data.payer.name.given_name
 
                 // Create Order_Key
                 var order = {
@@ -82,17 +79,20 @@ function payPayPal(model) {
                 $.ajax({
                     url: "/Home/CreateOrder",
                     type: "POST",
+                    dataType: 'html',
                     data: order,
                     success: function (response) {
-                        console.log("Success");
-                        console.log(response);
-                        window.open(response.url, '_blank');
+                        $('#download').css('width', '100%');
+                        $('#download').css('height', '33%');
+                        $('#pay-project').html(response);
                     },
                     error: function (error) {
                         console.log("Error.");
                         console.log(error);
                     }
                 });
+
+
             },
 
             // On Payment Canceled

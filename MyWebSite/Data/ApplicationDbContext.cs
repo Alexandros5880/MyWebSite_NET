@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Data.Models;
 using System;
+using MyWebSite.Data.ViewModels;
 
 namespace MyWebSite.Data
 {
@@ -177,6 +178,8 @@ namespace MyWebSite.Data
             });
 
         }
+
+        public DbSet<MyWebSite.Data.ViewModels.OrderViewModel> OrderViewModel { get; set; }
 
     }
 }
