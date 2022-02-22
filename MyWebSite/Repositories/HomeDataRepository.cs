@@ -28,7 +28,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.CreatedDate = DateTime.Today;
+            entity.CreatedDate = DateTime.Now;
             Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
             entity.ImageFullPath = imagePaths.Absolute;
             entity.ImagePath = imagePaths.Path;
@@ -92,7 +92,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.LastUpdateDate = DateTime.Today;
+            entity.LastUpdateDate = DateTime.Now;
             if (entity.File != null)
             {
                 Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");

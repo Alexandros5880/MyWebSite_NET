@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.ViewModels
 {
@@ -15,5 +17,11 @@ namespace MyWebSite.Data.ViewModels
         public string Subject { get; set; }
         [Required]
         public string MyMessage { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
     }
 }

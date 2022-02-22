@@ -37,6 +37,18 @@
                 <dd class="col-lg-9">
                     @Html.DisplayFor(model => model.Price)
                 </dd>
+                <dt class="col-lg-5">
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+                <dd class="col-lg-7">
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+                <dt class="col-lg-5">
+                    @Html.DisplayNameFor(model => model.LastUpdateDate)
+                </dt>
+                <dd class="col-lg-7">
+                    @Html.DisplayFor(model => model.LastUpdateDate)
+                </dd>
             </dl>
             <div style="margin-bottom: 3%;">
                 <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
@@ -44,7 +56,7 @@
             </div>
         </div>
         <div class="col-lg-7">
-            <div class="row">
+            <div class="row overflow-auto" style="height: 500px;">
                 @foreach (var img in Model.Images)
                 {
                     <div class="col-lg-4" style="margin-bottom: 3%;">

@@ -73,6 +73,8 @@
                 @:dataItem.push("@item.Description");
                 @:dataItem.push("@item.DownloadLink");
                 @:dataItem.push("@(String.Format("{0:0.00}", item.Price))");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
                 <text>
                     dataItem.push(`
                         <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -92,6 +94,8 @@
                     { title: "Description" },
                     { title: "Download Link" },
                     { title: "Price" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",

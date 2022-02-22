@@ -51,9 +51,11 @@
                 @:dataItem.push("@item.Email");
                 @:dataItem.push("@item.Subject.Substring(0, 11)");
                 @:dataItem.push("@item.MyMessage.Substring(0, 11)");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
                 <text>
                     dataItem.push(`
-                        <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
+                        <a asp-controller="Messages" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                         <a asp-controller="Messages" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     `);
                 </text>
@@ -70,6 +72,8 @@
                     { title: "Email" },
                     { title: "Subject" },
                     { title: "Message" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",
@@ -95,7 +99,7 @@
 
 
 
-            
+
 
         });
 

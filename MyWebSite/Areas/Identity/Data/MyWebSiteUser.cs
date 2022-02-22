@@ -23,7 +23,7 @@ namespace MyWebSite.Areas.Identity.Data
         public DateTime LastUpdateDate { get; set; }
         public MyWebSiteUser()
         {
-            this.CreatedDate = DateTime.Today;
+            this.CreatedDate = DateTime.Now;
         }
     }
 }

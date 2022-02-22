@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Identity.Data;
 using MyWebSite.Data.Models;
 using System;
-using MyWebSite.Data.ViewModels;
 
 namespace MyWebSite.Data
 {
@@ -121,7 +120,7 @@ namespace MyWebSite.Data
                     ImagePath = subPath,
                     ImageFullPath = path,
                     IsActive = true,
-                    CreatedDate = DateTime.Today
+                    CreatedDate = DateTime.Now
                 }
             );
             // Create Contact Data
@@ -140,7 +139,7 @@ namespace MyWebSite.Data
                     LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
                     FullName = "Alexandros Platanios",
                     IsActive = true,
-                    CreatedDate = DateTime.Today
+                    CreatedDate = DateTime.Now
                 }
             );
 
@@ -178,8 +177,6 @@ namespace MyWebSite.Data
             });
 
         }
-
-        public DbSet<MyWebSite.Data.ViewModels.OrderViewModel> OrderViewModel { get; set; }
 
     }
 }

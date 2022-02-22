@@ -32,7 +32,8 @@ namespace MyWebSite.Data.Models
         public DateTime LastUpdateDate { get; set; }
         public Project()
         {
-            this.CreatedDate = DateTime.Today;
+            this.CreatedDate = DateTime.Now;
+            this.LastUpdateDate = DateTime.Now;
         }
     }
 }

@@ -44,6 +44,8 @@
                 @:dataItem.push("@item.Name");
                 @:dataItem.push("@item.NormalizedName");
                 @:dataItem.push("@item.ConcurrencyStamp");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
                 <text>
                     dataItem.push(`
                         <a asp-controller="MyWebSiteRoles" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -61,6 +63,8 @@
                     { title: "Name" },
                     { title: "Normalized Name" },
                     { title: "Concurrency Stamp" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",
@@ -85,7 +89,7 @@
             });
 
 
-            
+
 
         });
 

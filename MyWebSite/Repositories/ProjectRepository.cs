@@ -27,7 +27,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.CreatedDate = DateTime.Today;
+            entity.CreatedDate = DateTime.Now;
             await this.AddImages(entity);
             await this._context.Projects.AddAsync(entity);
             return entity;
@@ -83,7 +83,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.LastUpdateDate = DateTime.Today;
+            entity.LastUpdateDate = DateTime.Now;
             this.AddImagesSync(entity);
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
@@ -106,8 +106,8 @@ namespace MyWebSite.Repositories
                 var image = new Image()
                 {
                     Project = project,
-                    CreatedDate = DateTime.Today,
-                    LastUpdateDate = DateTime.Today
+                    CreatedDate = DateTime.Now,
+                    LastUpdateDate = DateTime.Now
                 };
                 var subPath = $"ProjectImages\\{project.Title}\\";
                 var paths = this._filesTools.CreateFile(file, subPath);
@@ -131,8 +131,8 @@ namespace MyWebSite.Repositories
                     var image = new Image()
                     {
                         Project = project,
-                        CreatedDate = DateTime.Today,
-                        LastUpdateDate = DateTime.Today
+                        CreatedDate = DateTime.Now,
+                        LastUpdateDate = DateTime.Now
                     };
                     var subPath = $"ProjectImages\\{project.Title}\\";
                     var paths = this._filesTools.CreateFile(file, subPath);

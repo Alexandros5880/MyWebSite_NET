@@ -50,7 +50,9 @@
                 var path = Url.Content(item.CVPath.Replace("\\", "/"));
                 @:dataItem.push(`<embed src='@path' height='200' width='200'></embed>`);
                 @:dataItem.push("@item.Description");
-            @:dataItem.push("@item.IsActive");
+                @:dataItem.push("@item.IsActive");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
                 <text>
                     dataItem.push(`
                         <a asp-controller="Cvs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -68,6 +70,8 @@
                     { title: "Path" },
                     { title: "Description" },
                     { title: "IsActive" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",

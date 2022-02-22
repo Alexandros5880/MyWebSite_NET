@@ -23,7 +23,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.CreatedDate = DateTime.Today;
+            entity.CreatedDate = DateTime.Now;
             await this._context.Orders.AddAsync(entity);
             return entity;
         }
@@ -70,7 +70,7 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            entity.LastUpdateDate = DateTime.Today;
+            entity.LastUpdateDate = DateTime.Now;
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }

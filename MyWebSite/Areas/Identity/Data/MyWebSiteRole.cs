@@ -16,7 +16,7 @@ namespace MyWebSite.Areas.Identity.Data
         public DateTime LastUpdateDate { get; set; }
         public MyWebSiteRole()
         {
-            this.CreatedDate = DateTime.Today;
+            this.CreatedDate = DateTime.Now;
         }
     }
 }

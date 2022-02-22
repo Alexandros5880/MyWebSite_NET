@@ -46,6 +46,8 @@
                 @:dataItem.push("@item.ID");
                 @:dataItem.push(`<img src="@Url.Content(item.ImagePath)" width="133"/>`);
                 @:dataItem.push("@item.Project.Title");
+                @:dataItem.push("@item.CreatedDate");
+                @:dataItem.push("@item.LastUpdateDate");
                 <text>
                     dataItem.push(`
                         <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -62,6 +64,8 @@
                     { title: "ID" },
                     { title: "Image Path" },
                     { title: "Project Title" },
+                    { title: "CreatedDate" },
+                    { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",
@@ -86,7 +90,7 @@
             });
 
 
-            
+
 
         });
 

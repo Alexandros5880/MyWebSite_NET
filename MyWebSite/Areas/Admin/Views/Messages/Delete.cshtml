@@ -41,6 +41,18 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MyMessage)
         </dd>
+        <dt class="col-lg-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class="col-lg-2">
+            @Html.DisplayNameFor(model => model.LastUpdateDate)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.LastUpdateDate)
+        </dd>
     </dl>
 
     <form asp-action="Delete">

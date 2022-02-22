@@ -1,6 +1,9 @@
 ﻿
 
 using MyWebSite.Data.Models;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Data.ViewModels
 {
@@ -10,5 +13,11 @@ namespace MyWebSite.Data.ViewModels
         public string ImagePath { get; set; }
         public int ProjectId { get; set; }
         public Project Project { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdateDate { get; set; }
     }
 }

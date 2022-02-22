@@ -13,12 +13,12 @@
     <div class="file-field">
         <dl>
             <dt>
-                @Html.DisplayName("PDF")
+                
             </dt>
             <dd>
-                <embed id="pdf-viewer" src="@Url.Content(Model.CVPath)" height="500" width="500"></embed>
+                <embed id="pdf-viewer" src="@Url.Content(Model.CVPath)" style="width: 100%; height: 777px;"></embed>
             </dd>
-            <hr/>
+            <hr />
             <dt>
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
@@ -30,6 +30,18 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.IsActive)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastUpdateDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastUpdateDate)
             </dd>
         </dl>
     </div>

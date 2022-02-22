@@ -39,6 +39,22 @@
                 <span asp-validation-for="MyMessage" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <dl class="row">
+                    <dt class="col-lg-2">
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </dt>
+                    <dd class="col-lg-10">
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+                    <dt class="col-lg-2">
+                        @Html.DisplayNameFor(model => model.LastUpdateDate)
+                    </dt>
+                    <dd class="col-lg-10">
+                        @Html.DisplayFor(model => model.LastUpdateDate)
+                    </dd>
+                </dl>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

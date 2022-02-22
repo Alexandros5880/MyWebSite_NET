@@ -100,37 +100,36 @@ html {
 
 
 
-
+/* Footer */
 .fa-facebook {
     color: #0078FF;
 }
-
 .fa-instagram {
     color: #B900FF;
 }
-
 .fa-linkedin {
     color: #1DE7FF;
 }
-
 .social:hover {
     opacity: 0.4 !important;
 }
-
 .footer {
     position: absolute;
-    bottom: 0;
+    bottom: 3%;
     width: 100%;
     text-align: center;
     min-width: 541px;
-    /*background-color: green;*/
 }
-
+.subfooter {
+    margin-left: 6%;
+}
 @media screen and (max-height: 990px) {
     .footer {
         padding-left: 11%;
     }
 }
+/* Footer */
+
 
 
 
