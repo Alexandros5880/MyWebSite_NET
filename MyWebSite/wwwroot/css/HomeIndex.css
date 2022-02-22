@@ -2,6 +2,10 @@
     min-width: 539px;
 }
 
+.home-paragraph {
+    font-style: italic;
+}
+
 img.header-image {
     border-radius: 50%;
     margin-top: 23%;

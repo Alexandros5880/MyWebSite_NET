@@ -51,13 +51,86 @@ namespace MyWebSite.Data
             builder.Entity<CV>().HasData(new CV() { ID = 1, IsActive = true, Description = "My CV", CVPath = "/CV/CV.pdf" });
 
             // Add Projects
-            builder.Entity<Project>().HasData(new Project() { ID = 1, Title="CBProject", Description= "Online School For Data Sience.", Price = 33.03m, DownloadLinkZip= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.zip", DownloadLinkTar= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.tar.gz" });
-            builder.Entity<Project>().HasData(new Project() { ID = 2, Title = "Economy", Description = "Salesforce App To Manipulate Your Wallet." });
-            builder.Entity<Project>().HasData(new Project() { ID = 3, Title = "Eelementum", Description = "WordPress WebSite For KungFou School.", WebPage = "https://elementumartialfitness.com" });
-            builder.Entity<Project>().HasData(new Project() { ID = 4, Title = "Elevators Managment", Description = "A B&B App on Salesforce For Elevator Maintence Company.", DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz" });
-            builder.Entity<Project>().HasData(new Project() { ID = 5, Title = "Elevators Dashboard", Description = "A B&B App writen in Java For Elevator Maintence Company."});
-            builder.Entity<Project>().HasData(new Project() { ID = 6, Title = "IPCameras Dashboard", Description = "IPCameras Security Software.", DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip", DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz" });
-            builder.Entity<Project>().HasData(new Project() { ID = 7, Title = "Remote Auto Moto", Description = "Update Your Old Vichecle To Full Software Update." });
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 1, 
+                    Title="CBProject", 
+                    Description= "CBProject * ASP .NET FRAMEWORK * 2020/2021 * Online Course Platform:" +
+                                 "The customer can watch video tutorials or read ebooks.", 
+                    Price = 5.00m, 
+                    DownloadLinkZip= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.zip", 
+                    DownloadLinkTar= "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.tar.gz" 
+                }
+            );
+            builder.Entity<Project>().HasData(
+                new Project()
+                {
+                    ID = 2,
+                    Title = "IPCameras Dashboard",
+                    Description = "IPCameras Dashborad * .NET CORE (WPF) * 2018/2019 * ESP32-CAM Dashboard:" +
+                                   "Support all model esp32 and a lot of markets ip cameras.",
+                    Price = 5.00m,
+                    DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip",
+                    DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz"
+                }
+            );
+            builder.Entity<Project>().HasData(
+                new Project()
+                {
+                    ID = 3,
+                    Title = "IPCameras Chip Software * ESP32 * C++:",
+                    Description = "IPCameras Chip Software * ESP32 * C++:" +
+                                  "Frace Detaction + Face Recognition + Alerts + Effects",
+                    DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.zip",
+                    DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.tar.gz"
+                }
+            );
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 4, 
+                    Title = "Economy",
+                    Description = "Salesforce App To Manipulate Your Wallet." 
+                }
+            );
+
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 5, 
+                    Title = "Eelementum", 
+                    Description = "WordPress WebSite For KungFou School.", 
+                    WebPage = "https://elementumartialfitness.com" 
+                }
+            );
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 6, 
+                    Title = "Elevators Managment", 
+                    Description = "A B&B App on Salesforce For Elevator Maintence Company.", 
+                    DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip", 
+                    DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz" 
+                }
+            );
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 7, 
+                    Title = "Elevators Dashboard", 
+                    Description = "A B&B App writen in Java For Elevator Maintence Company."
+                }
+            );
+            
+            builder.Entity<Project>().HasData(
+                new Project() 
+                { 
+                    ID = 8, 
+                    Title = "Remote Auto Moto", 
+                    Description = "Update Your Old Vichecle To Full Software Update." 
+                }
+            );
 
             // Add Images
             int id = 1;
@@ -67,40 +140,46 @@ namespace MyWebSite.Data
                 builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/CBProject/img_{i}.png", ProjectId = 1 });
                 id++;
             }
+            // IPCamerasDashboard Project
+            for (int i = 1; i < 16; i++)
+            {
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/IPCamerasDashboard/img_{i}.png", ProjectId = 2 });
+                id++;
+            }
+            // IPCameras Chip Software * ESP32 * C++
+            for (int i = 1; i < 7; i++)
+            {
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/IPCamerasESP32/img_{i}.jpg", ProjectId = 3 });
+                id++;
+            }
             // Economy Project
             for (int i = 1; i < 8; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Economy/img_{i}.png", ProjectId = 2 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Economy/img_{i}.png", ProjectId = 4 });
                 id++;
             }
             // Elementum Project
             for (int i = 1; i < 13; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Elementum/img_{i}.png", ProjectId = 3 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/Elementum/img_{i}.png", ProjectId = 5 });
                 id++;
             }
             // ElevatorDash Project
             for (int i = 1; i < 15; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorManagment/img_{i}.png", ProjectId = 4 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorManagment/img_{i}.png", ProjectId = 6 });
                 id++;
             }
             // Elevators Managment System Project
             for (int i = 1; i < 3; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorDashboard/img_{i}.png", ProjectId = 5 });
-                id++;
-            }
-            // IPCamerasDashboard Project
-            for (int i = 1; i < 16; i++)
-            {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/IPCamerasDashboard/img_{i}.png", ProjectId = 6 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/ElevatorDashboard/img_{i}.png", ProjectId = 7 });
                 id++;
             }
             // RemoteAutoMoto Project
             for (int i = 1; i < 3 ; i++)
             {
-                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/RemoteAutoMoto/img_{i}.png", ProjectId = 7 });
+                builder.Entity<Image>().HasData(new Image() { ID = id, ImagePath = $"~/ProjectImages/RemoteAutoMoto/img_{i}.png", ProjectId = 8 });
                 id++;
             }
 
@@ -116,7 +195,10 @@ namespace MyWebSite.Data
                     ID = 1,
                     Title = "Hello",
                     SubTitle = "A bot about me",
-                    Paragraph = "I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.",
+                    Paragraph = "The first book I started with was C++ at the age of 15, but only as a hobby. " +
+                                "When I was 18 I started working at a local gym as an instructor and " +
+                                "I stayed in that field for 7 years. Right after that a friend of mine that is a programmer saw a code " +
+                                "I made for my motorcycle and encouraged me to pursue programming.",
                     ImagePath = subPath,
                     ImageFullPath = path,
                     IsActive = true,
@@ -129,7 +211,7 @@ namespace MyWebSite.Data
                 {
                     ID = 1,
                     Title = "Contact us",
-                    SubTitle = "Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.",
+                    SubTitle = "Do you have any questions? Please do not hesitate to contact ME directly. I'll come back to you within a matter of hours to help you.",
                     AddressMap = "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed",
                     Address = "Fleming 14, Voula, 16673, Greece",
                     Phone = "+30-6949277783",
