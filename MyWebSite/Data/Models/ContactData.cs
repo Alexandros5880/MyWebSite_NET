@@ -10,8 +10,6 @@ namespace MyWebSite.Data.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }
-        [DataType(DataType.Html)]
-        public string AddressMap { get; set; }
         public string Address { get; set; }
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }

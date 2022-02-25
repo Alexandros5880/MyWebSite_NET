@@ -22,6 +22,20 @@ img.header-image {
     padding-top: 5%;
 }
 
+
+/* Triangles links */
+.link {
+    fill-opacity: 1;
+}
+.link:hover {
+    fill-opacity: 0.4;
+}
+/*.link:hover .link-white:not(:hover) {
+    fill: #17539B;
+}*/
+/* Triangles links */
+
+
 @media only screen and (max-width: 1207px) {
     .title-div {
         padding-left: 3%;

@@ -211,8 +211,7 @@ namespace MyWebSite.Data
                 {
                     ID = 1,
                     Title = "Contact us",
-                    SubTitle = "Do you have any questions? Please do not hesitate to contact ME directly. I'll come back to you within a matter of hours to help you.",
-                    AddressMap = "https://maps.google.com/maps?q=Greece%20Voula%20Fleming%2014%2016673&t=&z=17&ie=UTF8&iwloc=&output=embed",
+                    SubTitle = "Do you have any questions? Please do not hesitate to contact ME directly.I'll come back to you within a matter of hours to help you.",
                     Address = "Fleming 14, Voula, 16673, Greece",
                     Phone = "+30-6949277783",
                     Email = "alexandrosplatanios28@gmail.com",
