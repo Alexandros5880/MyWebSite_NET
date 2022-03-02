@@ -15,10 +15,8 @@ namespace MyWebSite.Data.Models
         [Required]
         public Project Project { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime CreatedDate { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime LastUpdateDate { get; set; }
         public Order()
         {

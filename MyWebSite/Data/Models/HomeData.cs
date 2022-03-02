@@ -19,10 +19,8 @@ namespace MyWebSite.Data.Models
         public string ImageFullPath { get; set; }
         public bool IsActive { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime CreatedDate { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime LastUpdateDate { get; set; }
         public HomeData()
         {

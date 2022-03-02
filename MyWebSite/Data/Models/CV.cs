@@ -16,10 +16,8 @@ namespace MyWebSite.Data.Models
         public string CVFullPath { get; set; }
         public string Description { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime CreatedDate { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime LastUpdateDate { get; set; }
         public CV()
         {

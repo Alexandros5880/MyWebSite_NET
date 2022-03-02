@@ -21,10 +21,8 @@ namespace MyWebSite.Data.Models
         [Required]
         public string MyMessage { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime CreatedDate { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime LastUpdateDate { get; set; }
         public Message()
         {

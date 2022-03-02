@@ -25,10 +25,8 @@ namespace MyWebSite.Data.Models
         [Column(TypeName = "decimal(8,4)")]
         public decimal Price { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime CreatedDate { get; set; }
         [DataType(DataType.DateTime)]
-        [Column(TypeName = "datetime2")]
         public DateTime LastUpdateDate { get; set; }
         public Project()
         {
