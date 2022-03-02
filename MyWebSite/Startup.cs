@@ -37,7 +37,7 @@ namespace MyWebSite
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("ProstreSQLContext")));
+                    Configuration.GetConnectionString("ProstreSQLContextHerocu")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
