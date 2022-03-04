@@ -15,13 +15,20 @@ namespace MyWebSite
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    var port = Environment.GetEnvironmentVariable("PORT");
-                    if ( port != null )
+                    try
                     {
-                        webBuilder.UseStartup<Startup>()
-                        .UseUrls("http://*:" + port);
+                        var port = Environment.GetEnvironmentVariable("PORT");
+                        if (port != null)
+                        {
+                            webBuilder.UseStartup<Startup>()
+                            .UseUrls("http://*:" + port);
+                        }
+                        else
+                        {
+                            webBuilder.UseStartup<Startup>();
+                        }
                     }
-                    else
+                    catch(Exception)
                     {
                         webBuilder.UseStartup<Startup>();
                     }
