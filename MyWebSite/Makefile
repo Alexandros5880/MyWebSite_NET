@@ -1,22 +1,19 @@
-﻿CONTAINER_NAME=MyWebSite
-IMAGE_NAME=alexandrosplatanios/mywebsite:last
-PORT=5000
+﻿MAKE = TEST
 
+PORT = 8000
+CONTAINER_NAME = MyWebSite
+IMAGE_NAME = alexandrosplatanios/mywebsite:last
 
 delete:
-	docker stop ${CONTAINER_NAME}
-	docker image rm ${IMAGE_NAME} --force
-	docker rm ${CONTAINER_NAME}
-
-buildd: delete
-	docker build -t ${IMAGE_NAME} .
-	docker run -d -p ${PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}
+	docker stop $(CONTAINER_NAME)
+	docker image rm $(IMAGE_NAME) --force
+	docker rm $(CONTAINER_NAME)
 
 
 build:
-	docker build -t ${IMAGE_NAME} .
-	docker run -d -p ${PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}
+	docker-compose build
 
+run:
+	docker-compose up
 
-
-
+all: build run

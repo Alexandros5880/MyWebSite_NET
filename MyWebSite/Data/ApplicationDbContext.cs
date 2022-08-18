@@ -195,10 +195,13 @@ namespace MyWebSite.Data
                     ID = 1,
                     Title = "Hello",
                     SubTitle = "A bot about me",
-                    Paragraph = "The first book I started with was C++ at the age of 15, but only as a hobby. " +
-                                "When I was 18 I started working at a local gym as an instructor and " +
-                                "I stayed in that field for 7 years. Right after that a friend of mine that is a programmer saw a code " +
-                                "I made for my motorcycle and encouraged me to pursue programming.",
+                    Paragraph = @"
+                        The first book I started with was C++ at the age of 15 influenced by my brother 
+                        'Anthony Platanios', but only as a hobby. When I was 18 I started working at a 
+                        local gym as an instructor and I stayed in that field for 7 years. 
+                        Right after that a friend of mine that is a programmer saw a code I made for my 
+                        motorcycle and encouraged me to pursue programming.
+                    ",
                     ImagePath = subPath,
                     ImageFullPath = path,
                     IsActive = true,

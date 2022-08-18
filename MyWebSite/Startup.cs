@@ -31,13 +31,9 @@ namespace MyWebSite
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(
-                    Configuration.GetConnectionString("ProstreSQLContextHerocu")));
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DockerSql")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

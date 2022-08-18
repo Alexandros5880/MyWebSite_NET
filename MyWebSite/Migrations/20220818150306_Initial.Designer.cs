@@ -2,41 +2,41 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebSite.Data;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220304200159_Initial")]
+    [Migration("20220818150306_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.12")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -49,18 +49,18 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -73,18 +73,18 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -96,10 +96,10 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -118,18 +118,18 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -139,31 +139,32 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Areas.Identity.Data.MyWebSiteRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
 
@@ -171,8 +172,8 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "53805357-ab16-430f-ab57-720443b1a1c4",
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 292, DateTimeKind.Local).AddTicks(9263),
+                            ConcurrencyStamp = "32f22f4c-4ae8-4c92-9723-fde902b65687",
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 971, DateTimeKind.Local).AddTicks(4215),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "Admin"
@@ -182,66 +183,66 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Areas.Identity.Data.MyWebSiteUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConfingPassword")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
@@ -250,7 +251,8 @@ namespace MyWebSite.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
 
@@ -259,9 +261,9 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fa604f4c-eb3a-4315-8c79-a8eaf1d58d5c",
+                            ConcurrencyStamp = "27dce381-6e7b-4d46-9530-a12936976aff",
                             ConfingPassword = "-Platanios719791",
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 293, DateTimeKind.Local).AddTicks(3549),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 971, DateTimeKind.Local).AddTicks(5934),
                             Email = "alexandrosplatanios15@gmail.com",
                             EmailConfirmed = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -269,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAECgfDCmsCECNwIrVO1+wUnZ10SNXHy05Pg3jm/lFte86kyK4de5UkbFfVTrr0zap7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHcL6d2C5GXce5mwRHKFqcuuvtSrUr2DnXhcVyrsppx+TJpBpLBWA7As/X6zaa/9JA==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -282,26 +284,26 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CVFullPath")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CVPath")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -312,10 +314,10 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             CVPath = "/CV/CV.pdf",
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 285, DateTimeKind.Local).AddTicks(2049),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 962, DateTimeKind.Local).AddTicks(9629),
                             Description = "My CV",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 288, DateTimeKind.Local).AddTicks(6257)
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 966, DateTimeKind.Local).AddTicks(9113)
                         });
                 });
 
@@ -323,44 +325,44 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacebookLink")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InstagramLink")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LinkedLin")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubTitle")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -371,13 +373,13 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             Address = "Fleming 14, Voula, 16673, Greece",
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 292, DateTimeKind.Local).AddTicks(3276),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 971, DateTimeKind.Local).AddTicks(1933),
                             Email = "alexandrosplatanios28@gmail.com",
                             FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
                             FullName = "Alexandros Platanios",
                             InstagramLink = "https://www.instagram.com/alexandros_platanios/",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(8992),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 970, DateTimeKind.Local).AddTicks(5335),
                             LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
                             Phone = "+30-6949277783",
                             SubTitle = "Do you have any questions? Please do not hesitate to contact ME directly.I'll come back to you within a matter of hours to help you.",
@@ -389,32 +391,32 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ImageFullPath")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Paragraph")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubTitle")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -424,11 +426,11 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(7570),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 970, DateTimeKind.Local).AddTicks(3773),
                             ImageFullPath = "",
                             ImagePath = "/img/home/me.jpg",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(4731),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 970, DateTimeKind.Local).AddTicks(439),
                             Paragraph = "The first book I started with was C++ at the age of 15, but only as a hobby. When I was 18 I started working at a local gym as an instructor and I stayed in that field for 7 years. Right after that a friend of mine that is a programmer saw a code I made for my motorcycle and encouraged me to pursue programming.",
                             SubTitle = "A bot about me",
                             Title = "Hello"
@@ -439,24 +441,24 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ImageFullPath")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProjectId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -468,705 +470,705 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(6190),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(1123),
                             ImagePath = "~/ProjectImages/CBProject/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(6608),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(1633),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8469),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3434),
                             ImagePath = "~/ProjectImages/CBProject/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8483),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3450),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8538),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3510),
                             ImagePath = "~/ProjectImages/CBProject/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8547),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3520),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8595),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3572),
                             ImagePath = "~/ProjectImages/CBProject/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8604),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3582),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8650),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3632),
                             ImagePath = "~/ProjectImages/CBProject/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8659),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3642),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8708),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3695),
                             ImagePath = "~/ProjectImages/CBProject/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8717),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3704),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8762),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3754),
                             ImagePath = "~/ProjectImages/CBProject/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8770),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3763),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 8,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8815),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3812),
                             ImagePath = "~/ProjectImages/CBProject/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8824),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3821),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 9,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8869),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3871),
                             ImagePath = "~/ProjectImages/CBProject/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8877),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3880),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 10,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8924),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3932),
                             ImagePath = "~/ProjectImages/CBProject/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(8933),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(3941),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 11,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9037),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4055),
                             ImagePath = "~/ProjectImages/CBProject/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9047),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4066),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 12,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9097),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4122),
                             ImagePath = "~/ProjectImages/CBProject/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9106),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4131),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 13,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9153),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4181),
                             ImagePath = "~/ProjectImages/CBProject/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9161),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4190),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 14,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9207),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4239),
                             ImagePath = "~/ProjectImages/CBProject/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9216),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4249),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 15,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9261),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4299),
                             ImagePath = "~/ProjectImages/CBProject/img_15.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9269),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4309),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 16,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9314),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4359),
                             ImagePath = "~/ProjectImages/CBProject/img_16.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9323),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4368),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 17,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9367),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4417),
                             ImagePath = "~/ProjectImages/CBProject/img_17.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9376),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4427),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 18,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9424),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4479),
                             ImagePath = "~/ProjectImages/CBProject/img_18.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9432),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4489),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 19,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9478),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4537),
                             ImagePath = "~/ProjectImages/CBProject/img_19.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9486),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4547),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 20,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9532),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4595),
                             ImagePath = "~/ProjectImages/CBProject/img_20.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9541),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4605),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 21,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9585),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4652),
                             ImagePath = "~/ProjectImages/CBProject/img_21.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9594),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4662),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 22,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9639),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4709),
                             ImagePath = "~/ProjectImages/CBProject/img_22.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9648),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4719),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 23,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9693),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4769),
                             ImagePath = "~/ProjectImages/CBProject/img_23.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9701),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4779),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 24,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9747),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4827),
                             ImagePath = "~/ProjectImages/CBProject/img_24.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9755),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4837),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 25,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9800),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4884),
                             ImagePath = "~/ProjectImages/CBProject/img_25.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9809),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4894),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 26,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9901),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4987),
                             ImagePath = "~/ProjectImages/CBProject/img_26.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9911),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(4998),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 27,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9961),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5051),
                             ImagePath = "~/ProjectImages/CBProject/img_27.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(9970),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5061),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 28,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(15),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5110),
                             ImagePath = "~/ProjectImages/CBProject/img_28.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(23),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5119),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 29,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(68),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5167),
                             ImagePath = "~/ProjectImages/CBProject/img_29.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(77),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5176),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 30,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(121),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5223),
                             ImagePath = "~/ProjectImages/CBProject/img_30.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(130),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5233),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 31,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(175),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5281),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(184),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5291),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 32,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(230),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5341),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(239),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5350),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 33,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(283),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5398),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(292),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5407),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 34,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(339),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5459),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(348),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5469),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 35,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(392),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5518),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(400),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5528),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 36,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(445),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5575),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(453),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5585),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 37,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(498),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5633),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(507),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5643),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 38,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(552),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5691),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(560),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5701),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 39,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(605),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5749),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(614),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5759),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 40,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(659),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5807),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(667),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5816),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 41,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(767),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5964),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(776),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(5975),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 42,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(822),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6026),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(830),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6036),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 43,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(875),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6084),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(884),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6094),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 44,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(928),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6174),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(937),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6188),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 45,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(982),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6256),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_15.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(990),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6266),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 46,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1036),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6316),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_1.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1044),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6326),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 47,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1090),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6374),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_2.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1099),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6384),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 48,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1143),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6432),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_3.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1152),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6441),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 49,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1196),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6490),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_4.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1205),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6499),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 50,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1250),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6548),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_5.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1258),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6557),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 51,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1302),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6606),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_6.jpg",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1310),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6616),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 52,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1355),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6755),
                             ImagePath = "~/ProjectImages/Economy/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1364),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6766),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 53,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1409),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6817),
                             ImagePath = "~/ProjectImages/Economy/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1417),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6827),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 54,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1462),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6875),
                             ImagePath = "~/ProjectImages/Economy/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1471),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6884),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 55,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1515),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6931),
                             ImagePath = "~/ProjectImages/Economy/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1523),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6941),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 56,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1619),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7041),
                             ImagePath = "~/ProjectImages/Economy/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1629),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7052),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 57,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1679),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7105),
                             ImagePath = "~/ProjectImages/Economy/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1687),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7114),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 58,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1732),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7162),
                             ImagePath = "~/ProjectImages/Economy/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1741),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7171),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 59,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1786),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7218),
                             ImagePath = "~/ProjectImages/Elementum/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1795),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7228),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 60,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1841),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7275),
                             ImagePath = "~/ProjectImages/Elementum/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1849),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7284),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 61,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1893),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7332),
                             ImagePath = "~/ProjectImages/Elementum/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1902),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7341),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 62,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1945),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7389),
                             ImagePath = "~/ProjectImages/Elementum/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1954),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7399),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 63,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(1997),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7446),
                             ImagePath = "~/ProjectImages/Elementum/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2005),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7456),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 64,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2049),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7503),
                             ImagePath = "~/ProjectImages/Elementum/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2057),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7512),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 65,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2102),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7560),
                             ImagePath = "~/ProjectImages/Elementum/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2110),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7570),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 66,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2158),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7622),
                             ImagePath = "~/ProjectImages/Elementum/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2167),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7631),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 67,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2211),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7679),
                             ImagePath = "~/ProjectImages/Elementum/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2220),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7689),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 68,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2263),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7736),
                             ImagePath = "~/ProjectImages/Elementum/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2271),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7746),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 69,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2315),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7794),
                             ImagePath = "~/ProjectImages/Elementum/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2324),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7803),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 70,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2417),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7900),
                             ImagePath = "~/ProjectImages/Elementum/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2426),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7911),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 71,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2473),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7965),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2482),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(7975),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 72,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2527),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8025),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2535),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8035),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 73,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2580),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8084),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2588),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8093),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 74,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2632),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8143),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2641),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8152),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 75,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2685),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8201),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2694),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8211),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 76,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2738),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8259),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2747),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8269),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 77,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2791),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8317),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2799),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8326),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 78,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2844),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8375),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2852),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8384),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 79,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2896),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8434),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2905),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8443),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 80,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2949),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8491),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(2957),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8500),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 81,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3002),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8549),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3010),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8558),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 82,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3055),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8607),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3063),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8616),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 83,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3108),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8664),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3116),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8673),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 84,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3161),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8720),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3169),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8730),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 85,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3287),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8825),
                             ImagePath = "~/ProjectImages/ElevatorDashboard/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3296),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8836),
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 86,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3348),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8890),
                             ImagePath = "~/ProjectImages/ElevatorDashboard/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3357),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8899),
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 87,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3403),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8948),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3412),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(8957),
                             ProjectId = 8
                         },
                         new
                         {
                             ID = 88,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3458),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(9007),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 291, DateTimeKind.Local).AddTicks(3466),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(9016),
                             ProjectId = 8
                         });
                 });
@@ -1175,34 +1177,34 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("MyMessage")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -1213,23 +1215,23 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("OrderID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PayerID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProjectId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -1242,36 +1244,36 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DownloadLinkTar")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DownloadLinkZip")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastUpdateDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Link")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(8,4)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WebPage")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -1281,51 +1283,51 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(1264),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(5391),
                             Description = "CBProject * ASP .NET FRAMEWORK * 2020/2021 * Online Course Platform:The customer can watch video tutorials or read ebooks.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(1710),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(5874),
                             Price = 5.00m,
                             Title = "CBProject"
                         },
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4664),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9114),
                             Description = "IPCameras Dashborad * .NET CORE (WPF) * 2018/2019 * ESP32-CAM Dashboard:Support all model esp32 and a lot of markets ip cameras.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4680),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9130),
                             Price = 5.00m,
                             Title = "IPCameras Dashboard"
                         },
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4786),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9263),
                             Description = "IPCameras Chip Software * ESP32 * C++:Frace Detaction + Face Recognition + Alerts + Effects",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.zip",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4795),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9275),
                             Price = 0m,
                             Title = "IPCameras Chip Software * ESP32 * C++:"
                         },
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4838),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9324),
                             Description = "Salesforce App To Manipulate Your Wallet.",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4847),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9334),
                             Price = 0m,
                             Title = "Economy"
                         },
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4884),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9375),
                             Description = "WordPress WebSite For KungFou School.",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(4892),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9385),
                             Price = 0m,
                             Title = "Eelementum",
                             WebPage = "https://elementumartialfitness.com"
@@ -1333,29 +1335,29 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5361),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9897),
                             Description = "A B&B App on Salesforce For Elevator Maintence Company.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5373),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9911),
                             Price = 0m,
                             Title = "Elevators Managment"
                         },
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5413),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9955),
                             Description = "A B&B App writen in Java For Elevator Maintence Company.",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5422),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 968, DateTimeKind.Local).AddTicks(9964),
                             Price = 0m,
                             Title = "Elevators Dashboard"
                         },
                         new
                         {
                             ID = 8,
-                            CreatedDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5459),
+                            CreatedDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(6),
                             Description = "Update Your Old Vichecle To Full Software Update.",
-                            LastUpdateDate = new DateTime(2022, 3, 4, 22, 1, 58, 290, DateTimeKind.Local).AddTicks(5466),
+                            LastUpdateDate = new DateTime(2022, 8, 18, 18, 3, 4, 969, DateTimeKind.Local).AddTicks(15),
                             Price = 0m,
                             Title = "Remote Auto Moto"
                         });

@@ -1,5 +1,0 @@
-﻿build:
-  docker:
-    web: Dockerfile
-run:
-  web: dotnet MyWebSite.dll
