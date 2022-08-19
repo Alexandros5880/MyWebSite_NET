@@ -20,6 +20,8 @@ namespace MyWebSite
 {
     public class Startup
     {
+        private readonly string connectionString = "DockerSql";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +35,7 @@ namespace MyWebSite
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DockerSql")));
+                    Configuration.GetConnectionString(connectionString)));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
