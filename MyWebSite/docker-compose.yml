@@ -1,25 +1,19 @@
 ﻿version: "3.9"
 services:
-    my_web_site:
-        image: my_web_site
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "9080:80"
-        depends_on:
-            - migrations
-            - db
     db:
         image: mcr.microsoft.com/mssql/server:2019-latest
         environment:
             SA_PASSWORD: "Platanios1234"
             ACCEPT_EULA: "Y"
         ports:
-            - "14331:1433"
-        depends_on: 
-            - migrations
-    migrations:
-        build: 
+            - "49301:4000"
+    my_web_site:
+        image: my_web_site
+        build:
             context: .
-            dockerfile: Migrations.Dockerfile
+            dockerfile: Dockerfile
+        ports:
+            - "49501:80"
+        depends_on:
+            - db
+        command: ["dotnet", "ef", "database update"]
