@@ -6,7 +6,7 @@ services:
             SA_PASSWORD: "Platanios1234"
             ACCEPT_EULA: "Y"
         ports:
-            - "49301:4000"
+            - "4000:4000"
     my_web_site:
         image: my_web_site
         build:
