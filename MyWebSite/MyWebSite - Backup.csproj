@@ -67,4 +67,8 @@
     <Folder Include="wwwroot\ProjectImages\IPCamerasESP32\" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetDir)iphlpapi.dll&quot; &quot;$(SolutionDir)..\..\dll\iphlpapi.dll&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)ws2_32.dll&quot; &quot;$(SolutionDir)..\..\dll\ws2_32.dll&quot;" />
+  </Target>
+
 </Project>

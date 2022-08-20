@@ -4,6 +4,8 @@ using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.HttpOverrides;
+using MyWebSite.HorizontalClasses;
 
 namespace MyWebSite.Controllers
 {
@@ -12,12 +14,18 @@ namespace MyWebSite.Controllers
         private readonly IRepositoriesHundler _repos;
         private readonly IMapper _mapper;
         private readonly IEmailTool _emailTool;
+        private readonly RequestData _requestData;
 
-        public HomeController(IRepositoriesHundler repos, IMapper mapper, IEmailTool emailTool)
+        public HomeController(
+            IRepositoriesHundler repos,
+            IMapper mapper,
+            IEmailTool emailTool,
+            RequestData requestData)
         {
             this._repos = repos;
             this._mapper = mapper;
             this._emailTool = emailTool;
+            this._requestData = requestData;
         }
 
         public async Task<IActionResult> Index()
@@ -61,6 +69,10 @@ namespace MyWebSite.Controllers
             var project = await this._repos.Projects.Get(id);
             if (project == null)
                 return BadRequest();
+
+            var clientIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+            string clientIp = this._requestData.IpAddress(clientIpAddress);
+
             if (project.Price != 0.00m)
             {
                 project.DownloadLinkZip = null;

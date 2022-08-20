@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -86,6 +87,7 @@ namespace MyWebSite
             services.AddScoped<IRepositoriesHundler, RepositoriesHundler>();
             services.AddScoped<IEmailTool, EmailTool>();
             services.AddScoped<FilesTools>();
+            services.AddScoped<RequestData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -110,7 +112,14 @@ namespace MyWebSite
             app.UseRouting();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            // Get Client Ip Address On Request Tool
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor |
+                ForwardedHeaders.XForwardedProto
+            });
+
+      app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 
