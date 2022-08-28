@@ -1,11 +1,5 @@
-﻿
-
-.nav-item:hover {
+﻿.nav-item:hover {
     opacity: 0.4 !important;
-}
-
-.mr-auto {
-    margin-left: 65%;
 }
 
 #title {
@@ -17,15 +11,6 @@
     font-family: 'Brush Script MT', cursive;
 }
 
-@media only screen and (max-width: 1112px) {
-    .mr-auto {
-        margin-left: 57% !important;
-    }
-}
-
-
-
-
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
@@ -35,8 +20,12 @@
     box-shadow: none;
 }
 
-
-
-.links {
-    font-family: 'Brush Script MT', cursive;
+@media only screen and (max-width: 1112px) {
+    .navbar-toggler {
+        display: block !important;
+    }
+    a {
+        font-size: 100px !important;
+        font-weight: 900 !important;
+    }
 }
