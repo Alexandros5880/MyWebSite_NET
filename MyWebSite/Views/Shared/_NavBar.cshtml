@@ -1,6 +1,4 @@
-﻿@section styles {
-    <link rel="stylesheet" href="~/css/_NavBar.css" />
-}
+﻿<link href="@Url.Content("~/css/_NavBar.css")" rel="stylesheet" type="text/css" />
 
 <nav class="navbar navbar-expand-md avbar-light bg-light row justify-content-around">
     <div class="row">
@@ -15,7 +13,7 @@
         </div>
     </div>
     <div>
-        <button class="navbar-toggler" type="button"
+        <button class="navbar-toggler ml-auto custom-toggler" type="button"
                 data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
