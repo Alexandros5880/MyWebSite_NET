@@ -1,6 +1,5 @@
 ﻿@model System.Collections.Generic.ICollection<MyWebSite.Data.Models.Project>;
 
-
 @section styles {
 
     <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
@@ -8,20 +7,10 @@
 
 }
 
-
-
-
-
-
-
 <div style="margin-top: 5%;">
     <input type="text" id="search-input" placeholder="Search">
     <table id="projects-table" width="100%"></table>
 </div>
-
-
-
-
 
 <!-- Details Moal -->
 <div id="modal-fullscreen-xl" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -44,17 +33,7 @@
     </div>
 </div>
 
-
-
-
-
 <div class="bottom" />
-
-
-
-
-
-
 
 @section Scripts{
 
@@ -64,11 +43,7 @@
 
     <script>
 
-
         $(document).ready(function () {
-
-
-
 
             // Open Read Ebooks Modal
             $("body").on('click', '.details-button', function () {
@@ -92,8 +67,6 @@
                     }
                 });
             });
-
-
 
             // Fill DataTable 'id=projects-table'
 
@@ -121,7 +94,6 @@
                 </text>
             }
 
-
             var table = $('#projects-table').DataTable({
                 data: dataSet,
                 columns: [
@@ -145,13 +117,6 @@
 
         });
 
-
-
-
-
-
     </script>
-
-
 
 }
