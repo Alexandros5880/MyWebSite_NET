@@ -4,18 +4,23 @@
     <link rel="stylesheet" href="~/css/HomeIndex.css" />
 }
 
+    <br />
+    <br />
+
 <div class="row justify-content-around">
 
     <div class="col-xl-6 img-div">
-            <img class="img-fluid header-image" alt="Alexandros Platanios Image" src="@Url.Content(Model.ImagePath)" />
+        <img class="img-fluid header-image" alt="Alexandros Platanios Image" src="@Url.Content(Model.ImagePath)" />
     </div>
 
-    <div class="col-xl-6 title-div">
-        <h2 class="title-text margin-left-25 font_0"><span class="title-text-span">@Model.Title</span></h2>
-        <h5 class="margin-left-25">@Model.SubTitle</h5>
-        <p class="margin-left-25 home-paragraph">
-            @Model.Paragraph
-        </p>
+    <div class="col-xl-6 title-div row justify-content-around">
+        <div>
+            <h2 class="title-text margin-left-25 font_0"><span class>@Model.Title</span></h2>
+            <h5 class="margin-left-25">@Model.SubTitle</h5>
+            <p class="margin-left-25 home-paragraph">
+                @Model.Paragraph
+            </p>
+        </div>
         <div class="margin-left-25 my-links">
             <a class="link" href="/Home/Resume" target="_top">
                 <svg height="150" width="150">

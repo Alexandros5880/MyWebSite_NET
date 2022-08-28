@@ -1,23 +1,20 @@
-﻿
-
-
-<footer class="footer">
-    <div class="container row subfooter">
-        <div class="col-lg-3">
+﻿<footer class="footer row justify-content-around">
+    <div class="container row justify-content-around">
+        <div class="col-md">
             <strong>Phone</strong><br />
             <i>@Model.Phone</i>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md">
             <strong>Email</strong><br />
             <i>@Model.Email</i>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md">
             <strong>Follow Me</strong><br />
             <a href="@Url.Content(Model.FacebookLink)" target="_black"><i class="fab fa-facebook fa-2x social"></i></a>
             <a href="@Url.Content(Model.InstagramLink)" target="_black"><i class="fab fa-instagram fa-2x social"></i></a>
             <a href="@Url.Content(Model.LinkedLin)" target="_black"><i class="fab fa-linkedin fa-2x social"></i></a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md">
             <div style="margin-top: 11%;">
                 &copy; @DateTime.Now.ToString().Split(" ")[0].Split("/")[2] - Alexandros Platanios
             </div>
