@@ -23,8 +23,4 @@
     .navbar-toggler {
         display: block !important;
     }
-    a {
-        font-size: 100px !important;
-        font-weight: 900 !important;
-    }
 }
