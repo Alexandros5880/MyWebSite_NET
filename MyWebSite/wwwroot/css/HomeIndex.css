@@ -22,6 +22,14 @@ img.header-image {
     fill-opacity: 0.4;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+.font_0 {
+    font: normal normal normal 100px/1.4em worksans-semibold,'work sans',sans-serif;
+}
+
 @media only screen and (max-width: 1207px) {
     .title-div {
         padding-left: 3%;
@@ -37,10 +45,11 @@ img.header-image {
     }
 }
 
-a:hover {
-    text-decoration: none;
-}
-
-.font_0 {
-    font: normal normal normal 100px/1.4em worksans-semibold,'work sans',sans-serif;
+@media only screen and (max-width: 770px) {
+    .img-div {
+        margin-top: 3%;
+    }
+    .link {
+        margin-top: 7%;
+    }
 }
