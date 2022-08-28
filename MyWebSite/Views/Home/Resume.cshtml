@@ -1,31 +1,25 @@
 ﻿@model MyWebSite.Data.Models.CV
 
-
-
-
-
-
-
-
-
 @section styles{
     <link rel="stylesheet" href="~/css/Resume.css" />
 }
 
-
-
-
 <div class="header" />
-
-
-
 
 <div class="pdf-case">
     @{
         if (@Model != null)
         {
             var path = @Url.Content(@Model.CVPath) + "#toolbar=1&navpanes=0&scrollbar=0&view=FitH";
-            <embed class="pdf" src="@path" />
+            <object data="@path" type="application/pdf" class="pdf">
+                <p>
+                    Your web browser doesn't have a PDF plugin.
+                    Instead you can <a href="@path">
+                        click here to
+                        download the PDF file.
+                    </a>
+                </p>
+            </object>
         } else
         {
             <h3 class="text-danger">No Active CV Found.</h3>
@@ -33,15 +27,7 @@
     }
 </div>
 
-
-
-
 <div class="bottom" />
-
-
-
-
-
 
 @section Scripts{
     <script src="~/js/Resume.js"></script>
