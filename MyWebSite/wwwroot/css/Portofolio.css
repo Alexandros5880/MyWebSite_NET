@@ -36,7 +36,6 @@ img {
     width: 70%;
     max-width: none;
     height: auto;
-    /*margin: 0;*/
 }
 
 .modal .modal-content {
@@ -48,12 +47,6 @@ img {
 .modal .modal-body {
     overflow-y: auto;
 }
-
-
-
-
-
-
 
 #projects-table tr td {
     background-color: white !important;
@@ -88,4 +81,8 @@ div.dataTables_wrapper div.dataTables_paginate {
     float: right;
 }
 
-
+@media only screen and (max-width: 1111px) {
+    .modal .modal-dialog {
+        width: 97%;
+    }
+}
