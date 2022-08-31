@@ -29,6 +29,7 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Now;
+            entity.LastUpdateDate = DateTime.Now;
             Paths paths = this._filesTools.CreateFile(entity.File, "CV\\");
             entity.CVFullPath = paths.Absolute;
             entity.CVPath = paths.Path;

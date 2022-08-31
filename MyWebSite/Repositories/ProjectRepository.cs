@@ -28,6 +28,7 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Now;
+            entity.LastUpdateDate = DateTime.Now;
             await this.AddImages(entity);
             await this._context.Projects.AddAsync(entity);
             return entity;

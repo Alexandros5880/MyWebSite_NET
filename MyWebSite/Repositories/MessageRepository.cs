@@ -23,6 +23,8 @@ namespace MyWebSite.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+            entity.CreatedDate = DateTime.Now;
+            entity.LastUpdateDate = DateTime.Now;
             await this._context.Messages.AddAsync(entity);
             return entity;
         }

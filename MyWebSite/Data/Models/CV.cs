@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebSite.Data.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace MyWebSite.Data.Models
 {
@@ -23,8 +25,13 @@ namespace MyWebSite.Data.Models
         public DateTime LastUpdateDate { get; set; }
         public CV()
         {
-            this.CreatedDate = DateTime.Now;
-            this.LastUpdateDate = DateTime.Now;
+            string dateTimeString = DateTime.Now.ToString();
+            DateTime dateTime = Convert.ToDateTime(
+                dateTimeString.Substring(0, dateTimeString.Length - 3),
+                CultureInfo.InvariantCulture
+            );
+            this.CreatedDate = dateTime;
+            this.LastUpdateDate = dateTime;
         }
     }
 }

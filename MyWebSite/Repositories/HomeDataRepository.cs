@@ -29,6 +29,7 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Now;
+            entity.LastUpdateDate = DateTime.Now;
             Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
             entity.ImageFullPath = imagePaths.Absolute;
             entity.ImagePath = imagePaths.Path;

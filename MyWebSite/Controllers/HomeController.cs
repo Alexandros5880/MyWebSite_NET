@@ -82,6 +82,7 @@ namespace MyWebSite.Controllers
             }
             if (message == null || message.Subject == null)
                 return BadRequest();
+
             var subject = message.Subject.Length > 0 ? message.Subject : null;
             messageDB.Subject = "MyWebSite: " + subject;
             var title = messageDB.FullName;
