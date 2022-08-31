@@ -4,24 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-
-
 @section styles {
 
 }
-
-
-
-
-
-
 <h2>Messages</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-
 
 <div class="table-responsive" style="margin-top: 5%;">
     <table id="messages-table" width="100%" class="display" cellspacing="0"></table>
@@ -29,18 +19,9 @@
     <br />
 </div>
 
-
-
-
-
 @section Scripts{
-
-
     <script>
-
-
         $(document).ready(function () {
-
             var dataSet = [];
             @foreach (var item in Model)
             {
@@ -49,8 +30,8 @@
                 @:dataItem.push("@item.FirstName");
                 @:dataItem.push("@item.LastName");
                 @:dataItem.push("@item.Email");
-                @:dataItem.push("@item.Subject.Substring(0, 11)");
-                @:dataItem.push("@item.MyMessage.Substring(0, 11)");
+                @:dataItem.push("@item.Subject");
+                @:dataItem.push("@item.MyMessage");
                 @:dataItem.push("@item.CreatedDate");
                 @:dataItem.push("@item.LastUpdateDate");
                 <text>
@@ -61,8 +42,6 @@
                 </text>
                 @:dataSet.push(dataItem);
             }
-
-
             $('#messages-table').DataTable({
                 data: dataSet,
                 columns: [
@@ -96,13 +75,6 @@
                     })
                 }
             });
-
-
-
-
-
         });
-
     </script>
-
 }

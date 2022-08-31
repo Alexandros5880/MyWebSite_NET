@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Controllers
@@ -90,7 +91,17 @@ namespace MyWebSite.Controllers
             await this._repos.Messages.Save();
 
             // Send Email
-            await this._emailTool.Send(messageDB.MyMessage, messageDB.Subject, title);
+            try
+            {
+                await this._emailTool.Send(messageDB.MyMessage, messageDB.Subject, title);
+            } catch (System.Net.Mail.SmtpException)
+            {
+
+            } catch (System.ArgumentOutOfRangeException)
+            {
+
+            }
+            
 
             ViewBag.Contact = await this._repos.ContactData.GetActive();
             return View("Index", await this._repos.HomeData.GetActive());

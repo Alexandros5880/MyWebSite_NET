@@ -15,7 +15,7 @@ namespace MyWebSite.HorizontalClasses
             string subject = "My WebSite Client",
             string title = "My WebSite Client",
             string from = "alexandrosplatanios15@gmail.com", 
-            string password = "upsmaenwfcgkzurb", 
+            string password = "Takara719791", 
             string to = "alexandrosplatanios28@gmail.com")
         {
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
