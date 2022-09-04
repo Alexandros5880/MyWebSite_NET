@@ -18,16 +18,6 @@ img {
     object-fit: fill;
 }
 
-
-
-
-@media only screen and (max-width: 1200px) {
-    .details-button {
-        display: none;
-    }
-}
-
-
 .modal {
     padding: 0 !important;
 }
@@ -79,6 +69,12 @@ div.dataTables_info {
 
 div.dataTables_wrapper div.dataTables_paginate {
     float: right;
+}
+
+@media only screen and (max-width: 1200px) {
+    .details-button {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 1111px) {
