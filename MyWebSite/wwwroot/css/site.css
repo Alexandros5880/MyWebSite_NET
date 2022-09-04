@@ -34,6 +34,11 @@ disabled {
     cursor: default;
 }
 
+.footer-admin {
+    text-align: center !important;
+    width: 100%;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .main {
         margin-bottom: 5%;

@@ -9,51 +9,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/fontawesome-free-5.15.4-web/css/all.min.css" />
-
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">
-
-
-
     <link rel="stylesheet" href="~/css/site.css" />
 
     @RenderSection("styles", required: false)
-
-
 </head>
 
-
 <body>
-
     <header>
         @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminNavBar.cshtml"); }
     </header>
 
     @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_SideNavBar.cshtml"); }
 
-
     <div class="main">
         @RenderBody()
     </div>
-
 
     <br />
 
     @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminFooter.cshtml"); }
 
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/fontawesome-free-5.15.4-web/js/all.min.js"></script>
 
-
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="/lib/DataTables/datatables.min.js"></script>
 
-
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
 
 </body>
 </html>

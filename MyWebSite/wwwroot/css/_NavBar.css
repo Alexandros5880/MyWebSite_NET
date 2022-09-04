@@ -21,12 +21,16 @@
 .logo-div {
     position: absolute;
     left: 3%;
-    width: 90%;
     margin: 0 auto;
 }
 .nav-menu-div  {
     position: absolute;
     right: 3%;
+}
+
+.mobile-navbar {
+    font-size: 27px;
+    text-align: center;
 }
 
 .navbar-toggler,

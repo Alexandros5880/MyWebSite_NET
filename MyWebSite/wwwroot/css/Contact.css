@@ -1,16 +1,4 @@
-﻿body {
-    min-width: 539px;
-}
-
-.header {
-    margin-top: 7%;
-}
-
-.bottom {
-    margin-bottom: 7%;
-}
-
-.mapouter {
+﻿.mapouter {
     position: relative;
     text-align: right;
     height: 500px;
