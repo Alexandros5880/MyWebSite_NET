@@ -7,11 +7,11 @@
         <link rel="icon" href="~/img/title.ico">
         <title>Alexandros Platanios</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="~/fontawesome-free-5.15.4-web/css/all.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">
-        @RenderSection("styles", required: false)
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+        @RenderSection("Styles", required: false)
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
     </head>
     <body>
@@ -24,17 +24,16 @@
             </main>
         </div>
         <br />
-        @*<partial name="_Footer" />*@
         @using MyWebSite.Data.Models
         @{
             var contact = ViewBag.Contact;
         }
         @Html.Partial("_Footer", (ContactData)contact)
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="~/fontawesome-free-5.15.4-web/js/all.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script type="text/javascript" charset="utf8" src="/lib/DataTables/datatables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

@@ -33,7 +33,7 @@ namespace MyWebSite
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("remoteServer")));
+                    Configuration.GetConnectionString("defaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

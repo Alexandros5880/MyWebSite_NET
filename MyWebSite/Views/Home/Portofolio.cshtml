@@ -8,35 +8,8 @@
     <table id="projects-table" width="100%"></table>
 </div>
 
-<!-- Details Moal -->
-<div id="modal-fullscreen-xl" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-details">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                @*<button type="button" class="btn btn-primary">Save changes</button>*@
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="bottom" />
-
 @section Scripts{
-
     <script src="~/js/Portofolio.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/lib/DataTables/DataTables-1.11.4/js/jquery.dataTables.min.js"></script>
-
     <script>
 
         $(document).ready(function () {
@@ -44,24 +17,12 @@
             // Open Read Ebooks Modal
             $("body").on('click', '.details-button', function () {
                 var id = $(this).attr('data-id');
-                $.ajax({
-                    url: '/Home/_Details/' + id,
-                    type: 'GET',
-                    success: function (response) {
-                        $('.modal-details').html(response);
-                    }
-                });
+                window.location.href = '/Home/ProjectDetails/' + id;
             });
 
             $("body").on('click', '.img-button', function () {
                 var id = $(this).attr('data-id');
-                $.ajax({
-                    url: '/Home/_Details/' + id,
-                    type: 'GET',
-                    success: function (response) {
-                        $('.modal-details').html(response);
-                    }
-                });
+                window.location.href = '/Home/ProjectDetails/' + id;
             });
 
             // Fill DataTable 'id=projects-table'
@@ -104,7 +65,6 @@
                 "drawCallback": function () {
                     
                 }
-
             });
 
             $('#search-input').keyup(function () {

@@ -1,7 +1,6 @@
 ﻿@model MyWebSite.Data.ViewModels.OrderViewModel
 
 <div class="container">
-
     <div>
         <h4>Your Product</h4>
         <hr />
@@ -41,9 +40,7 @@
             <a class="btn btn-primary"
                type="button"
                href="@Url.Content(Model.Project.DownloadLinkTar)"
-               style="        display: @(Model.Project.DownloadLinkTar == null ? "none" : "block") !important;
-        margin-left: 3%;
-">
+               style="display: @(Model.Project.DownloadLinkTar == null ? "none" : "block") !important;margin-left: 3%;">
                 Download Tar
             </a>
         </div>

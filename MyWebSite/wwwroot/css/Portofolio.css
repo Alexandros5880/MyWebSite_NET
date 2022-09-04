@@ -1,44 +1,4 @@
-﻿body {
-    min-width: 539px;
-}
-
-.bottom {
-    margin-bottom: 7%;
-}
-
-@media only screen and (max-width: 760px) {
-    .bottom {
-        margin-bottom: 33%;
-    }
-}
-
-img {
-    width: auto;
-    height: auto;
-    object-fit: fill;
-}
-
-.modal {
-    padding: 0 !important;
-}
-
-.modal .modal-dialog {
-    width: 70%;
-    max-width: none;
-    height: auto;
-}
-
-.modal .modal-content {
-    height: auto;
-    border: 0;
-    border-radius: 0;
-}
-
-.modal .modal-body {
-    overflow-y: auto;
-}
-
-#projects-table tr td {
+﻿#projects-table tr td {
     background-color: white !important;
 }
 
@@ -53,7 +13,6 @@ img {
     margin-top: 3%;
     border: none;
 }
-
 
 .dataTables_filter {
     display: none;
@@ -74,11 +33,5 @@ div.dataTables_wrapper div.dataTables_paginate {
 @media only screen and (max-width: 1200px) {
     .details-button {
         display: none;
-    }
-}
-
-@media only screen and (max-width: 1111px) {
-    .modal .modal-dialog {
-        width: 97%;
     }
 }
