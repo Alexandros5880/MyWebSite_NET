@@ -26,6 +26,7 @@ html {
 
 .main {
     z-index: 2;
+    padding-bottom: 3%;
 }
 
 .social {
@@ -41,10 +42,6 @@ html {
 disabled {
     pointer-events: none;
     cursor: default;
-}
-
-.main {
-    padding-bottom: 3%;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
