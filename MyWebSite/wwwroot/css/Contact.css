@@ -16,4 +16,17 @@
     .bottom {
         margin-bottom: 37%;
     }
+    .g-recaptcha {
+        transform: scale(0.77);
+        transform-origin: 0 0;
+    }
+    label {
+        font-size: larger;
+    }
+    input {
+        font-size: larger !important;
+    }
+    textarea {
+        font-size: larger !important;
+    }
 }

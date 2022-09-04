@@ -9,7 +9,7 @@
 <br/>
 
 <section class="mb-4">
-    <div style="width: 50%; margin: 0 auto;">
+    <div class="container">
         <h2 class="h1-responsive font-weight-bold text-center my-4">@Model.Title</h2>
         <p class="text-center w-responsive mx-auto mb-5">
             @Model.SubTitle
@@ -78,7 +78,7 @@
                     });
                 };
             </script>
-            <div id="contact-captcha"></div>
+            <div id="contact-captcha" class="g-recaptcha"></div>
             <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
             </script>
             <br />
