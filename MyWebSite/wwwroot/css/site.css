@@ -29,16 +29,6 @@ html {
     padding-bottom: 3%;
 }
 
-.social {
-    color: #17539B;
-}
-.social:hover {
-    opacity: 0.4 !important;
-}
-.footer {
-    text-align: center;
-}
-
 disabled {
     pointer-events: none;
     cursor: default;

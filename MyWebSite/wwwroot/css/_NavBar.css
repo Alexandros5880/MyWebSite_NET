@@ -16,11 +16,13 @@
 
 .navbar {
     position: relative !important;
-    height: 133px;
+    height: 100px;
 }
 .logo-div {
     position: absolute;
     left: 3%;
+    width: 90%;
+    margin: 0 auto;
 }
 .nav-menu-div  {
     position: absolute;
@@ -39,5 +41,9 @@
 @media only screen and (max-width: 767px) {
     #desctopNavbar {
         display: none;
+    }
+    .navbar {
+        position: relative !important;
+        height: 133px;
     }
 }
