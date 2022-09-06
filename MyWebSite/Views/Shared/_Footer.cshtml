@@ -1,8 +1,10 @@
 ﻿<footer class="row justify-content-around">
-    <div class="col-md">
-        <strong>Phone</strong><br />
-        <i>@Model.Phone</i>
-    </div>
+    @if (!String.IsNullOrEmpty(@Model.Phone)) {
+        <div class="col-md">
+            <strong>Phone</strong><br />
+            <i>@Model.Phone</i>
+        </div>
+    }
     <div class="col-md">
         <strong>Email</strong><br />
         <i>@Model.Email</i>
