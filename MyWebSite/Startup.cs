@@ -33,7 +33,7 @@ namespace MyWebSite
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DdefaultConnection")));
+                    Configuration.GetConnectionString("defaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
