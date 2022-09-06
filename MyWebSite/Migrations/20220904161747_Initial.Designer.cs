@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebSite.Data;
 
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220904161747_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,8 +172,8 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "34102340-217a-4f9b-8cdb-19ba5a650c84",
-                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(8291),
+                            ConcurrencyStamp = "5cb81bb4-301f-4a81-b0cf-9553c55a7de8",
+                            CreatedDate = new DateTime(2022, 9, 4, 19, 17, 47, 117, DateTimeKind.Local).AddTicks(3805),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "Admin"
@@ -259,9 +261,9 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "83035b90-9138-4b3f-ab01-ff8dd45e934b",
+                            ConcurrencyStamp = "ebf31ab4-ccd1-447a-adac-08b5f1b6b1fa",
                             ConfingPassword = "-Platanios719791",
-                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(8916),
+                            CreatedDate = new DateTime(2022, 9, 4, 19, 17, 47, 117, DateTimeKind.Local).AddTicks(4742),
                             Email = "alexandrosplatanios15@gmail.com",
                             EmailConfirmed = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -269,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH6iK1C+ECE+OnY4HlZpvZflv6BbJJIeUXPU+dfPeYBRcRFay23CHt2B1EidEu9dsg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN+Iv3LrEMEpiqg/CNn5GMuYCSKXJKkeaXfxqILlH9U1QbbmzqjYb0eBudP1WYrYLA==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -312,10 +314,10 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             CVPath = "/CV/CV.pdf",
-                            CreatedDate = new DateTime(2022, 9, 4, 11, 13, 17, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2022, 9, 4, 7, 17, 47, 0, DateTimeKind.Unspecified),
                             Description = "My CV",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 9, 4, 11, 13, 17, 0, DateTimeKind.Unspecified)
+                            LastUpdateDate = new DateTime(2022, 9, 4, 7, 17, 47, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -371,7 +373,7 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             Address = "Fleming 14, Voula, 16673, Greece",
-                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(7273),
+                            CreatedDate = new DateTime(2022, 9, 4, 19, 17, 47, 117, DateTimeKind.Local).AddTicks(2280),
                             Email = "alexandrosplatanios28@gmail.com",
                             FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
                             FullName = "Alexandros Platanios",
@@ -424,7 +426,7 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(6903),
+                            CreatedDate = new DateTime(2022, 9, 4, 19, 17, 47, 117, DateTimeKind.Local).AddTicks(195),
                             ImageFullPath = "",
                             ImagePath = "/img/home/me.jpg",
                             IsActive = true,

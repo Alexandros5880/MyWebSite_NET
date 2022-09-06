@@ -1,35 +1,32 @@
-﻿body {
-    min-width: 539px;
-}
-
-.header {
-    margin-top: 7%;
-}
-
-.bottom {
-    margin-bottom: 7%;
-}
-
-@media only screen and (max-width: 760px) {
-    .bottom {
-        margin-bottom: 37%;
-    }
-}
-
-
-
-.mapouter {
+﻿.mapouter {
     position: relative;
     text-align: right;
     height: 500px;
     width: 100%;
 }
 
-
-
 .gmap_canvas {
     overflow: hidden;
     background: none !important;
     height: 500px;
     width: 100%;
+}
+
+@media only screen and (max-width: 760px) {
+    .bottom {
+        margin-bottom: 37%;
+    }
+    .g-recaptcha {
+        transform: scale(0.77);
+        transform-origin: 0 0;
+    }
+    label {
+        font-size: larger;
+    }
+    input {
+        font-size: larger !important;
+    }
+    textarea {
+        font-size: larger !important;
+    }
 }

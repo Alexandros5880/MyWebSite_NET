@@ -26,19 +26,21 @@ html {
 
 .main {
     z-index: 2;
-}
-
-.social {
-    color: #17539B;
-}
-.social:hover {
-    opacity: 0.4 !important;
-}
-.footer {
-    text-align: center;
+    padding-bottom: 3%;
 }
 
 disabled {
     pointer-events: none;
     cursor: default;
+}
+
+.footer-admin {
+    text-align: center !important;
+    width: 100%;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .main {
+        margin-bottom: 5%;
+    }
 }

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
-using System;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Controllers
@@ -55,7 +54,7 @@ namespace MyWebSite.Controllers
             return View(await this._repos.ContactData.GetActive());
         }
 
-        public async Task<ActionResult> _Details(int? id)
+        public async Task<IActionResult> ProjectDetails(int? id)
         {
             if (id == null)
                 return BadRequest();
@@ -67,7 +66,8 @@ namespace MyWebSite.Controllers
                 project.DownloadLinkZip = null;
                 project.DownloadLinkTar = null;
             }
-            return PartialView("_Details", project);
+            ViewBag.Contact = await this._repos.ContactData.GetActive();
+            return View(project);
         }
 
         [HttpPost]

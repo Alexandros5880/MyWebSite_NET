@@ -11,22 +11,8 @@
         <link rel="stylesheet" href="~/fontawesome-free-5.15.4-web/css/all.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">
-        @RenderSection("styles", required: false)
-        <style>
-            .main {
-                padding-bottom: 3%;
-            }
-            @@media only screen and (min-width: 992px) and (max-width: 1200px) {
-                .main {
-                    margin-bottom: 5%;
-                }
-            }
-            @@media only screen and (max-width: 991px) {
-                .main {
-                    margin-bottom: 43%;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="~/css/_Footer.css" />
+        @RenderSection("Styles", required: false)
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
     </head>
     <body>
@@ -39,7 +25,6 @@
             </main>
         </div>
         <br />
-        @*<partial name="_Footer" />*@
         @using MyWebSite.Data.Models
         @{
             var contact = ViewBag.Contact;

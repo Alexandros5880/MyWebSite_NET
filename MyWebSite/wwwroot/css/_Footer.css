@@ -1,0 +1,16 @@
+﻿footer {
+    width: 97vw !important;
+    margin: 0 auto !important;
+}
+
+footer > div {
+    text-align: center;
+}
+
+.social {
+    color: #17539B;
+}
+
+.social:hover {
+    opacity: 0.4 !important;
+}

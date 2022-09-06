@@ -10,8 +10,8 @@ using MyWebSite.Data;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220831155909_Initial")]
-    partial class Initial
+    [Migration("20220904201318_Second")]
+    partial class Second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,8 +172,8 @@ namespace MyWebSite.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "09f6bcf0-a2c0-4612-8ad9-a46fb423282b",
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(7549),
+                            ConcurrencyStamp = "34102340-217a-4f9b-8cdb-19ba5a650c84",
+                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(8291),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "Admin"
@@ -261,9 +261,9 @@ namespace MyWebSite.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7b429535-80f9-42bd-822c-6000f34b9969",
+                            ConcurrencyStamp = "83035b90-9138-4b3f-ab01-ff8dd45e934b",
                             ConfingPassword = "-Platanios719791",
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(8407),
+                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(8916),
                             Email = "alexandrosplatanios15@gmail.com",
                             EmailConfirmed = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -271,7 +271,7 @@ namespace MyWebSite.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHXk6FshHprM5qhM6ba04GHzgFo2KtD6Jbb/7WCPLDkf1jCgYMk8aam4NJbdpUd71w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH6iK1C+ECE+OnY4HlZpvZflv6BbJJIeUXPU+dfPeYBRcRFay23CHt2B1EidEu9dsg==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -314,10 +314,10 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             CVPath = "/CV/CV.pdf",
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 648, DateTimeKind.Local).AddTicks(714),
+                            CreatedDate = new DateTime(2022, 9, 4, 11, 13, 17, 0, DateTimeKind.Unspecified),
                             Description = "My CV",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 649, DateTimeKind.Local).AddTicks(7504)
+                            LastUpdateDate = new DateTime(2022, 9, 4, 11, 13, 17, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -373,13 +373,13 @@ namespace MyWebSite.Migrations
                         {
                             ID = 1,
                             Address = "Fleming 14, Voula, 16673, Greece",
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(6399),
+                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(7273),
                             Email = "alexandrosplatanios28@gmail.com",
                             FacebookLink = "https://www.facebook.com/profile.php?id=100013059701658",
                             FullName = "Alexandros Platanios",
                             InstagramLink = "https://www.instagram.com/alexandros_platanios/",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(4505),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LinkedLin = "https://www.linkedin.com/in/alexandros-platanios-723984203/",
                             Phone = "+30-6949277783",
                             SubTitle = "Do you have any questions? Please do not hesitate to contact ME directly.I'll come back to you within a matter of hours to help you.",
@@ -426,11 +426,11 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(3745),
+                            CreatedDate = new DateTime(2022, 9, 4, 23, 13, 17, 651, DateTimeKind.Local).AddTicks(6903),
                             ImageFullPath = "",
                             ImagePath = "/img/home/me.jpg",
                             IsActive = true,
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(2503),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Paragraph = "The first book I started with was C++ at the age of 15, but only as a hobby. When I was 18 I started working at a local gym as an instructor and I stayed in that field for 7 years. Right after that a friend of mine that is a programmer saw a code I made for my motorcycle and encouraged me to pursue programming.",
                             SubTitle = "A bot about me",
                             Title = "Hello"
@@ -470,705 +470,705 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(9134),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(9364),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(155),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(162),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(184),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(187),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(202),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(205),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(220),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(222),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(239),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(241),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(256),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(258),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 8,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(273),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(275),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 9,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(290),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(293),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 10,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(308),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(310),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 11,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(325),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(327),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 12,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(342),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(344),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 13,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(358),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(360),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 14,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(403),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(405),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 15,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(420),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_15.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(422),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 16,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(438),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_16.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(440),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 17,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(454),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_17.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(456),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 18,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(471),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_18.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(473),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 19,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(487),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_19.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(490),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 20,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(504),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_20.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(506),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 21,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(520),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_21.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(523),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 22,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(536),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_22.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(539),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 23,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(552),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_23.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(554),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 24,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(568),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_24.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(570),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 25,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(585),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_25.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(588),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 26,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(602),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_26.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(604),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 27,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(618),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_27.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(620),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 28,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(633),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_28.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(636),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 29,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(674),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_29.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(676),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 30,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(692),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/CBProject/img_30.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(694),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 1
                         },
                         new
                         {
                             ID = 31,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(709),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(711),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 32,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(728),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(730),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 33,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(745),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(747),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 34,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(762),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(764),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 35,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(778),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(780),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 36,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(794),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(796),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 37,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(811),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(813),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 38,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(828),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(830),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 39,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(844),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(846),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 40,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(861),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(863),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 41,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(877),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(880),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 42,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(894),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(896),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 43,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(910),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(912),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 44,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(952),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(954),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 45,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(971),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasDashboard/img_15.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(973),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 2
                         },
                         new
                         {
                             ID = 46,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(988),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_1.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(991),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 47,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1006),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_2.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1008),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 48,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1022),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_3.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1024),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 49,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1039),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_4.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1041),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 50,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1055),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_5.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1057),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 51,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1072),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/IPCamerasESP32/img_6.jpg",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1074),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 3
                         },
                         new
                         {
                             ID = 52,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1090),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1092),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 53,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1107),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1109),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 54,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1123),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1125),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 55,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1139),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1141),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 56,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1155),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1157),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 57,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1172),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1174),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 58,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1188),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Economy/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1190),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 4
                         },
                         new
                         {
                             ID = 59,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1228),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1231),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 60,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1247),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1249),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 61,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1264),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1266),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 62,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1280),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1282),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 63,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1296),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1298),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 64,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1312),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1314),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 65,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1329),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1331),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 66,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1346),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1349),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 67,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1363),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1365),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 68,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1379),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1382),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 69,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1396),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1398),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 70,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1412),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/Elementum/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1414),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 5
                         },
                         new
                         {
                             ID = 71,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1430),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1433),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 72,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1447),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1449),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 73,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1488),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_3.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1490),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 74,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1506),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_4.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1508),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 75,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1522),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_5.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1525),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 76,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1539),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_6.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1541),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 77,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1556),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_7.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1558),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 78,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1573),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_8.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1575),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 79,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1589),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_9.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1592),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 80,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1606),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_10.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1608),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 81,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1622),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_11.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1624),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 82,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1638),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_12.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1640),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 83,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1655),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_13.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1657),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 84,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1671),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorManagment/img_14.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1673),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 6
                         },
                         new
                         {
                             ID = 85,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1688),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDashboard/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1690),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 86,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1705),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/ElevatorDashboard/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1707),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 7
                         },
                         new
                         {
                             ID = 87,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1722),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_1.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1724),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 8
                         },
                         new
                         {
                             ID = 88,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1808),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImagePath = "~/ProjectImages/RemoteAutoMoto/img_2.png",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 651, DateTimeKind.Local).AddTicks(1811),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProjectId = 8
                         });
                 });
@@ -1283,51 +1283,51 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(6573),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "CBProject * ASP .NET FRAMEWORK * 2020/2021 * Online Course Platform:The customer can watch video tutorials or read ebooks.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/CBProject/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(6869),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 5.00m,
                             Title = "CBProject"
                         },
                         new
                         {
                             ID = 2,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8330),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "IPCameras Dashborad * .NET CORE (WPF) * 2018/2019 * ESP32-CAM Dashboard:Support all model esp32 and a lot of markets ip cameras.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam-Dashboard/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8338),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 5.00m,
                             Title = "IPCameras Dashboard"
                         },
                         new
                         {
                             ID = 3,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8357),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "IPCameras Chip Software * ESP32 * C++:Frace Detaction + Face Recognition + Alerts + Effects",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ESP32-Cam/archive/refs/tags/v0.1.zip",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8359),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "IPCameras Chip Software * ESP32 * C++:"
                         },
                         new
                         {
                             ID = 4,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8373),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Salesforce App To Manipulate Your Wallet.",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8375),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "Economy"
                         },
                         new
                         {
                             ID = 5,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8388),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "WordPress WebSite For KungFou School.",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8390),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "Eelementum",
                             WebPage = "https://elementumartialfitness.com"
@@ -1335,29 +1335,29 @@ namespace MyWebSite.Migrations
                         new
                         {
                             ID = 6,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8636),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A B&B App on Salesforce For Elevator Maintence Company.",
                             DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz",
                             DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8641),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "Elevators Managment"
                         },
                         new
                         {
                             ID = 7,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8694),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A B&B App writen in Java For Elevator Maintence Company.",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8697),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "Elevators Dashboard"
                         },
                         new
                         {
                             ID = 8,
-                            CreatedDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8712),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Your Old Vichecle To Full Software Update.",
-                            LastUpdateDate = new DateTime(2022, 8, 31, 18, 59, 8, 650, DateTimeKind.Local).AddTicks(8714),
+                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 0m,
                             Title = "Remote Auto Moto"
                         });
