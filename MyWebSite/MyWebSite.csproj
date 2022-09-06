@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\PublishProfiles\**" />
     <Compile Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <Content Remove="Properties\PublishProfiles\**" />
     <Content Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <EmbeddedResource Remove="Properties\PublishProfiles\**" />
     <EmbeddedResource Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <None Remove="Properties\PublishProfiles\**" />
     <None Remove="wwwroot\ProjectImages\Saved Pictures\**" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,7 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\ProjectImages\IPCamerasESP32\" />
   </ItemGroup>
 

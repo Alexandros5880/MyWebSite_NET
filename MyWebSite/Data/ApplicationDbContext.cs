@@ -108,8 +108,8 @@ namespace MyWebSite.Data
                 new Project() 
                 { 
                     ID = 6, 
-                    Title = "Elevators Managment", 
-                    Description = "A B&B App on Salesforce For Elevator Maintence Company.", 
+                    Title = "Elevators Managment",
+                    Description = "A B&B App writen in Java For Elevator Maintence Company.", 
                     DownloadLinkZip = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.zip", 
                     DownloadLinkTar = "https://github.com/Alexandros5880/ElevatorsManagement/archive/refs/tags/v1.0.tar.gz" 
                 }
@@ -118,8 +118,8 @@ namespace MyWebSite.Data
                 new Project() 
                 { 
                     ID = 7, 
-                    Title = "Elevators Dashboard", 
-                    Description = "A B&B App writen in Java For Elevator Maintence Company."
+                    Title = "Elevators Dashboard",
+                    Description = "A B&B App on Salesforce For Elevator Maintence Company.",
                 }
             );
             
@@ -194,7 +194,7 @@ namespace MyWebSite.Data
                 {
                     ID = 1,
                     Title = "Hello",
-                    SubTitle = "A bot about me",
+                    SubTitle = "About me",
                     Paragraph = "The first book I started with was C++ at the age of 15, but only as a hobby. " +
                                 "When I was 18 I started working at a local gym as an instructor and " +
                                 "I stayed in that field for 7 years. Right after that a friend of mine that is a programmer saw a code " +
