@@ -31,6 +31,7 @@
 
             @foreach (var item in Model)
             {
+                var image = item.Images.ToList()[0];
                 <text>
                     dataSet.push([
                         `
@@ -42,7 +43,16 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <a class="img-button" data-toggle="modal" data-target="#modal-fullscreen-xl" data-id="${"@item.ID"}">
-                                        <img class="card-img-top" src="${"@Url.Content(item.Images.ToList()[0].ImagePath)"}" alt="Card image cap">
+                                        @if (!string.IsNullOrEmpty(image.ImagePath))
+                                        {
+                                            var path = Url.Content(image.ImagePath.Replace("\\", "/"));
+                                            <img class="card-img-top" src="${"@Url.Content(path)"}" alt="Card image cap">
+                                        }
+                                        @if (!string.IsNullOrEmpty(image.Base64))
+                                        {
+                                            var base64 = image.Base64;
+                                            <img class="card-img-top" src="${"@Url.Content(base64)"}" alt="Card image cap">
+                                        }
                                     </a>
                                 </div>
                             </div>

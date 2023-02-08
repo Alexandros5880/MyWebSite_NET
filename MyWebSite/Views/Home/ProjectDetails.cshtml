@@ -32,7 +32,16 @@
                 @foreach (var img in @Model.Images)
                 {
                     <div class="carousel-item @(img == Model.Images.First() ? "active" : "")">
-                        <img src="@Url.Content(img.ImagePath)" alt="@Model.Title" class="img-carusel"/>
+                        @if (!string.IsNullOrEmpty(img.ImagePath))
+                        {
+                            var path = Url.Content(img.ImagePath.Replace("\\", "/"));
+                            <img src="@Url.Content(path)" alt="@Model.Title" class="img-carusel" />
+                        }
+                        @if (!string.IsNullOrEmpty(img.Base64))
+                        {
+                            var base64 = img.Base64;
+                            <img src="@Url.Content(base64)" alt="@Model.Title" class="img-carusel" />
+                        }
                     </div>
                 }
             </div>
