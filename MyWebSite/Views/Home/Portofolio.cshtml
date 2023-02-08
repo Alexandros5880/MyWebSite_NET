@@ -53,6 +53,10 @@
                                             var base64 = image.Base64;
                                             <img class="card-img-top" src="${"@Url.Content(base64)"}" alt="Card image cap">
                                         }
+                                        @if (string.IsNullOrEmpty(image.ImagePath) && string.IsNullOrEmpty(image.Base64))
+                                        {
+                                            <h6>No Images</h6>
+                                        }
                                     </a>
                                 </div>
                             </div>
