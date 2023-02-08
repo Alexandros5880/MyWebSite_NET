@@ -5,6 +5,7 @@ using MyWebSite.HorizontalClasses;
 using MyWebSite.Repositories.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Now;
             entity.LastUpdateDate = DateTime.Now;
-            await this.AddImages(entity);
+            this.AddImages(entity);
             await this._context.Projects.AddAsync(entity);
             return entity;
         }
@@ -85,7 +86,7 @@ namespace MyWebSite.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.LastUpdateDate = DateTime.Now;
-            this.AddImagesSync(entity);
+            this.AddImages(entity);
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }
@@ -96,30 +97,7 @@ namespace MyWebSite.Repositories
         }
 
         [Obsolete]
-        private async Task AddImages(Project project)
-        {
-            if (project == null)
-                throw new ArgumentNullException(nameof(project));
-            if (project.Files.Length == 0)
-                throw new ArgumentException(nameof(project.Files));
-            foreach (var file in project.Files)
-            {
-                var image = new Image()
-                {
-                    Project = project,
-                    CreatedDate = DateTime.Now,
-                    LastUpdateDate = DateTime.Now
-                };
-                var subPath = $"ProjectImages\\{project.Title}\\";
-                var paths = this._filesTools.CreateFile(file, subPath);
-                image.ImageFullPath = paths.Absolute;
-                image.ImagePath = paths.Path;
-                await this._context.Images.AddAsync(image);
-            }
-        }
-
-        [Obsolete]
-        private void AddImagesSync(Project project)
+        private void AddImages(Project project)
         {
             try
             {
@@ -129,22 +107,31 @@ namespace MyWebSite.Repositories
                     throw new ArgumentException(nameof(project.Files));
                 foreach (var file in project.Files)
                 {
+                    // Convert the image data to base64
+                    string imageBase64  = FilesTools.IformFileToBase64(file);
+
                     var image = new Image()
                     {
                         Project = project,
+                        Base64 = imageBase64,
+                        ImagePath = "",
+                        ImageFullPath = "",
                         CreatedDate = DateTime.Now,
                         LastUpdateDate = DateTime.Now
                     };
-                    var subPath = $"ProjectImages\\{project.Title}\\";
-                    var paths = this._filesTools.CreateFile(file, subPath);
-                    image.ImageFullPath = paths.Absolute;
-                    image.ImagePath = paths.Path;
+
+                    // Save Files In Project Directory
+                    //var subPath = $"ProjectImages\\{project.Title}\\";
+                    //var paths = this._filesTools.CreateFile(file, subPath);
+                    //image.ImageFullPath = paths.Absolute;
+                    //image.ImagePath = paths.Path;
+
                     this._context.Images.Add(image);
                 }
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-
+                Debug.WriteLine($"\n\nOn ProjectRepository.AddImagesSync Exception: {ex.Message}");
             }
         }
 
@@ -154,6 +141,7 @@ namespace MyWebSite.Repositories
             if (project == null)
                 throw new ArgumentNullException(nameof(project));
             project = await this.Get(project.ID);
+
             string path = "";
             foreach (var image in project.Images)
             {
@@ -161,7 +149,8 @@ namespace MyWebSite.Repositories
                 path = this._filesTools.GetDir(image.ImagePath);
                 this._context.Images.Remove(image);
             }
-            this._filesTools.DeleteDir(path);
+            if (!String.IsNullOrEmpty(path))
+                this._filesTools.DeleteDir(path);
         }
 
         [Obsolete]

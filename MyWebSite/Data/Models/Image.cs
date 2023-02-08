@@ -11,6 +11,7 @@ namespace MyWebSite.Data.Models
         public int ID { get; set; }
         [Required]
         public string ImagePath { get; set; }
+        public string Base64 { get; set; }
         public string ImageFullPath { get; set; }
         [ForeignKey("Project")]
         public int ProjectId { get; set; }

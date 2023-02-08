@@ -36,14 +36,21 @@ namespace MyWebSite.Repositories
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
+
             var entity = await this._context.Images
                                     .FirstOrDefaultAsync(c => c.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+
             // Remove File
-            this._filesTools.DeleteFile(entity.ImageFullPath);
-            var path = this._filesTools.GetDir(entity.ImagePath);
-            this._filesTools.DeleteDir(path);
+            if (!string.IsNullOrEmpty(entity.ImageFullPath))
+                this._filesTools.DeleteFile(entity.ImageFullPath);
+            if (!string.IsNullOrEmpty(entity.ImagePath))
+            {
+                var path = this._filesTools.GetDir(entity.ImagePath);
+                this._filesTools.DeleteDir(path);
+            }
+            
             // Remove From DB
             this._context.Images.Remove(entity);
             return entity;

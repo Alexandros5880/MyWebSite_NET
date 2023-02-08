@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using MyWebSite.Data.DataTypes;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace MyWebSite.HorizontalClasses
 {
@@ -76,6 +78,17 @@ namespace MyWebSite.HorizontalClasses
                 Directory.CreateDirectory(path);
             }
             return Directory.Exists(path);
+        }
+
+        public static string IformFileToBase64(IFormFile imageFile)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageFile.CopyTo(ms);
+                var fileBytes = ms.ToArray();
+                string imageBase64 = "data:image/jpg;base64, " + Convert.ToBase64String(fileBytes);
+                return (string)imageBase64.Clone();
+            }
         }
     }
 }

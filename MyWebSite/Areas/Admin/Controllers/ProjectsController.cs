@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -160,13 +162,34 @@ namespace MyWebSite.Areas.Admin.Controllers
         // GET: Admin/Projects/DeleteImage?imageId=<id>
         public async Task<IActionResult> DeleteImage(int? id)
         {
-            if (id == null)
-                return BadRequest();
-            var projectId = (await this._repos.Images.Get(id)).ProjectId;
-            var project = (await this._repos.Projects.Get(projectId));
-            await this._repos.Images.Delete(id);
-            await this._repos.Images.Save();
-            return Ok(project.Images);
+            try
+            {
+                if (id == null)
+                    return BadRequest();
+                var image = await this._repos.Images.Get(id);
+                if (image == null)
+                    return BadRequest(new { Code = 500, Message = "No Image Found For Delete!" });
+                var projectId = image.ProjectId;
+                var project = (await this._repos.Projects.Get(projectId));
+                await this._repos.Images.Delete(id);
+                await this._repos.Images.Save();
+                return Ok(project.Images);
+            }
+            catch(NullReferenceException nex)
+            {
+                Debug.WriteLine($"\n\nException on ProjectsController.DeleteImage: {nex.Message}");
+                return BadRequest(new { Code = 500, Message = nex.Message });
+            }
+            catch(InvalidCastException ecx)
+            {
+                Debug.WriteLine($"\n\nException on ProjectsController.DeleteImage: {ecx.Message}");
+                return BadRequest(new { Code = 500, Message = ecx.Message });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"\n\nException on ProjectsController.DeleteImage: {ex.Message}");
+                return BadRequest(new { Code = 500, Message = ex.Message });
+            }
         }
 
         private async Task<bool> ProjectExists(int id)

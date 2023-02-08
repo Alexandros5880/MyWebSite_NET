@@ -11,6 +11,7 @@ namespace MyWebSite.Data.ViewModels
     {
         public int ID { get; set; }
         public string ImagePath { get; set; }
+        public string Base64 { get; set; }
         public int ProjectId { get; set; }
         public Project Project { get; set; }
         [DataType(DataType.DateTime)]

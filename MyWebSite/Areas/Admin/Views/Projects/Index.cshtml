@@ -4,23 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-
-
-
-
-
 @section styles {
 
 }
-
-
-
-
-
-
-
-
-
 
 <h2>Projects</h2>
 
@@ -28,34 +14,15 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-
-
-
-
-
-
-
 <div class="table-responsive" style="margin-top: 5%;">
     <table id="projects-table" width="100%" class="display" cellspacing="0"></table>
     <br />
     <br />
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 @section Scripts{
 
     <script>
-
 
         $(document).ready(function () {
 
@@ -64,62 +31,74 @@
             {
                 @:dataItem = [];
                 @:dataItem.push("@item.ID");
-                @if(item.Images.Count > 0)
+
+                @if (item.Images.Count > 0)
                 {
-                    var path = Url.Content(item.Images.ToList()[0].ImagePath.Replace("\\", "/"));
-                    @:dataItem.push(`<img src="@Url.Content(path)" width="133"/>`);
+                    var image = item.Images.ToList()[0];
+                    @if (!string.IsNullOrEmpty(image.ImagePath))
+                    {
+                        var path = Url.Content(image.ImagePath.Replace("\\", "/"));
+                        @:dataItem.push(`<img src="@Url.Content(path)" width="133"/>`);
+                    }
+                    @if (!string.IsNullOrEmpty(image.Base64))
+                    {
+                        var base64 = image.Base64;
+                        @:dataItem.push(`<img src="@Url.Content(base64)" width="133"/>`);
+                    }
                 }
+                else
+                {
+                    @:dataItem.push(`<h6>No Images</h6>`);
+                }
+
                 @:dataItem.push("@item.Title");
-                @:dataItem.push("@item.Description");
-                @:dataItem.push("@item.DownloadLink");
-                @:dataItem.push("@(String.Format("{0:0.00}", item.Price))");
-                @:dataItem.push("@item.CreatedDate");
-                @:dataItem.push("@item.LastUpdateDate");
-                <text>
-                    dataItem.push(`
-                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-controller="Projects" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    `);
-                </text>
-                @:dataSet.push(dataItem);
-            }
-
-
-            $('#projects-table').DataTable({
-                data: dataSet,
-                columns: [
-                    { title: "ID" },
-                    { title: "Cover" },
-                    { title: "Title" },
-                    { title: "Description" },
-                    { title: "Download Link" },
-                    { title: "Price" },
-                    { title: "CreatedDate" },
-                    { title: "LastUpdateDate" },
-                    null
-                ],
-                "pagingType": "full_numbers",
-                scrollY: true,
-                scrollX: true,
-                "pageLength": 5,
-                "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
-                "stateSave": true,
-                "order": [0, 'asc'],
-                //colReorder: {
-                //    realtime: false
-                //},
-                initComplete: function (settings) {
-                    $('#projects-table').on('click', 'tbody td', function () {
-                        var dataTable = $('#projects-table').dataTable();
-                        var tr = $(this).closest('tr');
-                        var index = dataTable.fnGetPosition(tr[0]);
-                        var id = dataTable.fnGetData(index)[0];
-                        window.location.href = '/Admin/Projects/Details/' + id;
-                    })
+                    @:dataItem.push("@item.Description");
+                    @:dataItem.push("@item.DownloadLink");
+                    @:dataItem.push("@(String.Format("{0:0.00}", item.Price))");
+                    @:dataItem.push("@item.CreatedDate");
+                    @:dataItem.push("@item.LastUpdateDate");
+                    <text>
+                        dataItem.push(`
+                            <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-controller="Projects" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        `);
+                    </text>
+                    @:dataSet.push(dataItem);
                 }
-            });
 
-
+                $('#projects-table').DataTable({
+                    data: dataSet,
+                    columns: [
+                        { title: "ID" },
+                        { title: "Cover" },
+                        { title: "Title" },
+                        { title: "Description" },
+                        { title: "Download Link" },
+                        { title: "Price" },
+                        { title: "CreatedDate" },
+                        { title: "LastUpdateDate" },
+                        null
+                    ],
+                    "pagingType": "full_numbers",
+                    scrollY: true,
+                    scrollX: true,
+                    "pageLength": 5,
+                    "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                    "stateSave": true,
+                    "order": [0, 'asc'],
+                    //colReorder: {
+                    //    realtime: false
+                    //},
+                    initComplete: function (settings) {
+                        $('#projects-table').on('click', 'tbody td', function () {
+                            var dataTable = $('#projects-table').dataTable();
+                            var tr = $(this).closest('tr');
+                            var index = dataTable.fnGetPosition(tr[0]);
+                            var id = dataTable.fnGetData(index)[0];
+                            window.location.href = '/Admin/Projects/Details/' + id;
+                        })
+                    }
+                });
 
         });
 
