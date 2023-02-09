@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyWebSite.Repositories
 {
@@ -30,9 +31,16 @@ namespace MyWebSite.Repositories
                 throw new ArgumentNullException(nameof(entity));
             entity.CreatedDate = DateTime.Now;
             entity.LastUpdateDate = DateTime.Now;
-            Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
-            entity.ImageFullPath = imagePaths.Absolute;
-            entity.ImagePath = imagePaths.Path;
+
+            // Convert the image data to base64
+            string imageBase64 = FilesTools.IformFileToBase64(entity.File);
+            entity.Base64 = imageBase64;
+
+            // Save Image In Locals Directories
+            //Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
+            //entity.ImageFullPath = imagePaths.Absolute;
+            //entity.ImagePath = imagePaths.Path;
+
             await this._context.HomeData.AddAsync(entity);
             if (entity.IsActive == true)
             {
@@ -53,7 +61,14 @@ namespace MyWebSite.Repositories
                                         .FirstOrDefaultAsync(e => e.ID == id);
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+
+            // Delete File If Exists From Local Directories
+            string path = "";
             this._filesTools.DeleteFile(entity.ImageFullPath);
+            path = this._filesTools.GetDir(entity.ImagePath);
+            if (!String.IsNullOrEmpty(path))
+                this._filesTools.DeleteDir(path);
+
             this._context.HomeData.Remove(entity);
             return entity;
         }
@@ -96,13 +111,27 @@ namespace MyWebSite.Repositories
             entity.LastUpdateDate = DateTime.Now;
             if (entity.File != null)
             {
-                Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
-                if ( (imagePaths.Absolute != null) && 
-                    (imagePaths.Path != null) )
-                {
-                    entity.ImageFullPath = imagePaths.Absolute;
-                    entity.ImagePath = imagePaths.Path;
-                }
+                // Convert the image data to base64
+                string imageBase64 = FilesTools.IformFileToBase64(entity.File);
+                entity.Base64 = imageBase64;
+
+                // Delete File If Exists From Local Directories
+                string path = "";
+                this._filesTools.DeleteFile(entity.ImageFullPath);
+                path = this._filesTools.GetDir(entity.ImagePath);
+                if (!String.IsNullOrEmpty(path))
+                    this._filesTools.DeleteDir(path);
+                entity.ImageFullPath = "";
+                entity.ImagePath = "";
+
+                // Save Image In Locals Directories
+                //Paths imagePaths = this._filesTools.CreateFile(entity.File, "img\\home\\", "homeImage");
+                //if ((imagePaths.Absolute != null) &&
+                //    (imagePaths.Path != null))
+                //{
+                //    entity.ImageFullPath = imagePaths.Absolute;
+                //    entity.ImagePath = imagePaths.Path;
+                //}
             }
             this._context.Entry(entity).State = EntityState.Modified;
             if (entity.IsActive == true)

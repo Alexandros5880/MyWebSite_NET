@@ -16,6 +16,7 @@ namespace MyWebSite.Data.Models
         public string Paragraph { get; set; }
         [NotMapped]
         public IFormFile File { get; set; }
+        public string Base64 { get; set; }
         public string ImagePath { get; set; }
         public string ImageFullPath { get; set; }
         public bool IsActive { get; set; }

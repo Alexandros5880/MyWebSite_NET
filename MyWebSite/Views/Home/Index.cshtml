@@ -12,7 +12,20 @@
 <div class="row justify-content-around">
 
     <div class="col-xl-6 img-div">
-        <img class="img-fluid header-image" alt="Alexandros Platanios Image" src="@Url.Content(Model.ImagePath)" />
+        @{
+            if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img class="img-fluid header-image" alt="Alexandros Platanios Image" src="@Url.Content(Model.ImagePath)" />
+            }
+            if (!string.IsNullOrEmpty(Model.Base64))
+            {
+                <img class="img-fluid header-image" alt="Alexandros Platanios Image" src="@Url.Content(Model.Base64)" />
+            }
+            if (string.IsNullOrEmpty(Model.ImagePath) && string.IsNullOrEmpty(Model.Base64))
+            {
+                
+            }
+        }        
     </div>
 
     <div class="col-xl-6 title-div row justify-content-around main-content">
