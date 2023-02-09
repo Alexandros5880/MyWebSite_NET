@@ -1,7 +1,9 @@
 ﻿@model System.Collections.Generic.ICollection<MyWebSite.Data.Models.Project>;
 
-<link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
-<link rel="stylesheet" href="~/css/Portofolio.css" />
+@section Styles{
+    <link rel="stylesheet" href="~/lib/DataTables/DataTables-1.11.4/css/dataTables.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/Portofolio.css" />
+}
 
 <div style="margin-top: 5%;">
     <input type="text" id="search-input" placeholder="Search">
@@ -9,6 +11,7 @@
 </div>
 
 @section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/Portofolio.js"></script>
     <script>
 
@@ -88,5 +91,5 @@
         });
 
     </script>
-
+    <script type="text/javascript" charset="utf8" src="/lib/DataTables/datatables.min.js"></script>
 }

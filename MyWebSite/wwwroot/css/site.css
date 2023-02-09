@@ -39,6 +39,11 @@ disabled {
     width: 100%;
 }
 
+img {
+    max-height: 300px;
+    max-width: 200px;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .main {
         margin-bottom: 5%;

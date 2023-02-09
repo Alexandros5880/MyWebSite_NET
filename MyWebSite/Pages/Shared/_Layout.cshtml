@@ -2,18 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        @*<meta name="viewport" content="width=device-width, initial-scale=1.0" />*@
-        <meta name="viewport" content="width = 320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="I'm Alexandros Platanios a Software Developer / Engineer (Fullstack), i can build all types of projects.">
+        @*<meta name="viewport" content="width = 320"/>*@
         <link rel="icon" href="~/img/title.ico">
         <title>Alexandros Platanios</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/fontawesome-free-5.15.4-web/css/all.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">
+        @*<link rel="stylesheet" type="text/css" href="/lib/DataTables/datatables.min.css">*@
         <link rel="stylesheet" href="~/css/_Footer.css" />
         @RenderSection("Styles", required: false)
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -30,11 +30,11 @@
             var contact = ViewBag.Contact;
         }
         @Html.Partial("_Footer", (ContactData)contact)
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/fontawesome-free-5.15.4-web/js/all.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script type="text/javascript" charset="utf8" src="/lib/DataTables/datatables.min.js"></script>
+
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>
