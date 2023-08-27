@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\ProjectImages\IPCamerasESP32\" />
+    <Folder Include="wwwroot\ProjectImages\CBProject\" />
   </ItemGroup>
 
 </Project>
