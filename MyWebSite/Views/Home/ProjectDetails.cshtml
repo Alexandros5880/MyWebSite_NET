@@ -14,22 +14,25 @@
         <h4 class="card-title">@Model.Title</h4>
         <br />
 
-        <div class="row overflow-auto image-container" style="height: 500px;">
-            @foreach (var img in Model.Images)
-            {
-                <div class="col-lg-4 image-div" style="margin-bottom: 3%;">
-                    <div>
-                        @{
-                            var imageSrc = !String.IsNullOrEmpty(img.ImagePath) ? Url.Content(img.ImagePath) : @Url.Content(img.Base64);
-                        }
+        <!-- Show Images -->
+        <section>
+            <div class="my-container">
+                <span onclick="this.parentElement.style.display='none'" class="closebtn" style="color: darkred;">&times;</span>
+                <img id="expandedImg" onclick="openImage(this.src)" style="width:100%; height: auto;">
+                <div id="imgtext"></div>
+                <br />
+            </div>
+            <div class="row overflow-auto" style="height: 500px;">
+                @foreach (var myImg in Model.Images)
+                {
+                    <div class="column">
                         <img alt="Project"
-                             onClick="openImage('@imageSrc')"
-                             src="@imageSrc" />
+                             onclick="selectImage(this);"
+                             src="@(!String.IsNullOrEmpty(myImg.ImagePath) ? Url.Content(myImg.ImagePath) : @Url.Content(myImg.Base64))" />
                     </div>
-                </div>
-            }
-        </div>
-
+                }
+            </div>
+        </section>
 
         <br />
     </div>
@@ -124,7 +127,17 @@
 
     <script>
         function openImage(imageUrl) {
+            // _self, _block
             window.open(imageUrl, '_self');
+        }
+
+        function selectImage(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+            window.scrollTo(expandedImg.offsetLeft, expandedImg.offsetTop);
         }
     </script>
 }
