@@ -127,8 +127,18 @@
 
     <script>
         function openImage(imageUrl) {
-            // _self, _block
-            window.open(imageUrl, '_self');
+            console.log('imageUrl: ', imageUrl);
+
+            if (imageUrl.includes('https://') || imageUrl.includes('http://')) {
+                // _self, _block
+                window.open(imageUrl, '_self');
+            } else {
+                var iframe = "<img style='width: 100%; height: auto;' src='" + encodeURI(imageUrl) + "'></iframe>"
+                var x = window.open(null, '_block');
+                x.document.open();
+                x.document.write(iframe);
+                x.document.close();
+            }
         }
 
         function selectImage(imgs) {
