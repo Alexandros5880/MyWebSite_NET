@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>aspnet-MyWebSite-4CA2B0B4-BF0C-4ADE-BA87-BE8E0453B7AD</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <StartupObject>MyWebSite.Program</StartupObject>
