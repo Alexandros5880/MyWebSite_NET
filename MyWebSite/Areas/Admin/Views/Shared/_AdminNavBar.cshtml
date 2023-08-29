@@ -3,13 +3,50 @@
 @inject UserManager<MyWebSiteUser> UserManager
 
 <style>
+    .navbar {
+        min-height: 157px !important;
+        margin-bottom: 1%;
+    }
+
     .nav-item:hover {
         opacity: 0.4;
+    }
+
+    ul {
+        display: inline-flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    li {
+        text-align: center;
+    }
+
+    a {
+        margin: 0 auto !important;
+        font-size: large;
+        font-weight: 900;
+    }
+
+    .admin-buttons {
+        color: darkred !important;
+    }
+
+    .logoutbutton {
+        margin: 0 auto !important;
+        font-size: large;
+        font-weight: 900;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 7px;
+        top: 111px;
     }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="row" style="width: 377px;">
+    <div class="row" style="min-width: 277px;">
         <div class="col-md-2">
             <svg height="70" width="70">
                 <polygon points="25 10, 50 60, 0 60" fill="#17539B" stroke="black" stroke-width="1" />
@@ -24,7 +61,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" style="margin-left: 37%;">
+        <ul class="navbar-nav mr-auto" style="margin-left: 30px; min-width: 333px;">
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/Home/Resume">Resume</a>
             </li>
@@ -36,12 +73,9 @@
             </li>
             @if (SignInManager.IsSignedIn(User))
             {
-                @*<li class="nav-item" style="margin-left: 23%;">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                </li>*@
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
-                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                        <button type="submit" class="nav-link btn btn-link text-dark logoutbutton">Logout</button>
                     </form>
                 </li>
             }
@@ -50,7 +84,37 @@
                 <li class="nav-item" style="margin-left: 100%;">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
                 </li>
-            }
+            }       
+        </ul>
+        <br/>
+        <ul class="navbar-nav mr-auto" style="margin-left: 30px; min-width: 333px;">
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="HomeData" asp-action="Index">Home Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="ContactData" asp-action="Index">Contact Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="Cvs" asp-action="Index">CVs</a>
+            </li>
+            <li class="nav-item" style="display: none;">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="Images" asp-action="Index">Images</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="Messages" asp-action="Index">Messages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="Projects" asp-action="Index">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="Orders" asp-action="Index">Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="MyWebSiteUsers" asp-action="Index">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark admin-buttons" asp-area="Admin" asp-controller="MyWebSiteRoles" asp-action="Index">Roles</a>
+            </li>
         </ul>
     </div>
 </nav>

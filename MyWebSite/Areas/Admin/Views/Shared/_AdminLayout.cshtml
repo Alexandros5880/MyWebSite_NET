@@ -18,13 +18,15 @@
 
 <body>
     <header>
-        @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminNavBar.cshtml"); }
+        @{
+            Html.RenderPartial("~/Areas/Admin/Views/Shared/_AdminNavBar.cshtml");
+        }
     </header>
 
-    @{ Html.RenderPartial("~/Areas/Admin/Views/Shared/_SideNavBar.cshtml"); }
-
-    <div class="main">
-        @RenderBody()
+    <div class="container main">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 
     <br />
