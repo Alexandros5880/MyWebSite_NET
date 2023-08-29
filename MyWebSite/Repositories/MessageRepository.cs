@@ -41,6 +41,17 @@ namespace MyWebSite.Repositories
             return entity;
         }
 
+        public async Task DeleteAll()
+        {
+            var entities = await this._context.Messages.ToListAsync();
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+            foreach (var entity in entities)
+            {
+                this._context.Messages.Remove(entity);
+            }
+        }
+
         public async Task<Message> Get(int? id)
         {
             if (id == null)

@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using MyWebSite.Data.Models;
 using MyWebSite.Data.ViewModels;
 using MyWebSite.HorizontalClasses.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Admin.Controllers
@@ -108,7 +110,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             {
                 try
                 {
-                    cV.File = file;
+                    cV.File = file == null ? cV.File  : file;
                     this._repos.CVs.Update(cV);
                     await this._repos.CVs.Save();
                 }

@@ -5,13 +5,16 @@
 }
 
 @section styles {
+    <style>
 
+    </style>
 }
 <h2>Messages</h2>
 
-<p>
+<div class="row">
     <a asp-action="Create">Create New</a>
-</p>
+    <a asp-action="DeleteAll">DeleteAll</a>
+</div>
 
 <div class="table-responsive" style="margin-top: 5%;">
     <table id="messages-table" width="100%" class="display" cellspacing="0"></table>
@@ -31,7 +34,7 @@
                 @:dataItem.push("@item.LastName");
                 @:dataItem.push("@item.Email");
                 @:dataItem.push("@item.Subject");
-                @:dataItem.push("@item.MyMessage");
+                //@:dataItem.push("@item.MyMessage");
                 @:dataItem.push("@item.CreatedDate");
                 @:dataItem.push("@item.LastUpdateDate");
                 <text>
@@ -50,13 +53,13 @@
                     { title: "Last Name" },
                     { title: "Email" },
                     { title: "Subject" },
-                    { title: "Message" },
+                    //{ title: "Message" },
                     { title: "CreatedDate" },
                     { title: "LastUpdateDate" },
                     null
                 ],
                 "pagingType": "full_numbers",
-                scrollY: true,
+                scrollY: '50vh',
                 scrollX: true,
                 "pageLength": 5,
                 "lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],

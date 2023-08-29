@@ -154,6 +154,14 @@ namespace MyWebSite.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Get: Admin/Messages/DeleteAll
+        public async Task<IActionResult> DeleteAll()
+        {
+            await this._repos.Messages.DeleteAll();
+            await this._repos.Messages.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
         private async Task<bool> MessageExists(int id)
         {
             return await this._repos.Messages.Get(id) != null;
