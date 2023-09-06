@@ -116,11 +116,15 @@ namespace MyWebSite.Repositories
                 entity.Base64 = imageBase64;
 
                 // Delete File If Exists From Local Directories
-                string path = "";
-                this._filesTools.DeleteFile(entity.ImageFullPath);
-                path = this._filesTools.GetDir(entity.ImagePath);
-                if (!String.IsNullOrEmpty(path))
-                    this._filesTools.DeleteDir(path);
+                if (entity.ImageFullPath != null && entity.ImagePath != null)
+                {
+                    string path = "";
+                    this._filesTools.DeleteFile(entity.ImageFullPath);
+                    path = this._filesTools.GetDir(entity.ImagePath);
+                    if (!String.IsNullOrEmpty(path))
+                        this._filesTools.DeleteDir(path);
+                }
+                
                 entity.ImageFullPath = "";
                 entity.ImagePath = "";
 
